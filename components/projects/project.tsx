@@ -23,7 +23,7 @@ export const Project = (props: Props) => {
     >
       <div className='row'>
         <div className='col-12 col-md-8 order-2 order-md-1' data-aos="fade-right" data-aos-delay='1000'>
-          <img src={`/Portfolio/assets/projects/${props.project.image}`} alt={props.project.name} />
+          <img src={`/assets/projects/${props.project.image}`} alt={props.project.name} />
         </div>
         <div className='col-12 col-md-4 order-1 order-md-2'>
           <span data-aos="fade-left" data-aos-delay='1000'>PROJECT TYPE</span>
