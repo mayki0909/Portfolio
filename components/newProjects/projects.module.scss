@@ -1,0 +1,140 @@
+@import '../../styles/variables.scss';
+
+.projects {
+  padding: 128px 0px;
+  background-color: $dark;
+
+  @media (max-width: 772px) {
+    padding: 32px 0px;
+  }
+
+  h2 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: $white;
+    background-color: $dark;
+
+    span {
+      color: $purple;
+    }
+  }
+}
+
+.project {
+  position: relative;
+
+  img {
+    width: 100%;
+    border-radius: 20px;
+  }
+  
+  .year, .roles, .tecnologies {
+    display: inline-block;
+    padding: 12px 24px;
+    gap: 8px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    margin: 5px auto;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+    color: $dark;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  .year {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+
+    @media (max-width: 772px) {
+      top: 4px;
+      left: 20px;
+    }
+  }
+
+  .roles {
+    position: absolute;
+    bottom: 105px;
+    left: 40px;
+    @media (max-width: 772px) {
+      display: none;
+    }
+  }
+
+  .tecnologies {
+    position: absolute;
+    bottom: 65px;
+    left: 40px;
+
+    @media (max-width: 772px) {
+      display: none;
+    }
+  }
+
+  .nameDiv {
+    position: absolute;
+    display: flex;
+    bottom: 0px;
+    left: 40px;
+
+    @media (max-width: 772px) {
+      left: 20px;
+    }
+  }
+
+  .name {
+    display: inline-block;
+    padding: 12px 24px;
+    gap: 8px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    margin-bottom: 14px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: $dark;
+
+    @media (max-width: 772px) {
+      padding: 10px 20px;
+      font-size: 16px;
+      line-height: 19px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .link {
+    background-color: $white;
+    border-radius: 40px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-bottom: 14px;
+
+    @media (max-width: 772px) {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 8px;
+    }
+
+    svg {
+      transform: rotate(220deg);
+    }
+  }
+}
