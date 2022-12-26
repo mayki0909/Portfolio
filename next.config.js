@@ -7,6 +7,6 @@ module.exports = {
     });
     return config;
   },
-  assetPrefix: !debug ? 'https://mayki0909.github.io/Portfolio/' : '',
-  basePath: !debug ? 'https://mayki0909.github.io/Portfolio/' : ''
+  assetPrefix: !debug ? '/Portfolio' : '',
+  basePath: !debug ? '/Portfolio' : ''
 };
