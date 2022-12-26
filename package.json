@@ -1,0 +1,42 @@
+{
+  "name": "Portfolio",
+  "version": "1.0.0",
+  "description": "Website as CV",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayki0909/mihaznidar.github.io.git"
+  },
+  "keywords": [],
+  "author": "Miha Žnidar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayki0909/mihaznidar.github.io/issues"
+  },
+  "homepage": "https://github.com/mayki0909/mihaznidar.github.io#readme",
+  "dependencies": {
+    "@next/font": "^13.1.1",
+    "@svgr/webpack": "^6.5.1",
+    "@zeit/next-typescript": "^1.1.1",
+    "aos": "^2.3.4",
+    "bootstrap": "^5.2.3",
+    "next": "^13.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-particles": "^2.6.0",
+    "react-tsparticles": "^2.6.0",
+    "sass": "^1.56.1",
+    "tsparticles": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "@types/react": "18.0.26",
+    "typescript": "4.9.3"
+  }
+}
