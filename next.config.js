@@ -4,12 +4,8 @@ module.exports = {
       test: /\.svg$/,
       use: ["@svgr/webpack"]
     });
-
     return config;
   },
-  experimental: {
-    fontLoaders: [
-      { loader: '@next/font/google', options: { subsets: ['Manrope'] } },
-    ],
-  },
+  basePath: "/Portfolio",
+  assetPrefix: "/Portfolio"
 };
