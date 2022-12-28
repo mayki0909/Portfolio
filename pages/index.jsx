@@ -17,7 +17,8 @@ const Index = () => {
   return (
     <>
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <meta name="google-site-verification" content="QsMKB5atxvBbyS1GOp5YivZXKJIDqls51EfGSisUkMY" />
+        
         <title>{metadata.title}</title>
         <meta name="title" content={metadata.title} />
         <meta name="description" content={metadata.description} />
