@@ -11,7 +11,7 @@ export const About: NextComponentType = () => {
         <div className='row'>
           <div className={`col-md-8 ${styles.textContainer}`}>
             <h2>Delivering modern, clean & intuitive web solutions.</h2>
-            <p>I enjoy programming meningful websiotes for brands & business to help thjem serve their target users.</p>
+            <p>I enjoy programming meningful websites for brands & business using newest technologies.</p>
           </div>
           <div className='col-md-4'>
             <p className={`${styles.item} ${styles.purple}`}><span>01/</span> Front-end development</p>

@@ -7,8 +7,8 @@ export const Footer: NextComponentType = () => {
       <div className={`container ${styles.container}`}>
         <h2>LET'S TALK ABOUT <span>YOUR</span> NEXT PROJECT</h2>
         <div className='d-block d-md-flex justify-content-center'>
-          <a className={styles.button} href="">Write a message</a>
-          <a className={styles.button} href="">Discuss a project</a>
+          <a className={styles.button} href="mailto:miha.znidar7@gmail.com">Write a message</a>
+          <a className={styles.button} href="mailto:miha.znidar7@gmail.com">Discuss a project</a>
         </div>
 
         <div className={`row ${styles.linksContainer}`}>

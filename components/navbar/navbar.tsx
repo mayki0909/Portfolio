@@ -32,6 +32,7 @@ export const Navbar: NextComponentType = () => {
               className={styles.buttonCircle} 
               href='www.linkedin.com/in/miha-žnidar' 
               target='_blank'
+              aria-label='LinkedIn'
               >
               <Linkedin />
             </a>
@@ -39,6 +40,7 @@ export const Navbar: NextComponentType = () => {
               className={styles.buttonCircle} 
               href='https://github.com/mayki0909' 
               target='_blank'
+              aria-label='Github'
               >
               <Github />
             </a>

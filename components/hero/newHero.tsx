@@ -15,15 +15,14 @@ export const Hero: NextComponentType = () => {
           </div>
           <div className='col-6 align-self-end'>
             <a href='#work' className={styles.scroll}>
-              <Arrow width={24} height={24}/>
+              <Arrow width={24} height={24} aria-label='Scroll down'/>
             </a>
           </div>
           <div className={`col-6 ${styles.description}`}>
             <h3>Miha Žnidar</h3>
             <h4>Full-stack developer based in Slovenia - Kranj & Ljubljana</h4>
-            <p>Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. 
-              Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. Lorem ipsum is simply dummy.Lorem ipsum is simply dummy.Lorem ipsum is simply dummy. 
-              Lorem ipsum is simply dummy.
+            <p>
+              Interested in blockchain, web development, game development and AR/VR technologies. I have a keen eye for exploring the latest advancements in these fields and enjoy experimenting with them in my free time. As a software engineer, I am constantly striving to expand my knowledge and develop my skills to help create innovative solutions.
             </p>
             <a href='#work'>
               View more  
@@ -38,16 +37,15 @@ export const Hero: NextComponentType = () => {
 
             <h3>Miha Žnidar</h3>
             <h4>Full-stack developer based in Slovenia - Kranj & Ljubljana</h4>
-            <p>Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. 
-              Lorem ipsum is simply dummy. Lorem ipsum is simply dummy. Lorem ipsum is simply dummy.Lorem ipsum is simply dummy.Lorem ipsum is simply dummy. 
-              Lorem ipsum is simply dummy.
+            <p>
+              Interested in blockchain, web development, game development and AR/VR technologies. I have a keen eye for exploring the latest advancements in these fields and enjoy experimenting with them in my free time. As a software engineer, I am constantly striving to expand my knowledge and develop my skills to help create innovative solutions.
             </p>
             <a href='#work'>
               View more
               <Link />
             </a>
 
-            <a href='#work' className={styles.scroll}>
+            <a href='#work' className={styles.scroll} aria-label='Scroll down'>
               <Arrow width={24} height={24}/>
             </a>
           </div>

@@ -7,7 +7,7 @@ export const projects: IProject[] = [
     description: 'The company is developing management programs for logistical companies. In my time with them, my programming and general computer skills have greatly improved. The company is developing management programs for logistical companies. In my time with them, my programming and general computer skills have greatly improved. The company is developing management programs for logistical companies. In my time with  The company is developing management programs for logistical companies. In my time with The company is developing management programs for logistical companies. In my time with The company is developing management programs for logistical companies. In my time with The company is developing management programs for logistical companies. In my time with The company is developing management programs for logistical companies. In my time with ',
     url: 'http://www.plankebordene.dk',
     createdAt: new Date,
-    image: 'plankebordene.png',
+    image: 'plankebordene.webp',
     roles: ['Product owner', 'Team lead', 'Frontend'],
     technologies: ['React', 'TypeScript', 'NodeJs' ,'MongoDb', 'Docker', 'Git', 'Figma']
   },
@@ -18,7 +18,7 @@ export const projects: IProject[] = [
     description: 'The company is developing management programs for logistical companies. In my time with them, my programming and general computer skills have greatly improved. The company is developing management programs for logistical companies. In my time with them, my programming and general computer skills have greatly improved.',
     url: 'https://www.axmelectric.com/',
     createdAt: new Date,
-    image: 'axm_electric.png',
+    image: 'axm_electric.webp',
     roles: ['Frontend'],
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap']
   }
