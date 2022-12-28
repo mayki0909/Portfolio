@@ -20,7 +20,7 @@ export const Navbar: NextComponentType = () => {
       <section className={styles.desktopNavbar}>
         <nav className='container-lg d-none d-md-flex flex-row justify-content-between'>
           <a className={styles.button} href='/'>
-            MAJKI.SI @2022
+            MIHA ŽNIDAR @2022
           </a>
     
           <div className='d-flex'>

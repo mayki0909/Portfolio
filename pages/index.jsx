@@ -12,7 +12,7 @@ const Index = () => {
     url: 'asdasd',
     title: 'Personal portfolio - Miha Žnidar',
     description: 'My name is Miha Žnidar I am full stack web developer. Interested in blockchain, web development, game development and AR/VR technologies. In free time I experiment a lot with those technologies.',
-    image: '/images/matadata.jpg'
+    image: `${process.env.NODE_ENV === "production" ? '/Portfolio' : ''}/images/matadata.jpg`
   }
   return (
     <>

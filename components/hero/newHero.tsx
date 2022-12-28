@@ -10,8 +10,7 @@ export const Hero: NextComponentType = () => {
       <div className='container'>
         <div className='row d-none d-md-flex'>
           <div className='col-xs-12'>
-            <h2>Creative</h2>
-            <h1><span>WEB</span> developer.</h1>
+            <h1>Creative<br/><span>WEB</span> developer.</h1>
           </div>
           <div className='col-6 align-self-end'>
             <a href='#work' className={styles.scroll}>
@@ -33,7 +32,7 @@ export const Hero: NextComponentType = () => {
 
         <div className='row d-flex d-md-none'>
           <div className={`col-12 ${styles.mobile}`}>
-            <h1><span>WEB</span> developer.</h1>
+            <h2><span>WEB</span> developer.</h2>
 
             <h3>Miha Žnidar</h3>
             <h4>Full-stack developer based in Slovenia - Kranj & Ljubljana</h4>
