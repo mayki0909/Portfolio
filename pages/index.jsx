@@ -19,6 +19,7 @@ const Index = () => {
       <Head>
         <meta name="google-site-verification" content="6QgNpyUunNctzrJ9dlKxlVbAT9DuOURhu28mlek6JQQ" />
         
+        <link rel='icon' href='/favicon.ico' />
         <title>{metadata.title}</title>
         <meta name="title" content={metadata.title} />
         <meta name="description" content={metadata.description} />
