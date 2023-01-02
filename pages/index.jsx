@@ -9,15 +9,15 @@ import { Footer } from '../components/footer/footer';
 
 const Index = () => {
   const metadata = {
-    url: 'asdasd',
+    url: 'https://miha-znidar.vercel.app/',
     title: 'Miha Žnidar - Full-Stack Web Developer',
-    description: 'My name is Miha Žnidar I am full stack web developer. Interested in blockchain, web development, game development and AR/VR technologies. In free time I experiment a lot with those technologies.',
-    image: `${process.env.NODE_ENV === "production" ? '/Portfolio' : ''}/images/matadata.jpg`
+    description: 'My name is Miha Žnidar I am full stack web developer. Interested in blockchain, web development and AR/VR technologies. In free time I experiment a lot with those technologies.',
+    image: '/images/matadata.jpg'
   }
   return (
     <>
       <Head>
-        <meta name="google-site-verification" content="QsMKB5atxvBbyS1GOp5YivZXKJIDqls51EfGSisUkMY" />
+        <meta name="google-site-verification" content="6QgNpyUunNctzrJ9dlKxlVbAT9DuOURhu28mlek6JQQ" />
         
         <title>{metadata.title}</title>
         <meta name="title" content={metadata.title} />
