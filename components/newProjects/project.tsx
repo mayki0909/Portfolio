@@ -21,7 +21,7 @@ export const Project = (props: Props) => {
           href={`/project/${props.project.slug}`}
           target='_blank'
         >
-          <Arrow  width={24} height={24}/>
+          <Arrow  width={24} height={24} alt='Arrow'/>
         </a>
       </div>
 

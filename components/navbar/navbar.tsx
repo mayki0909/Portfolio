@@ -19,14 +19,14 @@ export const Navbar: NextComponentType = () => {
     <>
       <section className={styles.desktopNavbar}>
         <nav className='container-lg d-none d-md-flex flex-row justify-content-between'>
-          <a className={styles.button} href='/'>
+          <a className={styles.button} href='/' aria-label='Home'>
             MIHA ŽNIDAR @2022
           </a>
     
           <div className='d-flex'>
-            <a className={styles.link} href="#work">Projects</a>
-            <a className={styles.link} href="#about">About me</a>
-            <a className={styles.link} href="#contact">Contact me</a>
+            <a className={styles.link} href="#work" aria-label='Projects'>Projects</a>
+            <a className={styles.link} href="#about" aria-label='About'>About me</a>
+            <a className={styles.link} href="#contact" aria-label='Contact'>Contact me</a>
             <div className={styles.breaker}></div>
             <a 
               className={styles.buttonCircle} 
@@ -50,7 +50,7 @@ export const Navbar: NextComponentType = () => {
       <section className={styles.mobileNavbar}>
         <nav className='d-block d-md-none'>
           <div className='d-flex justify-content-between'>
-            <a className={styles.home} href='/'>
+            <a className={styles.home} href='/' aria-label='Home'>
               M. @2022
             </a>
 
@@ -61,16 +61,16 @@ export const Navbar: NextComponentType = () => {
           </div>
           <div className={`${styles.dropdown} ${open ? styles.open : styles.close}`}>
             <div className={styles.stickBottom}>
-              <a href='#home' onClick={()=>setOpen(false)}>
+              <a href='#home' onClick={()=>setOpen(false)} aria-label='Home'>
                 <p className={path.includes('#home') ? styles.active : styles.unactive}>HOME</p>
               </a>
-              <a href='#work' onClick={()=>setOpen(false)}>
+              <a href='#work' onClick={()=>setOpen(false)} aria-label='Projects'>
                 <p className={path.includes('#work') ? styles.active : styles.unactive}>WORK</p>
               </a>
-              <a href='#about' onClick={()=>setOpen(false)}>
+              <a href='#about' onClick={()=>setOpen(false)} aria-label='About'>
                 <p className={path.includes('#about') ? styles.active : styles.unactive}>ABOUT ME</p>
               </a>
-              <a href='#contact' onClick={()=>setOpen(false)}>
+              <a href='#contact' onClick={()=>setOpen(false)} aria-label='Contact'>
                 <p className={path.includes('#contact') ? styles.active : styles.unactive}>CONTACT ME</p>
               </a>
             </div>

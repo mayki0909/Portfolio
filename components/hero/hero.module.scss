@@ -48,7 +48,7 @@
   } 
   
 
-  h1,h2 {
+  h1, .title {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 600;
@@ -107,7 +107,7 @@
       margin-top: 40px;
     }
 
-    h3 {
+    h2 {
       font-family: 'Raleway';
       font-style: normal;
       font-weight: 600;
@@ -116,7 +116,7 @@
       color: $white;
     }
 
-    h4 {
+    h3 {
       font-family: 'Raleway';
       font-style: normal;
       font-weight: 500;
@@ -149,7 +149,7 @@
 
   .mobile {
 
-    h1, h2 {
+    h1, .title {
       font-family: 'Raleway';
       font-style: normal;
       font-weight: 600;
@@ -163,14 +163,14 @@
       }
     }
    
-    h3 {
+    h2 {
       font-size: 24px;
       line-height: 28px;
       color: $white;
       margin-top: 34px;
     }
 
-    h4 {
+    h3 {
       font-size: 16px;
       line-height: 19px;
       color: $white;

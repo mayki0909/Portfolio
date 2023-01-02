@@ -11,8 +11,8 @@ const Index = () => {
   const metadata = {
     url: 'https://miha-znidar.vercel.app/',
     title: 'Miha Žnidar - Full-Stack Web Developer',
-    description: 'My name is Miha Žnidar I am full stack web developer. Interested in blockchain, web development and AR/VR technologies. In free time I experiment a lot with those technologies.',
-    image: '/images/matadata.jpg'
+    description: 'I am Miha Žnidar full-stack web developer from Slovenia. Interested in blockchain, web development and AR/VR technologies. Looking forward to new projects.',
+    image: '/assets/header.jpg'
   }
   return (
     <>

@@ -13,17 +13,17 @@ export const Hero: NextComponentType = () => {
             <h1>Full-stack<br/><span>WEB</span> developer.</h1>
           </div>
           <div className='col-6 align-self-end'>
-            <a href='#work' className={styles.scroll}>
-              <Arrow width={24} height={24} aria-label='Scroll down'/>
+            <a href='#work' className={styles.scroll} aria-label='Scroll down'>
+              <Arrow width={24} height={24} />
             </a>
           </div>
           <div className={`col-6 ${styles.description}`}>
-            <h3>Miha Žnidar</h3>
-            <h4>Full-stack web developer based in Slovenia - Kranj & Ljubljana</h4>
+            <h2>Miha Žnidar</h2>
+            <h3>Full-stack web developer based in Slovenia - Kranj & Ljubljana.</h3>
             <p>
               Interested in blockchain, web development, game development and AR/VR technologies. I have a keen eye for exploring the latest advancements in these fields and enjoy experimenting with them in my free time. As a software engineer, I am constantly striving to expand my knowledge and develop my skills to help create innovative solutions.
             </p>
-            <a href='#work'>
+            <a href='#about' aria-label='About'>
               View more  
               <Link />
             </a>
@@ -32,14 +32,14 @@ export const Hero: NextComponentType = () => {
 
         <div className='row d-flex d-md-none'>
           <div className={`col-12 ${styles.mobile}`}>
-            <h2><span>WEB</span> developer.</h2>
+            <p className={styles.title}><span>WEB</span> developer.</p>
 
-            <h3>Miha Žnidar</h3>
-            <h4>Full-stack webdeveloper based in Slovenia - Kranj & Ljubljana</h4>
+            <h2>Miha Žnidar</h2>
+            <h3>Full-stack webdeveloper based in Slovenia - Kranj & Ljubljana.</h3>
             <p>
               Interested in blockchain, web development, game development and AR/VR technologies. I have a keen eye for exploring the latest advancements in these fields and enjoy experimenting with them in my free time. As a software engineer, I am constantly striving to expand my knowledge and develop my skills to help create innovative solutions.
             </p>
-            <a href='#work'>
+            <a href='#about' aria-label='About'>
               View more
               <Link />
             </a>
