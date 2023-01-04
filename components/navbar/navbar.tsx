@@ -30,7 +30,7 @@ export const Navbar: NextComponentType = () => {
             <div className={styles.breaker}></div>
             <a 
               className={styles.buttonCircle} 
-              href='www.linkedin.com/in/miha-žnidar' 
+              href='https://www.linkedin.com/in/miha-žnidar' 
               target='_blank'
               aria-label='LinkedIn'
               >

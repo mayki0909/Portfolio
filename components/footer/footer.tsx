@@ -19,7 +19,7 @@ export const Footer: NextComponentType = () => {
           <div className='col-xs-12 col-md-4'>
             <span>Explore</span>
             <p>
-              <a href="/">Home</a>
+              <a href="#hero">Home</a>
               <a href="#work">Work</a>
               <a href="#about">About me</a>
               <a href="#contact">Contact me</a>
@@ -29,11 +29,11 @@ export const Footer: NextComponentType = () => {
             <span>Social</span>
             <p>
               <a     
-                href='www.linkedin.com/in/miha-žnidar' 
+                href='https://www.linkedin.com/in/miha-žnidar'
                 target='_blank'
               >LinkedIn</a>
               <a               
-                href='https://github.com/mayki0909' 
+                href='https://github.com/mayki0909'
                 target='_blank'
               >Github</a>
             </p>

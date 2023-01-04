@@ -6,11 +6,11 @@ import Link from '/public/icons/link.svg';
 
 export const Hero: NextComponentType = () => {
   return (
-    <section className={styles.newHero}>
+    <section id='hero' className={styles.newHero}>
       <div className='container'>
         <div className='row d-none d-md-flex'>
           <div className='col-xs-12'>
-            <h1>Full-stack<br/><span>WEB</span> developer.</h1>
+            <h1>Full-stack <br/><span>WEB</span> developer.</h1>
           </div>
           <div className='col-6 align-self-end'>
             <a href='#work' className={styles.scroll} aria-label='Scroll down'>
