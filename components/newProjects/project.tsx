@@ -18,7 +18,7 @@ export const Project = (props: Props) => {
         <p className={styles.name}> {props.project.name} </p>
         <a className={styles.link} 
           aria-label={`Project ${props.project.slug}`}
-          href={`/project/${props.project.slug}`}
+          href={props.project.url}
           target='_blank'
         >
           <Arrow  width={24} height={24} alt='Arrow'/>
