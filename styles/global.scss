@@ -2,3 +2,10 @@ body {
   padding: 0px;
   margin: 0px;
 }
+
+/* container max width */
+@media screen and (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
+  }
+}

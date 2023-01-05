@@ -18,7 +18,7 @@ export const Navbar: NextComponentType = () => {
   return (
     <>
       <section className={styles.desktopNavbar}>
-        <nav className='container-lg d-none d-md-flex flex-row justify-content-between'>
+        <nav className='container d-none d-md-flex flex-row justify-content-between'>
           <a className={styles.button} href='/' aria-label='Home'>
             MIHA ŽNIDAR @2022
           </a>
