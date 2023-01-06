@@ -1,4 +1,12 @@
 import { IProject } from './interfaces';
+
+export const metadata = {
+  url: 'https://miha-znidar.vercel.app/',
+  title: 'Miha Žnidar - Full-Stack Web Developer',
+  description: 'I am Miha Žnidar full-stack web developer from Slovenia. Interested in blockchain, web development and AR/VR technologies. Looking forward to new projects.',
+  image: '/assets/header.jpg'
+}
+
 export const projects: IProject[] = [
   {
     id: 97,
