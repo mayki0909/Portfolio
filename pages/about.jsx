@@ -1,14 +1,13 @@
-
 import Head from 'next/head'
-import { Navbar } from '../components/navbar/navbar'
-import { Hero } from '../components/hero/newHero'
-import { Projects } from '../components/newProjects/projects';
-import { About } from '../components/about/about';
+import { Navbar } from '../components/navbar/navbar';
+import { AboutMe } from '../components/hero/AboutMe';
+import { Hobbies } from '../components/hobbies/hobbies';
 import { Banner } from '../components/banner/banner';
 import { Footer } from '../components/footer/footer';
 import { metadata } from '../contants'; 
 
-const Index = () => {
+
+const About = () => {
   return (
     <>
       <Head>
@@ -36,9 +35,8 @@ const Index = () => {
 
       <main>
         <Navbar />
-        <Hero />
-        <Projects />
-        <About />
+        <AboutMe />
+        <Hobbies />
         <Banner />
         <Footer />
       </main>
@@ -46,4 +44,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default About;
