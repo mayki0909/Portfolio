@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Navbar } from '../components/navbar/navbar';
-import { AboutMe } from '../components/hero/AboutMe';
+import { AboutMe } from '../components/hero/aboutMe';
 import { Hobbies } from '../components/hobbies/hobbies';
 import { Banner } from '../components/banner/banner';
 import { Footer } from '../components/footer/footer';
