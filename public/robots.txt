@@ -1,4 +1,13 @@
+# *
+User-agent: *
+Disallow: /404
+
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://miha-znidar.vercel.app
+
+# Sitemaps
 Sitemap: https://miha-znidar.vercel.app/sitemap.xml
