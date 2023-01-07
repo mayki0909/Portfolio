@@ -139,3 +139,83 @@
     }
   }
 }
+
+.projectDetails {
+  overflow: hidden;
+  background-color: $dark;
+
+  h1 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 160px;
+    line-height: 172px;
+    color: $white;
+
+    margin-top: 160px;
+    margin-bottom: 40px;
+
+  }
+
+  .shortDescription {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    text-transform: uppercase;
+    color: $white;
+  }
+
+  .description {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 64px;
+    color: $white;
+
+    margin: 120px 0px;
+  }
+
+  .aboutProject {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #FFFFFF;
+  }
+
+  hr {
+    color: $white;
+  }
+
+  a, span {
+    color: $purple;
+  }
+
+  .websiteLink {
+    margin-bottom: 16px;
+  }
+
+  .item {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: $dark;
+    background-color: $white;
+    border-radius: 40px;
+    padding: 16px 26px;
+    margin: 8px 24px 40px 0px;
+    gap: 8px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 32px;
+  }
+}
