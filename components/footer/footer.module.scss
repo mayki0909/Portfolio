@@ -9,7 +9,7 @@
   border-radius: 40px 40px 0px 0px;
   padding: 60px;
 
-  h2 {
+  h4 {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 600;
@@ -65,6 +65,11 @@
     font-size: 24px;
     line-height: 28px; 
     text-decoration: none;
+
+    &:hover {
+      background-color: $purple;
+      color: $white;
+    }
 
     @media (max-width: 992px) { 
       font-weight: 700;

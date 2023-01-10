@@ -5,7 +5,7 @@ export const Footer: NextComponentType = () => {
   return (
     <section id='contact' className={styles.section}>
       <div className={`container ${styles.container}`}>
-        <h2>LET'S TALK ABOUT <span>YOUR</span> NEXT PROJECT</h2>
+        <h4>LET'S TALK ABOUT <span>YOUR</span> NEXT PROJECT</h4>
         <div className='d-block d-md-flex justify-content-center'>
           <a className={styles.button} href="mailto:miha.znidar7@gmail.com">Write a message</a>
           <a className={styles.button} href="mailto:miha.znidar7@gmail.com">Discuss a project</a>
@@ -19,10 +19,10 @@ export const Footer: NextComponentType = () => {
           <div className='col-xs-12 col-md-4'>
             <span>Explore</span>
             <p>
-              <a href="#hero">Home</a>
-              <a href="#work">Work</a>
-              <a href="#about">About me</a>
-              <a href="#contact">Contact me</a>
+              <a href="/">Home</a>
+              <a href="/#work">Work</a>
+              <a href="/about">About me</a>
+              <a href="/#contact">Contact me</a>
             </p>
           </div>
           <div className='col-xs-12 col-md-2'>
