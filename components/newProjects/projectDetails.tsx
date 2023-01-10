@@ -41,7 +41,7 @@ export const ProjectDetails = (props: Props) => {
               <p className={styles.aboutProject}>{props.project.aboutProject}</p>
             }
           </div>
-          <div className='col-12'>
+          <div className='col-12 mt-5'>
             {props.project.creativeImage !== '' && 
               <img src={`/assets/projects/${props.project.creativeImage}`} alt={`${props.project.name} project of Miha Žnidar`} />
             }
