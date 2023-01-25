@@ -9,6 +9,20 @@ export const metadata = {
 
 export const projects: IProject[] = [
   {
+    id: 96,
+    name: 'Clout.art',
+    slug: 'clout.art',
+    shortDescription: 'NFT Minting Platform',
+    description: 'Web application for minting NFTs from Instagram posts and files. Helping independet small creators to learn and create their first NFTs.',
+    aboutProject: 'Web application is written in Next.js and using NodeJs and MongoDb as backend. In application is integrated smart contract for Hedera Hashgraph network (first was implemented Matic, but we changed to Hedera). I have been working on this project from the start when we were building MVP app. After getting investment we started building bigger platform for helping indepedent creators. I have been working on all parts of application (frontend, backend, devOps, integrating smart contract ...)',
+    url: 'http://www.clout.art',
+    createdAt: new Date(2022,12,1).toDateString(),
+    image: 'cloutart-shadow.jpg',
+    creativeImage: '',
+    roles: ['Frontend', 'Backend'],
+    technologies: ['Solidity', 'React', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Git', 'Figma'],
+  },
+  {
     id: 97,
     name: 'Plankebordene',
     slug: 'plankebordene',
@@ -50,18 +64,18 @@ export const projects: IProject[] = [
     roles: ['Frontend'],
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap']
   },
-  {
-    id: 100,
-    name: 'Endless Runner',
-    slug: 'endless-runner',
-    shortDescription: 'Mobile game for android',
-    description: "For graduation project in high school I created android mobile game  using Unity Game Engine using C# programming language.",
-    aboutProject: "It is endless runner type of game. Where the player controls the characters's jumping by clicking on the screen, and holding the press longer lead to a higher jump. The objective of the game is to collect coins while avoiding obstacles. As the game progresses, the platforms move faster, increasing the difficulty level and challenging the player.",
-    url: 'https://github.com/mayki0909/Endless-Runner',
-    createdAt: new Date(2019,4,10,).toDateString(),
-    image: 'endless_runner.webp',
-    creativeImage: '',
-    roles: ['Full-stack'],
-    technologies: ['C#', 'Unity', 'Andorid']
-  }
+  // {
+  //   id: 100,
+  //   name: 'Endless Runner',
+  //   slug: 'endless-runner',
+  //   shortDescription: 'Mobile game for android',
+  //   description: "For graduation project in high school I created android mobile game  using Unity Game Engine using C# programming language.",
+  //   aboutProject: "It is endless runner type of game. Where the player controls the characters's jumping by clicking on the screen, and holding the press longer lead to a higher jump. The objective of the game is to collect coins while avoiding obstacles. As the game progresses, the platforms move faster, increasing the difficulty level and challenging the player.",
+  //   url: 'https://github.com/mayki0909/Endless-Runner',
+  //   createdAt: new Date(2019,4,10,).toDateString(),
+  //   image: 'endless_runner.webp',
+  //   creativeImage: '',
+  //   roles: ['Full-stack'],
+  //   technologies: ['C#', 'Unity', 'Andorid']
+  // }
 ]
