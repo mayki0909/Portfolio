@@ -18,14 +18,14 @@ export const ProjectDetails = (props: Props) => {
           </div>
           <div className='col-12 col-md-4 d-flex justify-content-end align-items-end'>
             <a
-            className={styles.websiteLink}
-            href={props.project.url} 
-            aria-label={`Project ${props.project.slug}`}
-            target='_blank'
-          >LINK TO PROJECT</a>
+              className={styles.websiteLink}
+              href={props.project.url} 
+              aria-label={`Project ${props.project.slug}`}
+              target='_blank'
+            >LINK TO PROJECT</a>
           </div>
           <hr />
-          <div className='d-flex'>
+          <div className='d-block d-md-flex'>
             <div className={styles.item}>YEAR: {new Date(props.project.createdAt).getFullYear()}</div>
             <div className={styles.item}>TECHNOLOGIES: {props.project.technologies.join(', ')}</div>
             <div className={styles.item}>ROLES: {props.project.roles.join(', ')}</div>
