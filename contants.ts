@@ -20,7 +20,7 @@ export const projects: IProject[] = [
     image: 'cloutart-shadow.jpg',
     creativeImage: '',
     roles: ['Frontend', 'Backend'],
-    technologies: ['Solidity', 'React', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Git', 'Figma'],
+    technologies: ['Solidity', 'React', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Git'],
   },
   {
     id: 97,

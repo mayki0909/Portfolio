@@ -2,11 +2,12 @@
 import Head from 'next/head'
 import { Navbar } from '../components/navbar/navbar'
 import { Hero } from '../components/hero/newHero'
-import { Projects } from '../components/newProjects/projects';
-import { About } from '../components/about/about';
-import { Banner } from '../components/banner/banner';
-import { Footer } from '../components/footer/footer';
-import { metadata } from '../contants'; 
+import { Projects } from '../components/newProjects/projects'
+import { About } from '../components/about/about'
+import { Banner } from '../components/banner/banner'
+import { Footer } from '../components/footer/footer'
+import { Cookies } from '../components/cookies/cookies'
+import { metadata } from '../contants'
 
 const Index = () => {
   return (
@@ -41,6 +42,7 @@ const Index = () => {
         <About />
         <Banner />
         <Footer />
+        <Cookies />
       </main>
     </>
   )

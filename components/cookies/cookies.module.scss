@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.modal {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 950px;
+  border: 1px solid $white;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 30px;
+  background-color: $dark;
+  color: $white;
+
+  @media (max-width: 1000px) { 
+    left: 0px;
+    min-width: 90%;
+    transform: translateX(0%);
+  }
+
+  @media (max-width: 772px) {
+    display: inline;
+    left: 0px;
+    min-width: 90%;
+    transform: translateX(0%);
+  }
+
+  p {
+    display: flex;
+    margin: auto 10px;
+  }
+
+  button {
+    border-radius: 20px;
+    padding: 5px 20px;
+    background-color: $purple;
+    color: $dark;
+    border: 0;
+    font-weight: 700;
+
+    @media (max-width: 772px) {
+      display: flex;
+      margin: 16px auto 0px auto;
+    }
+  }
+
+
+}

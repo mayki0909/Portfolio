@@ -4,6 +4,7 @@ import { AboutMe } from '../components/hero/aboutMe';
 import { Hobbies } from '../components/hobbies/hobbies';
 import { Banner } from '../components/banner/banner';
 import { Footer } from '../components/footer/footer';
+import { Cookies } from '../components/cookies/cookies'
 import { metadata } from '../contants'; 
 
 
@@ -39,6 +40,7 @@ const About = () => {
         <Hobbies />
         <Banner />
         <Footer />
+        <Cookies />
       </main>
     </>
   )
