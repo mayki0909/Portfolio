@@ -16,18 +16,9 @@ export const Cookies = () => {
   }, [])
 
   return (
-    <>        
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-T2RSCD3EPM"></Script>
-      <Script>{`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-T2RSCD3EPM');
-      `}</Script>
-      <div className={`${styles.modal} ${accepted ? 'd-none' : 'd-inline d-md-flex'}`}>
-        <p>This site tracks visits anonymously using cookies. Close this dialog to confirm you are happy with that.</p>
-        <button onClick={()=>accpetCookies()}>Aggree and close</button>
-      </div>
-    </>
+    <div className={`${styles.modal} ${accepted ? 'd-none' : 'd-inline d-md-flex'}`}>
+      <p>This site tracks visits anonymously using cookies. Close this dialog to confirm you are happy with that.</p>
+      <button onClick={()=>accpetCookies()}>Aggree and close</button>
+    </div>
   )
 }
