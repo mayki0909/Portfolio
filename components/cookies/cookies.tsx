@@ -15,7 +15,7 @@ export const Cookies = () => {
   }, [])
 
   return (
-    <div className={`${styles.modal} ${accepted ? 'd-none' : 'd-flex'}`}>
+    <div className={`${styles.modal} ${accepted ? 'd-none' : 'd-inline d-md-flex'}`}>
       <p>This site tracks visits anonymously using cookies. Close this dialog to confirm you are happy with that.</p>
       <button onClick={()=>accpetCookies()}>Aggree and close</button>
     </div>
