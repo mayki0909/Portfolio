@@ -29,7 +29,7 @@ export const projects: IProject[] = [
     shortDescription: 'Web application for ordering custom made wooden tables.',
     description: 'Configurator and online shop. Its special feature is a configurator that guides you through the creation and ordering of a custom table in less than 5 minutes.',
     aboutProject: 'The web application is written in React.js, optimised for computer and mobile screens. I worked on the project as project manager and front-end developer and was involved in the whole development process. I started with requirements analysis and document preparation. With the successful completion of the project, I proved to myself that I have learned a lot in 3 years of programming. I also gained many other skills from the IT world (communicating with clients, preparing documentation, managing and coordinating a small team).',
-    url: 'http://www.plankebordene.dk',
+    url: 'https://plankebordene.starc.media',
     createdAt: new Date(2022,5,1).toDateString(),
     image: 'plankebordene.webp',
     creativeImage: '',
