@@ -6,6 +6,7 @@ import Linkedin from '/public/icons/linkedin.svg';
 import Github from '/public/icons/github.svg';
 import Menu from '/public/icons/menu.svg';
 import Close from '/public/icons/close.svg';
+import Logo from '/public/icons/logo.svg';
 
 export const Navbar: NextComponentType = () => {
 
@@ -21,6 +22,7 @@ export const Navbar: NextComponentType = () => {
         <nav className='container d-none d-md-flex flex-row justify-content-between'>
           <a className={styles.button} href='/' aria-label='Home'>
             MIHA ŽNIDAR @2022
+            {/* <Logo width={20} height={20} /> <span>@{new Date().getFullYear()}</span> */}
           </a>
     
           <div className='d-flex'>
@@ -51,7 +53,7 @@ export const Navbar: NextComponentType = () => {
         <nav className='d-block d-md-none'>
           <div className='d-flex justify-content-between'>
             <a className={styles.home} href='/' aria-label='Home'>
-              M. @2022
+              <Logo width={20} height={20} /> 
             </a>
 
             <button onClick={()=>setOpen(!open)} aria-label='Open navigation'>
