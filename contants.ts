@@ -7,7 +7,7 @@ export const metadata = {
   title: 'Miha Žnidar - Full-Stack Web Developer',
   description:
     'Miha Žnidar is a full-stack web developer from Slovenia. Portfolio of web apps, blockchain projects, and client work. Open to new projects.',
-  image: '/assets/header.jpg',
+  image: '/assets/metadata.png',
   googleSiteVerification: '6QgNpyUunNctzrJ9dlKxlVbAT9DuOURhu28mlek6JQQ',
   keywords: [
     'Miha Žnidar',
