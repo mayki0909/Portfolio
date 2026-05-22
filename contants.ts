@@ -42,20 +42,6 @@ export const metadata = {
 
 export const projects: IProject[] = [
   {
-    id: 100,
-    name: 'TK Triglav Kranj',
-    slug: 'tk-triglav',
-    shortDescription: 'Tennis club website',
-    description: 'Modern website for Teniški klub Triglav Kranj — tennis school, competitive and recreational programs, court reservations, news, and club information in Kranj.',
-    aboutProject: 'The site is built with Next.js and TypeScript, styled with Tailwind CSS, and deployed on Vercel. News and content are managed through Sanity CMS. I worked on the full stack: responsive UI, activity pages, pricing, embedded court booking (Sportifiq), SEO metadata, and sitemap generation.',
-    url: 'https://www.tktriglav.si/',
-    createdAt: new Date(2026,4,1).toDateString(),
-    image: 'tktriglav.webp',
-    creativeImage: '',
-    roles: ['Frontend', 'Backend'],
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Sanity', 'Vercel', 'Git'],
-  },
-  {
     id: 96,
     name: 'Clout.art',
     slug: 'clout.art',
