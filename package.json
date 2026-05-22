@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Website as CV",
   "main": "index.js",
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "postbuild": "next-sitemap --config sitemap.config.js",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next build && next export"
+    "lint": "next lint"
   },
   "repository": {
     "type": "git",
@@ -23,23 +25,22 @@
   },
   "homepage": "https://github.com/mayki0909/mihaznidar.github.io#readme",
   "dependencies": {
-    "@next/font": "^13.1.1",
-    "@svgr/webpack": "^6.5.1",
-    "@zeit/next-typescript": "^1.1.1",
+    "@svgr/webpack": "^8.1.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.2.3",
-    "next": "^13.0.6",
-    "next-sitemap": "^3.1.44",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "next": "^16.2.6",
+    "next-sitemap": "^4.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-particles": "^2.6.0",
     "react-tsparticles": "^2.6.0",
     "sass": "^1.56.1",
     "tsparticles": "^2.6.0"
   },
   "devDependencies": {
-    "@types/node": "18.11.10",
-    "@types/react": "18.0.26",
-    "typescript": "4.9.3"
-  }
+    "@types/node": "^22.15.0",
+    "@types/react": "^18.3.0",
+    "typescript": "^5.8.0"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
