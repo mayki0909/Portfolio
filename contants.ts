@@ -1,13 +1,60 @@
 import { IProject } from './interfaces';
 
 export const metadata = {
-  url: 'https://miha-znidar.vercel.app/',
+  url: 'https://znidar.dev',
+  siteName: 'Miha Žnidar',
+  locale: 'en_US',
   title: 'Miha Žnidar - Full-Stack Web Developer',
-  description: 'I am Miha Žnidar full-stack web developer from Slovenia. Interested in blockchain, web development and AR/VR technologies. Looking forward to new projects.',
-  image: '/assets/header.jpg'
+  description:
+    'Miha Žnidar is a full-stack web developer from Slovenia. Portfolio of web apps, blockchain projects, and client work. Open to new projects.',
+  image: '/assets/metadata.png',
+  googleSiteVerification: '6QgNpyUunNctzrJ9dlKxlVbAT9DuOURhu28mlek6JQQ',
+  keywords: [
+    'Miha Žnidar',
+    'full-stack developer',
+    'web developer Slovenia',
+    'React developer',
+    'Next.js developer',
+    'TypeScript',
+    'portfolio',
+    'freelance web developer',
+  ],
+  knowsAbout: [
+    'Web Development',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Node.js',
+    'Blockchain',
+    'AR/VR',
+  ],
+  author: {
+    name: 'Miha Žnidar',
+    email: 'miha.znidar7@gmail.com',
+    jobTitle: 'Full-Stack Web Developer',
+    country: 'Slovenia',
+  },
+  social: {
+    linkedin: 'https://www.linkedin.com/in/miha-%C5%BEnidar',
+    github: 'https://github.com/mayki0909',
+  },
 }
 
 export const projects: IProject[] = [
+  {
+    id: 100,
+    name: 'TK Triglav Kranj',
+    slug: 'tk-triglav',
+    shortDescription: 'Tennis club website',
+    description: 'Modern website for Teniški klub Triglav Kranj — tennis school, competitive and recreational programs, court reservations, news, and club information in Kranj.',
+    aboutProject: 'The site is built with Next.js and TypeScript, styled with Tailwind CSS, and deployed on Vercel. News and content are managed through Sanity CMS. I worked on the full stack: responsive UI, activity pages, pricing, embedded court booking (Sportifiq), SEO metadata, and sitemap generation.',
+    url: 'https://www.tktriglav.si/',
+    createdAt: new Date(2026,4,1).toDateString(),
+    image: 'tktriglav.webp',
+    creativeImage: '',
+    roles: ['Frontend', 'Backend'],
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Sanity', 'Vercel', 'Git'],
+  },
   {
     id: 96,
     name: 'Clout.art',

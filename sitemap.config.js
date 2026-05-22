@@ -1,4 +1,5 @@
-const siteUrl = process.env.NEXT_PUBLIC_DOMAIN;
+const siteUrl =
+  process.env.NEXT_PUBLIC_DOMAIN || "https://znidar.dev";
 module.exports = {
   siteUrl,
   exclude: ["/404"],
