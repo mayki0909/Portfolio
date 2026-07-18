@@ -1,5 +1,7 @@
-import styles from './projects.module.scss';
-import { IProject } from '../../interfaces';
+import styles from "./projects.module.scss";
+import { IProject } from "../../interfaces";
+import { motion } from "motion/react";
+import { Reveal } from "../motion/reveal";
 
 interface Props {
   project: IProject;
@@ -8,46 +10,88 @@ interface Props {
 export const ProjectDetails = (props: Props) => {
   return (
     <section className={styles.projectDetails}>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-12'>
-            <h1>{props.project.name}</h1>
-          </div>
-          <div className='col-12 col-md-8'>
-            <p className={styles.shortDescription}>{props.project.shortDescription}</p>
-          </div>
-          <div className='col-12 col-md-4 d-flex justify-content-end align-items-end'>
-            <a
-              className={styles.websiteLink}
-              href={props.project.url} 
-              aria-label={`Project ${props.project.slug}`}
-              target='_blank'
-            >LINK TO PROJECT</a>
-          </div>
-          <hr />
-          <div className='d-block d-md-flex'>
-            <div className={styles.item}>YEAR: {new Date(props.project.createdAt).getFullYear()}</div>
-            <div className={styles.item}>TECHNOLOGIES: {props.project.technologies.join(', ')}</div>
-            <div className={styles.item}>ROLES: {props.project.roles.join(', ')}</div>
-          </div>
-          <div className='col-12'>
-            <img src={`/assets/projects/${props.project.image}`} alt={`${props.project.name} project of Miha Žnidar`} />
-          </div>
-          <div className='col-12'>
-            <p className={styles.description}>{props.project.description}</p>
-          </div>
-          <div className='col-12'>
-            {props.project.aboutProject !== '' &&
-              <p className={styles.aboutProject}>{props.project.aboutProject}</p>
-            }
-          </div>
-          <div className='col-12 mt-5'>
-            {props.project.creativeImage !== '' && 
-              <img src={`/assets/projects/${props.project.creativeImage}`} alt={`${props.project.name} project of Miha Žnidar`} />
-            }
-          </div>
+      <div className={`container ${styles.detailContainer}`}>
+        <div className={styles.detailEyebrow}>
+          <a href="/#work">← Selected work</a>
+          <span>{new Date(props.project.createdAt).getFullYear()}</span>
         </div>
+
+        <div className={styles.detailHero}>
+          <h1>
+            <motion.span
+              initial={{ y: "110%" }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.15, duration: 1 }}
+            >
+              {props.project.name}
+            </motion.span>
+          </h1>
+          <p className={styles.shortDescription}>
+            {props.project.shortDescription}
+          </p>
+          <a
+            className={styles.websiteLink}
+            href={props.project.url}
+            aria-label={`Visit ${props.project.name}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit live project ↗
+          </a>
+        </div>
+
+        <motion.div
+          className={styles.detailMedia}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.35, duration: 1 }}
+        >
+          <img
+            src={`/assets/projects/${props.project.image}`}
+            alt={`${props.project.name} project by Miha Žnidar`}
+          />
+        </motion.div>
+
+        <Reveal className={styles.detailMeta}>
+          <div>
+            <span>Role</span>
+            <p>{props.project.roles.join(" · ")}</p>
+          </div>
+          <div>
+            <span>Technology</span>
+            <p>{props.project.technologies.join(" · ")}</p>
+          </div>
+          <div>
+            <span>Year</span>
+            <p>{new Date(props.project.createdAt).getFullYear()}</p>
+          </div>
+        </Reveal>
+
+        <Reveal className={styles.narrative}>
+          <span>Overview</span>
+          <div>
+            <h2>{props.project.description}</h2>
+            {props.project.aboutProject && <p>{props.project.aboutProject}</p>}
+          </div>
+        </Reveal>
+
+        {props.project.creativeImage && (
+          <Reveal className={styles.secondaryMedia}>
+            <img
+              src={`/assets/projects/${props.project.creativeImage}`}
+              alt={`${props.project.name} interface`}
+            />
+          </Reveal>
+        )}
+
+        <Reveal className={styles.nextProject}>
+          <span>Continue exploring</span>
+          <a href="/#work">
+            View all selected work
+            <i>↗</i>
+          </a>
+        </Reveal>
       </div>
     </section>
-  )
-}
+  );
+};

@@ -1,84 +1,116 @@
-import { NextComponentType } from 'next';
-import { useEffect, useState } from 'react';
-import styles from './navbar.module.scss';
+import { NextComponentType } from "next";
+import { useEffect, useState } from "react";
+import styles from "./navbar.module.scss";
 
-import Linkedin from '/public/icons/linkedin.svg';
-import Github from '/public/icons/github.svg';
-import Menu from '/public/icons/menu.svg';
-import Close from '/public/icons/close.svg';
-import Logo from '/public/icons/logo.svg';
+import Linkedin from "/public/icons/linkedin.svg";
+import Github from "/public/icons/github.svg";
+import Menu from "/public/icons/menu.svg";
+import Close from "/public/icons/close.svg";
+import Logo from "/public/icons/logo.svg";
 
 export const Navbar: NextComponentType = () => {
-
   const [open, setOpen] = useState(false);
-  const [path, setPath] = useState('');
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setPath(window.location.hash)
-  },[open])
-  return (
-    <>
-      <section className={styles.desktopNavbar}>
-        <nav className='container d-none d-md-flex flex-row justify-content-between'>
-          <a className={styles.button} href='/' aria-label='Home'>
-            MIHA ŽNIDAR @2022
-            {/* <Logo width={20} height={20} /> <span>@{new Date().getFullYear()}</span> */}
-          </a>
-    
-          <div className='d-flex'>
-            <a className={styles.link} href="/#work" aria-label='Projects'>Projects</a>
-            <a className={styles.link} href="/about" aria-label='About'>About me</a>
-            <a className={styles.link} href="/#contact" aria-label='Contact'>Contact me</a>
-            <div className={styles.breaker}></div>
-            <a 
-              className={styles.buttonCircle} 
-              href='https://www.linkedin.com/in/miha-žnidar' 
-              target='_blank'
-              aria-label='LinkedIn'
-              >
-              <Linkedin />
-            </a>
-            <a 
-              className={styles.buttonCircle} 
-              href='https://github.com/mayki0909' 
-              target='_blank'
-              aria-label='Github'
-              >
-              <Github />
-            </a>
-          </div>
-        </nav>
-      </section>
-      <section className={styles.mobileNavbar}>
-        <nav className='d-block d-md-none'>
-          <div className='d-flex justify-content-between'>
-            <a className={styles.home} href='/' aria-label='Home'>
-              <Logo width={20} height={20} /> 
-            </a>
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
 
-            <button onClick={()=>setOpen(!open)} aria-label='Open navigation'>
-              {!open && <Menu width={20} height={20} />}
-              {open && <Close width={20} height={20} />}
-            </button>
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("keydown", handleKeydown);
+    document.body.style.overflow = open ? "hidden" : "";
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("keydown", handleKeydown);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const closeMenu = () => setOpen(false);
+
+  return (
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+      <nav className={`container ${styles.nav}`} aria-label="Main navigation">
+        <a className={styles.brand} href="/" aria-label="Miha Žnidar, home">
+          <span className={styles.brandMark}>
+            <Logo width={18} height={18} />
+          </span>
+          <span>Miha Žnidar</span>
+          <small>©{new Date().getFullYear()}</small>
+        </a>
+
+        <div className={styles.desktopLinks}>
+          <a href="/#work">Work</a>
+          <a href="/about">About</a>
+          <a href="/#contact">Contact</a>
+        </div>
+
+        <div className={styles.actions}>
+          <span className={styles.availability}>
+            <i aria-hidden="true" />
+            Available for work
+          </span>
+          <a
+            className={styles.social}
+            href="https://www.linkedin.com/in/miha-žnidar"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+          >
+            <Linkedin />
+          </a>
+          <a
+            className={styles.social}
+            href="https://github.com/mayki0909"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Github"
+          >
+            <Github />
+          </a>
+          <button
+            className={styles.menuButton}
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-expanded={open}
+          >
+            {open ? (
+              <Close width={20} height={20} />
+            ) : (
+              <Menu width={20} height={20} />
+            )}
+          </button>
+        </div>
+      </nav>
+
+      <div
+        className={`${styles.mobileMenu} ${open ? styles.open : ""}`}
+        aria-hidden={!open}
+      >
+        <div className={`container ${styles.mobileMenuInner}`}>
+          <span className={styles.menuLabel}>Navigation</span>
+          <a href="/" onClick={closeMenu}>
+            Home <small>01</small>
+          </a>
+          <a href="/#work" onClick={closeMenu}>
+            Work <small>02</small>
+          </a>
+          <a href="/about" onClick={closeMenu}>
+            About <small>03</small>
+          </a>
+          <a href="/#contact" onClick={closeMenu}>
+            Contact <small>04</small>
+          </a>
+          <div className={styles.mobileMeta}>
+            <span>Kranj, Slovenia</span>
+            <span>Full-stack developer</span>
           </div>
-          <div className={`${styles.dropdown} ${open ? styles.open : styles.close}`}>
-            <div className={styles.stickBottom}>
-              <a href='/#home' onClick={()=>setOpen(false)} aria-label='Home'>
-                <p className={path.includes('#home') ? styles.active : styles.unactive}>HOME</p>
-              </a>
-              <a href='/#work' onClick={()=>setOpen(false)} aria-label='Projects'>
-                <p className={path.includes('#work') ? styles.active : styles.unactive}>WORK</p>
-              </a>
-              <a href='/about' onClick={()=>setOpen(false)} aria-label='About'>
-                <p className={path.includes('about') ? styles.active : styles.unactive}>ABOUT ME</p>
-              </a>
-              <a href='/#contact' onClick={()=>setOpen(false)} aria-label='Contact'>
-                <p className={path.includes('#contact') ? styles.active : styles.unactive}>CONTACT ME</p>
-              </a>
-            </div>
-          </div>
-        </nav>
-      </section>
-    </>
-  )
-}
+        </div>
+      </div>
+    </header>
+  );
+};

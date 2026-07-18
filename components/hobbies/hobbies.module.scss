@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .hobbiesSection {
   background-color: $dark;
@@ -17,7 +17,7 @@
     gap: 8px;
     border-radius: 47px;
 
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -27,23 +27,23 @@
   }
 
   .blue {
-    background: #A3D6FC;
+    background: #a3d6fc;
   }
 
   .purple {
-    background: #E8C0FF;
+    background: #e8c0ff;
   }
 
   .green {
-    background: #8FFF7C;
+    background: #8fff7c;
   }
 
   .red {
-    background: #FF8080;
+    background: #ff8080;
   }
 
   p {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -54,5 +54,136 @@
     span {
       color: $purple;
     }
+  }
+}
+
+.hobbiesSection {
+  padding: var(--section-space) 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07)) top /
+      100% 1px no-repeat,
+    $dark;
+}
+
+.story {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px;
+
+  h2 {
+    max-width: 1000px;
+    margin: 0;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(46px, 7vw, 104px);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+
+    em {
+      color: $purple;
+      font-style: normal;
+    }
+  }
+
+  p {
+    max-width: 650px;
+    margin: 35px 0 0;
+    color: $gray;
+    font-family: $body;
+    font-size: clamp(16px, 1.7vw, 22px);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+}
+
+.label {
+  color: $gray;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.facts {
+  display: grid;
+  margin-top: clamp(80px, 11vw, 160px);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: 0.4fr 1fr 2fr;
+  align-items: center;
+  gap: 30px;
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+
+  span {
+    color: $purple;
+    font-size: 11px;
+  }
+
+  small {
+    color: $gray;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  strong {
+    color: $white;
+    font-family: $display;
+    font-size: clamp(21px, 2.5vw, 36px);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+  }
+}
+
+.quote {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px;
+  margin-top: clamp(80px, 12vw, 170px);
+
+  > span {
+    color: $purple;
+    font-family: $display;
+    font-size: 100px;
+    line-height: 0.7;
+  }
+
+  p {
+    max-width: 1000px;
+    margin: 0;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(32px, 5.5vw, 78px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+}
+
+@media (max-width: 767px) {
+  .story,
+  .quote {
+    display: block;
+  }
+
+  .story > div {
+    margin-top: 30px;
+  }
+
+  .fact {
+    grid-template-columns: 34px 1fr;
+
+    strong {
+      grid-column: 2;
+    }
+  }
+
+  .quote > span {
+    display: block;
+    margin-bottom: 20px;
   }
 }

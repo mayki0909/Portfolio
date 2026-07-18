@@ -1,10 +1,10 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .aboutContainer {
   background-color: $dark;
   padding-top: 120px;
   padding-bottom: 120px;
-  @media (max-width: 992px) { 
+  @media (max-width: 992px) {
     padding-top: 64px;
     padding-bottom: 64px;
   }
@@ -20,7 +20,7 @@
   justify-content: center;
   background-color: $purple;
 
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -32,28 +32,28 @@
 
 .textContainer {
   h2 {
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-style: normal;
     font-weight: 600;
     font-size: 56px;
     line-height: 66px;
     color: $white;
 
-    @media (max-width: 992px) { 
+    @media (max-width: 992px) {
       font-size: 24px;
       line-height: 32px;
     }
   }
 
   p {
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 28px;
     color: $gray;
 
-    @media (max-width: 992px) { 
+    @media (max-width: 992px) {
       font-size: 16px;
       line-height: 20px;
       margin-top: 16px;
@@ -71,10 +71,9 @@
   align-self: center;
   align-items: center;
   justify-content: left;
-  
 
   span {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -84,7 +83,7 @@
   }
 
   p {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -94,13 +93,175 @@
 }
 
 .purple {
-  background: #E8C0FF;
+  background: #e8c0ff;
 }
 
 .green {
-  background: #A3D6FC;
+  background: #a3d6fc;
 }
 
 .blue {
-  background: #8FFF7C;
+  background: #8fff7c;
+}
+
+.aboutContainer {
+  position: relative;
+  padding: var(--section-space) 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(176, 43, 255, 0.12),
+      transparent 28rem
+    ),
+    $dark;
+}
+
+.aboutIntro {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px;
+  padding-bottom: clamp(70px, 10vw, 140px);
+
+  h2 {
+    max-width: 1000px;
+    margin: 0;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(44px, 7.2vw, 110px);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+
+    span {
+      display: block;
+      color: $purple;
+    }
+  }
+
+  p {
+    max-width: 580px;
+    margin: 34px 0 25px;
+    color: $gray;
+    font-size: clamp(16px, 1.6vw, 21px);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $purple;
+    color: $white;
+    font-size: 13px;
+    text-decoration: none;
+
+    span {
+      color: $purple;
+    }
+  }
+}
+
+.label,
+.stack > span {
+  color: $gray;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.capabilities {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.capability {
+  display: grid;
+  grid-template-columns: 0.35fr 1.5fr 1fr auto;
+  align-items: center;
+  gap: 30px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+
+  > span {
+    color: $purple;
+    font-size: 12px;
+  }
+
+  h3 {
+    margin: 0;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(24px, 3vw, 44px);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+  }
+
+  p {
+    max-width: 400px;
+    margin: 0;
+    color: $gray;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  i {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: $white;
+    font-style: normal;
+    transition: all 250ms $ease-out;
+  }
+
+  &:hover i {
+    border-color: $purple;
+    background: $purple;
+    transform: rotate(8deg);
+  }
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px;
+  margin-top: clamp(60px, 8vw, 100px);
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  > div span {
+    padding: 11px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    color: $white;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .aboutIntro,
+  .stack {
+    display: block;
+  }
+
+  .aboutIntro > div,
+  .stack > div {
+    margin-top: 28px;
+  }
+
+  .capability {
+    grid-template-columns: 38px 1fr auto;
+
+    p {
+      display: none;
+    }
+  }
 }

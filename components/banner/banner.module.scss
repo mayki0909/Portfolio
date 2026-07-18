@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 @keyframes my-animation {
   from {
@@ -7,7 +7,7 @@
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
   }
-  
+
   to {
     margin-left: 0px;
     -moz-transform: translateX(-100%);
@@ -26,20 +26,20 @@
   padding: 160px 0px;
   z-index: 2;
 
-  @media (max-width: 1600px) { 
+  @media (max-width: 1600px) {
     height: 550px;
   }
 
-  @media (max-width: 1300px) { 
+  @media (max-width: 1300px) {
     height: 500px;
   }
 
-  @media (max-width: 992px) { 
+  @media (max-width: 992px) {
     height: 280px;
     padding: 60px 0px;
   }
 
-  @media (max-width: 772px) { 
+  @media (max-width: 772px) {
     height: 220px;
     padding: 60px 0px;
   }
@@ -64,7 +64,7 @@
   height: 100%;
 
   //FONT
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-style: normal;
   font-weight: 600;
   font-size: 250px;
@@ -75,27 +75,27 @@
   -webkit-animation: my-animation 12s infinite linear;
   animation: my-animation 12s infinite linear;
 
-  @media (max-width: 1600px) { 
+  @media (max-width: 1600px) {
     font-size: 200px;
     line-height: 250px;
   }
 
-  @media (max-width: 1300px) { 
+  @media (max-width: 1300px) {
     font-size: 150px;
     line-height: 200px;
   }
 
-  @media (max-width: 992px) { 
+  @media (max-width: 992px) {
     font-size: 100px;
     line-height: 150px;
   }
 
-  @media (max-width: 772px) { 
+  @media (max-width: 772px) {
     font-size: 64px;
     line-height: 75px;
   }
 
-  @media (max-width: 500px) { 
+  @media (max-width: 500px) {
     font-size: 48px;
     line-height: 52px;
   }
@@ -109,4 +109,77 @@
 
 .purple {
   color: $purple;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: clamp(72px, 10vw, 140px) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: $dark;
+  color: $white;
+  text-decoration: none;
+}
+
+.marquee {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.text {
+  display: flex;
+  min-width: auto;
+  height: auto;
+  align-items: center;
+  padding-right: 4vw;
+  overflow: visible;
+  animation: none;
+  color: $white;
+  font-family: $display;
+  font-size: clamp(64px, 11vw, 180px);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+
+  i {
+    display: grid;
+    width: 0.52em;
+    height: 0.52em;
+    margin-left: 0.18em;
+    place-items: center;
+    border-radius: 50%;
+    background: $white;
+    color: $dark;
+    font-size: 0.42em;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+}
+
+.container:hover .track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transform: translateX(-4%);
+    animation: none;
+  }
 }
