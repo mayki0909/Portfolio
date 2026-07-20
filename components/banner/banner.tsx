@@ -1,15 +1,26 @@
-import { NextComponentType } from 'next';
-import styles from './banner.module.scss';
+import { NextComponentType } from "next";
+import styles from "./banner.module.scss";
+import { ArrowIcon } from "../ui/arrow-icon";
 
 export const Banner: NextComponentType = () => {
   return (
-    <div className={styles.container}>
-      <div className={styles.marquee}>
-        <span className={styles.text}>LET'S <span className={styles.purple}>TALK</span>&nbsp;&nbsp;</span>
+    <a
+      className={styles.container}
+      href="#contact"
+      aria-label="Start a conversation"
+    >
+      <div className={styles.marquee} aria-hidden="true">
+        <div className={styles.track}>
+          {[0, 1, 2, 3].map((item) => (
+            <span className={styles.text} key={item}>
+              LET&apos;S <span className={styles.purple}>CREATE</span> SOMETHING
+              <i>
+                <ArrowIcon size={36} />
+              </i>
+            </span>
+          ))}
+        </div>
       </div>
-      <div className={styles.marquee}>
-        <span className={`${styles.text} ${styles.delay}`}>LET'S <span className={styles.purple}>TALK</span>&nbsp;&nbsp;</span>
-      </div>
-    </div>
-  )
-}
+    </a>
+  );
+};

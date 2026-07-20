@@ -89,8 +89,8 @@ export function homePageSchema(): string {
   const itemList: SchemaNode = {
     '@type': 'ItemList',
     '@id': `${pageId}/projects`,
-    name: 'Portfolio projects',
-    itemListElement: projects.map((project, index) => ({
+    name: 'Selected portfolio projects',
+    itemListElement: projects.slice(0, 3).map((project, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       url: absoluteUrl(`/project/${project.slug}`),
@@ -140,6 +140,49 @@ export function aboutPageSchema(): string {
   ]);
 }
 
+export function projectsPageSchema(): string {
+  const pageId = `${siteUrl}/projects#webpage`;
+  const title = 'Web Development Projects & Portfolio';
+  const description =
+    'Explore web development projects by Miha Žnidar, including e-commerce platforms, web applications, and high-performance client websites.';
+  const itemListId = `${pageId}/projects`;
+
+  return graph([
+    personNode(),
+    websiteNode(),
+    {
+      '@type': 'CollectionPage',
+      '@id': pageId,
+      url: absoluteUrl('/projects'),
+      name: title,
+      description,
+      isPartOf: { '@id': WEBSITE_ID },
+      about: { '@id': PERSON_ID },
+      mainEntity: { '@id': itemListId },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'ItemList',
+      '@id': itemListId,
+      name: 'Web development projects by Miha Žnidar',
+      numberOfItems: projects.length,
+      itemListElement: projects.map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: absoluteUrl(`/project/${project.slug}`),
+        name: project.name,
+      })),
+    },
+    breadcrumbNode(
+      [
+        { name: 'Home', path: '/' },
+        { name: 'Projects', path: '/projects' },
+      ],
+      pageId
+    ),
+  ]);
+}
+
 export function projectPageSchema(project: IProject): string {
   const path = `/project/${project.slug}`;
   const pageId = absoluteUrl(path);
@@ -169,7 +212,7 @@ export function projectPageSchema(project: IProject): string {
     breadcrumbNode(
       [
         { name: 'Home', path: '/' },
-        { name: 'Work', path: '/#work' },
+        { name: 'Projects', path: '/projects' },
         { name: project.name, path },
       ],
       pageId

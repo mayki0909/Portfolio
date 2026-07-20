@@ -1,17 +1,21 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "aos/dist/aos.css";
 import "../styles/global.scss";
 import { useEffect } from "react";
-import AOS from "aos";
+import { MotionConfig } from "motion/react";
 
 function MyApp({ Component, pageProps }) {
-  
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
-    AOS.init({});
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <MotionConfig
+      reducedMotion="user"
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Component {...pageProps} />
+    </MotionConfig>
+  );
 }
 
 export default MyApp;

@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .section {
   background-color: $dark;
@@ -10,7 +10,7 @@
   padding: 60px;
 
   h4 {
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-style: normal;
     font-weight: 600;
     font-size: 64px;
@@ -23,15 +23,15 @@
     margin: 0px auto;
     max-width: 1000px;
 
-    @media (max-width: 992px) { 
+    @media (max-width: 992px) {
       padding-bottom: 30px;
       font-size: 24px;
       line-height: 28px;
     }
   }
-  
+
   span {
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-style: normal;
     font-weight: 600;
     font-size: 64px;
@@ -40,7 +40,7 @@
     letter-spacing: 0.04em;
     color: $purple;
 
-    @media (max-width: 992px) { 
+    @media (max-width: 992px) {
       font-size: 24px;
       line-height: 28px;
     }
@@ -59,11 +59,11 @@
     padding: 32px 80px;
     margin: 30px;
 
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 28px; 
+    line-height: 28px;
     text-decoration: none;
 
     &:hover {
@@ -71,12 +71,12 @@
       color: $white;
     }
 
-    @media (max-width: 992px) { 
+    @media (max-width: 992px) {
       font-weight: 700;
       font-size: 16px;
       line-height: 19px;
       color: $white;
-      
+
       background-color: $purple;
       margin: 10px 0px;
       width: 100%;
@@ -88,7 +88,7 @@
     margin-top: 48px;
 
     span {
-      font-family: 'Inter';
+      font-family: "Inter";
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
@@ -96,14 +96,15 @@
       text-align: center;
       color: $gray;
 
-      @media (max-width: 992px) { 
+      @media (max-width: 992px) {
         margin-top: 24px;
         margin-bottom: 16px;
       }
     }
 
-    p,a {
-      font-family: 'Inter';
+    p,
+    a {
+      font-family: "Inter";
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
@@ -114,12 +115,190 @@
       margin-top: 16px;
       margin-right: 8px;
 
-      @media (max-width: 992px) { 
+      @media (max-width: 992px) {
         margin-top: 8px;
       }
     }
   }
 }
 
+.section {
+  padding-top: 20px;
+  background: $dark;
+}
 
+.container {
+  position: relative;
+  padding: clamp(30px, 6vw, 82px);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: $white;
 
+  h4 {
+    max-width: 1100px;
+    margin: clamp(70px, 10vw, 140px) 0 50px;
+    padding: 0;
+    color: $dark;
+    font-family: $display;
+    font-size: clamp(58px, 9.2vw, 145px);
+    font-weight: 600;
+    line-height: 0.86;
+    text-align: left;
+    letter-spacing: -0.075em;
+    text-transform: none;
+
+    span {
+      color: $purple;
+      font: inherit;
+      letter-spacing: inherit;
+    }
+  }
+
+  .button {
+    display: flex;
+    width: min(100%, 440px);
+    margin: 0;
+    padding: 12px 12px 12px 28px;
+    justify-content: space-between;
+    border: 1px solid $dark;
+    border-radius: 999px;
+    color: $dark;
+    font-family: $display;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+
+    i {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      place-items: center;
+      border-radius: 50%;
+      background: $purple;
+      color: $white;
+      font-style: normal;
+      transition: transform 250ms $ease-out;
+    }
+
+    &:hover {
+      background: $dark;
+      color: $white;
+    }
+
+    &:hover i {
+      transform: rotate(8deg);
+    }
+  }
+}
+
+.topline,
+.bottomline {
+  display: flex;
+  justify-content: space-between;
+  color: $gray;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.container .topline span,
+.container .bottomline span {
+  color: $gray;
+  font-family: $body;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+}
+
+.container .linksContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-top: clamp(80px, 11vw, 160px);
+  padding: 35px 0;
+  border-top: 1px solid rgba(30, 30, 30, 0.16);
+  border-bottom: 1px solid rgba(30, 30, 30, 0.16);
+
+  > div {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  span {
+    margin: 0;
+    color: $gray;
+    font-family: $body;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  a,
+  p {
+    margin: 0;
+    color: $dark;
+    font-family: $body;
+    font-size: 13px;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+  a {
+    transition: color 250ms $ease-out;
+
+    &:hover {
+      color: $purple;
+    }
+  }
+}
+
+.linkList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.bottomline {
+  padding-top: 26px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: $dark;
+    text-decoration: none;
+    transition: color 250ms $ease-out;
+
+    &:hover {
+      color: $purple;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    border-radius: 24px 24px 0 0;
+
+    h4 {
+      margin-top: 80px;
+      font-size: clamp(56px, 18vw, 82px);
+    }
+
+    .button {
+      width: 100%;
+      margin: 0;
+      padding: 10px 10px 10px 22px;
+      background: transparent;
+      color: $dark;
+      font-size: 14px;
+    }
+  }
+
+  .container .linksContainer {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

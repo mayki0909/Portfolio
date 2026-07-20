@@ -26,16 +26,13 @@
   "homepage": "https://github.com/mayki0909/mihaznidar.github.io#readme",
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
-    "aos": "^2.3.4",
     "bootstrap": "^5.2.3",
+    "motion": "^12.42.2",
     "next": "^16.2.6",
     "next-sitemap": "^4.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-particles": "^2.6.0",
-    "react-tsparticles": "^2.6.0",
-    "sass": "^1.56.1",
-    "tsparticles": "^2.6.0"
+    "sass": "^1.56.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",

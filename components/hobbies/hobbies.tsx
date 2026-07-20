@@ -1,27 +1,50 @@
-import { NextComponentType } from 'next';
-import styles from './hobbies.module.scss';
+import { NextComponentType } from "next";
+import styles from "./hobbies.module.scss";
+import { Reveal } from "../motion/reveal";
 
 export const Hobbies: NextComponentType = () => {
+  const facts = [
+    ["Based in", "Kranj, Slovenia"],
+    ["Experience", "Web products & platforms"],
+    ["Focus", "Full-stack engineering"],
+    ["Away from screen", "Mountain biking · Snowboarding"],
+  ];
+
   return (
-    <section id='hobbies' className={styles.hobbiesSection}>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-12 col-md-6'>
-            <img src="/assets/me.jpg" alt="Miha Žnidar with mountain bike" />
+    <section id="hobbies" className={styles.hobbiesSection}>
+      <div className="container">
+        <Reveal className={styles.story}>
+          <span className={styles.label}>A little more personal</span>
+          <div>
+            <h2>
+              Always moving—on screen and <em>off it.</em>
+            </h2>
+            <p>
+              Outside of development, I recharge in nature. Mountain biking,
+              snowboarding, camping, and hands-on mechanical work keep me
+              curious, focused, and comfortable solving unfamiliar problems.
+            </p>
           </div>
-          <div className='col-12 col-md-6 d-flex-row align-self-center'>
-            <div className={`${styles.item} ${styles.blue}`}>Age:  <strong>{new Date().getFullYear()-2000}</strong></div>
-            <div className={`${styles.item} ${styles.purple}`}>Name: <strong>Miha Žnidar</strong></div>
-            <div className={`${styles.item} ${styles.green}`}>Hobbies: <strong>Downhill, Motocycling, Fitness</strong></div>
-            <div className={`${styles.item} ${styles.red}`}>Located: <strong>Slovenia, Kranj</strong></div>
-            
-            <div className='mt-5'>
-              <p>I do various <span>sport activities</span> in my free time. But most of all I love mountain biking and snowboarding with friends.</p>
-              <p>I am passionate about engineering and have built a small <span>mechanical workshop</span> in my garage where I am able to perform all the maintenance and <span>repair services</span> for my bike on my own.</p> 
-            </div>
-          </div>
+        </Reveal>
+
+        <div className={styles.facts}>
+          {facts.map(([label, value], index) => (
+            <Reveal className={styles.fact} delay={index * 0.06} key={label}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <small>{label}</small>
+              <strong>{value}</strong>
+            </Reveal>
+          ))}
         </div>
+
+        <Reveal className={styles.quote}>
+          <span>“</span>
+          <p>
+            The best products come from equal parts curiosity, discipline, and
+            care for the people who will use them.
+          </p>
+        </Reveal>
       </div>
     </section>
-  )
-}
+  );
+};

@@ -3,7 +3,16 @@ $background-light: #313131;
 $font-color: #fff;
 $font-dark: #929292;
 
-$dark: #1E1E1E;
-$white: #FFFFFF;
-$gray: #A0A0A0;
-$purple: #B02BFF;
+$dark: #1e1e1e;
+$dark-soft: #262626;
+$white: #ffffff;
+$gray: #a0a0a0;
+$purple: #b02bff;
+$purple-soft: #e8c0ff;
+$green: #8fff7c;
+$blue: #a3d6fc;
+
+$display: "Manrope", sans-serif;
+$body: "Inter", sans-serif;
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$container: 1440px;

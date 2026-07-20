@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .projects {
   padding: 128px 0px;
@@ -9,7 +9,7 @@
   }
 
   h2 {
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -20,7 +20,6 @@
     span {
       color: $purple;
     }
-
   }
 }
 
@@ -32,8 +31,10 @@
     height: auto;
     border-radius: 20px;
   }
-  
-  .year, .roles, .tecnologies {
+
+  .year,
+  .roles,
+  .tecnologies {
     display: inline-block;
     padding: 12px 24px;
     gap: 8px;
@@ -41,7 +42,7 @@
     border-radius: 40px;
     margin: 5px auto;
 
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 600;
     font-size: 10px;
@@ -102,7 +103,7 @@
     border-radius: 40px;
     margin-bottom: 14px;
 
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -141,12 +142,248 @@
   }
 }
 
+.projects {
+  padding: var(--section-space) 0;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.055))
+      top / 100% 1px no-repeat,
+    $dark;
+}
+
+.projectsPage {
+  padding-top: calc(var(--section-space) + 72px);
+}
+
+.projectsHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(250px, 1fr);
+  align-items: end;
+  gap: 48px;
+  margin-bottom: clamp(64px, 9vw, 120px);
+
+  h1,
+  h2 {
+    max-width: 980px;
+    margin: 22px 0 0;
+    color: $white;
+    background: transparent;
+    font-family: $display;
+    font-size: clamp(48px, 7vw, 108px);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+    text-transform: none;
+
+    em {
+      color: $purple;
+      font-style: normal;
+    }
+  }
+
+  > p {
+    max-width: 420px;
+    margin: 0 0 6px;
+    color: $gray;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+}
+
+.kicker {
+  color: $gray;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.projectList {
+  display: grid;
+  gap: clamp(70px, 10vw, 150px);
+}
+
+.viewMore {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(64px, 9vw, 120px);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    color: $white;
+    font-size: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition:
+      background 250ms $ease-out,
+      border-color 250ms $ease-out,
+      color 250ms $ease-out;
+
+    &:hover {
+      border-color: $white;
+      background: $white;
+      color: $dark;
+    }
+  }
+}
+
+.project {
+  position: relative;
+  width: 84%;
+
+  &:nth-child(even) {
+    margin-left: auto;
+  }
+
+  > a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.projectTopline {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: $gray;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.media {
+  position: relative;
+  margin-top: 18px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: $dark-soft;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+    object-fit: cover;
+    transition: filter 500ms $ease-out;
+  }
+}
+
+.viewProject {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border-radius: 50%;
+  background: $white;
+  color: $dark;
+  transition:
+    background 250ms $ease-out,
+    transform 250ms $ease-out;
+
+  svg {
+    transform: rotate(220deg);
+  }
+}
+
+.project:hover .viewProject {
+  background: $purple;
+  transform: rotate(8deg) scale(1.06);
+}
+
+.projectInfo {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 30px;
+  padding-top: 24px;
+
+  h3 {
+    margin: 0;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(30px, 4.4vw, 68px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  p {
+    margin: 10px 0 0;
+    color: $gray;
+    font-size: 14px;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 8px;
+  color: $gray;
+  font-size: 10px;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 767px) {
+  .projectsHeader {
+    display: block;
+
+    > p {
+      margin-top: 28px;
+    }
+  }
+
+  .project {
+    width: 100%;
+  }
+
+  .projectList {
+    gap: 72px;
+  }
+
+  .media {
+    border-radius: 20px;
+  }
+
+  .viewProject {
+    right: 12px;
+    bottom: 12px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .projectInfo {
+    display: block;
+    padding-top: 18px;
+  }
+
+  .meta {
+    align-items: flex-start;
+    margin-top: 20px;
+    text-align: left;
+  }
+}
+
 .projectDetails {
   overflow: hidden;
   background-color: $dark;
 
   h1 {
-    font-family: 'Raleway';
+    font-family: "Raleway";
     font-style: normal;
     font-weight: 600;
     font-size: 160px;
@@ -165,7 +402,7 @@
   }
 
   .shortDescription {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
@@ -180,7 +417,7 @@
   }
 
   .description {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 48px;
@@ -197,19 +434,20 @@
   }
 
   .aboutProject {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   hr {
     color: $white;
   }
 
-  a, span {
+  a,
+  span {
     color: $purple;
   }
 
@@ -224,7 +462,7 @@
   }
 
   .item {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -245,5 +483,245 @@
     width: 100%;
     height: auto;
     border-radius: 32px;
+  }
+}
+
+.projectDetails {
+  padding: 0 0 var(--section-space);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 82% 8%,
+      rgba(176, 43, 255, 0.14),
+      transparent 28rem
+    ),
+    $dark;
+
+  h1 {
+    margin: 0;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(64px, 11.5vw, 180px);
+    font-weight: 600;
+    line-height: 0.85;
+    letter-spacing: -0.075em;
+
+    span {
+      display: block;
+      overflow: hidden;
+      color: $white;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+}
+
+.detailContainer {
+  padding-top: 110px;
+}
+
+.detailEyebrow {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+
+  a,
+  span {
+    color: $gray;
+    font-size: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+}
+
+.detailHero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 30px;
+  padding: clamp(55px, 8vw, 110px) 0 50px;
+
+  h1 {
+    grid-column: 1 / -1;
+  }
+
+  .shortDescription {
+    max-width: 760px;
+    margin: 0;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(23px, 3.2vw, 46px);
+    font-weight: 400;
+    line-height: 1.16;
+    text-transform: none;
+    letter-spacing: -0.04em;
+  }
+
+  .websiteLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $purple;
+    color: $white;
+    font-size: 12px;
+    line-height: 1.3;
+    text-decoration: none;
+  }
+}
+
+.detailMedia {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+
+  img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+}
+
+.detailMeta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+
+  span {
+    color: $gray;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  p {
+    margin: 10px 0 0;
+    color: $white;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+.narrative {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px;
+  padding: var(--section-space) 0;
+
+  > span {
+    color: $gray;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  h2 {
+    max-width: 1000px;
+    margin: 0;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(22px, 2.8vw, 36px);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.055em;
+  }
+
+  p {
+    max-width: 760px;
+    margin: 45px 0 0;
+    color: $gray;
+    font-size: clamp(15px, 1.5vw, 20px);
+    font-weight: 300;
+    line-height: 1.75;
+  }
+}
+
+.secondaryMedia {
+  img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+}
+
+.nextProject {
+  margin-top: var(--section-space);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+  > span {
+    color: $gray;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    color: $white;
+    font-family: $display;
+    font-size: clamp(34px, 6vw, 88px);
+    line-height: 1;
+    text-decoration: none;
+    letter-spacing: -0.06em;
+
+    i {
+      display: grid;
+      width: 0.85em;
+      height: 0.85em;
+      place-items: center;
+      border-radius: 50%;
+      background: $purple;
+      font-size: 0.45em;
+      font-style: normal;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .detailContainer {
+    padding-top: 92px;
+  }
+
+  .detailHero {
+    display: block;
+
+    h1 {
+      margin-bottom: 35px;
+    }
+
+    .websiteLink {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 12px;
+    }
+  }
+
+  .detailMeta {
+    grid-template-columns: 1fr;
+  }
+
+  .narrative {
+    display: block;
+
+    > div {
+      margin-top: 30px;
+    }
   }
 }
