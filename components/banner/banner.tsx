@@ -1,5 +1,6 @@
 import { NextComponentType } from "next";
 import styles from "./banner.module.scss";
+import { ArrowIcon } from "../ui/arrow-icon";
 
 export const Banner: NextComponentType = () => {
   return (
@@ -13,7 +14,9 @@ export const Banner: NextComponentType = () => {
           {[0, 1, 2, 3].map((item) => (
             <span className={styles.text} key={item}>
               LET&apos;S <span className={styles.purple}>CREATE</span> SOMETHING
-              <i>↗</i>
+              <i>
+                <ArrowIcon size={36} />
+              </i>
             </span>
           ))}
         </div>

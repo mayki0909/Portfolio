@@ -1,5 +1,6 @@
 import { NextComponentType } from "next";
 import styles from "./footer.module.scss";
+import { ArrowIcon } from "../ui/arrow-icon";
 
 export const Footer: NextComponentType = () => {
   return (
@@ -14,7 +15,9 @@ export const Footer: NextComponentType = () => {
         </h4>
         <a className={styles.button} href="mailto:miha.znidar7@gmail.com">
           Start a conversation
-          <i aria-hidden="true">↗</i>
+          <i aria-hidden="true">
+            <ArrowIcon size={18} />
+          </i>
         </a>
 
         <div className={styles.linksContainer}>
@@ -52,7 +55,9 @@ export const Footer: NextComponentType = () => {
         </div>
         <div className={styles.bottomline}>
           <span>© {new Date().getFullYear()} Miha Žnidar</span>
-          <a href="#hero">Back to top ↑</a>
+          <a href="#hero">
+            Back to top <ArrowIcon direction="up" size={14} />
+          </a>
         </div>
       </div>
     </section>

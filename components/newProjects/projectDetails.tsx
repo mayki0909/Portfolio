@@ -2,6 +2,7 @@ import styles from "./projects.module.scss";
 import { IProject } from "../../interfaces";
 import { motion } from "motion/react";
 import { Reveal } from "../motion/reveal";
+import { ArrowIcon } from "../ui/arrow-icon";
 
 interface Props {
   project: IProject;
@@ -12,7 +13,9 @@ export const ProjectDetails = (props: Props) => {
     <section className={styles.projectDetails}>
       <div className={`container ${styles.detailContainer}`}>
         <div className={styles.detailEyebrow}>
-          <a href="/#work">← Selected work</a>
+          <a href="/#work">
+            <ArrowIcon direction="left" size={14} /> Selected work
+          </a>
           <span>{new Date(props.project.createdAt).getFullYear()}</span>
         </div>
 
@@ -36,7 +39,7 @@ export const ProjectDetails = (props: Props) => {
             target="_blank"
             rel="noreferrer"
           >
-            Visit live project ↗
+            Visit live project <ArrowIcon size={14} />
           </a>
         </div>
 
@@ -88,7 +91,9 @@ export const ProjectDetails = (props: Props) => {
           <span>Continue exploring</span>
           <a href="/#work">
             View all selected work
-            <i>↗</i>
+            <i>
+              <ArrowIcon size={24} />
+            </i>
           </a>
         </Reveal>
       </div>

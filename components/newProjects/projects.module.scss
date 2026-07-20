@@ -505,6 +505,12 @@
     text-transform: uppercase;
     letter-spacing: 0.11em;
   }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
 }
 
 .detailHero {
@@ -531,6 +537,9 @@
   }
 
   .websiteLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     margin: 0;
     padding-bottom: 5px;
     border-bottom: 1px solid $purple;

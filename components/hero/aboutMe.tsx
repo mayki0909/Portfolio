@@ -1,6 +1,7 @@
 import { NextComponentType } from "next";
 import { motion } from "motion/react";
 import styles from "./hero.module.scss";
+import { ArrowIcon } from "../ui/arrow-icon";
 
 export const AboutMe: NextComponentType = () => {
   return (
@@ -41,7 +42,9 @@ export const AboutMe: NextComponentType = () => {
             challenges into clear, reliable products—and learning something new
             with every build.
           </p>
-          <a href="mailto:miha.znidar7@gmail.com">Let&apos;s work together ↗</a>
+          <a href="mailto:miha.znidar7@gmail.com">
+            Let&apos;s work together <ArrowIcon size={14} />
+          </a>
         </div>
       </div>
     </section>

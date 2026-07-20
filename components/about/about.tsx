@@ -1,6 +1,7 @@
 import { NextComponentType } from "next";
 import styles from "./about.module.scss";
 import { Reveal } from "../motion/reveal";
+import { ArrowIcon } from "../ui/arrow-icon";
 
 export const About: NextComponentType = () => {
   const capabilities = [
@@ -36,7 +37,7 @@ export const About: NextComponentType = () => {
               products that feel simple, useful, and built to last.
             </p>
             <a href="/about">
-              More about me <span aria-hidden="true">↗</span>
+              More about me <ArrowIcon size={14} />
             </a>
           </div>
         </Reveal>
@@ -51,7 +52,9 @@ export const About: NextComponentType = () => {
               <span>{number}</span>
               <h3>{title}</h3>
               <p>{description}</p>
-              <i aria-hidden="true">↗</i>
+              <i aria-hidden="true">
+                <ArrowIcon size={16} />
+              </i>
             </Reveal>
           ))}
         </div>

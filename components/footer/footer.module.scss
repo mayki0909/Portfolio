@@ -257,6 +257,9 @@
   padding-top: 26px;
 
   a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     color: $dark;
     text-decoration: none;
   }

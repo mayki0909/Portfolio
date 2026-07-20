@@ -1,8 +1,10 @@
 import { NextComponentType } from "next";
 import {
   motion,
+  useMotionValue,
   useReducedMotion,
   useScroll,
+  useSpring,
   useTransform,
 } from "motion/react";
 import { useRef } from "react";
@@ -27,9 +29,61 @@ export const Hero: NextComponentType = () => {
     [0, 0.75],
     [1, reduceMotion ? 1 : 0],
   );
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const smoothX = useSpring(pointerX, { stiffness: 90, damping: 24 });
+  const smoothY = useSpring(pointerY, { stiffness: 90, damping: 24 });
+  const firstLineX = useTransform(smoothX, [-0.5, 0.5], [-16, 16]);
+  const accentLineX = useTransform(smoothX, [-0.5, 0.5], [22, -22]);
+  const lastLineX = useTransform(smoothX, [-0.5, 0.5], [-10, 10]);
+  const titleRotate = useTransform(smoothY, [-0.5, 0.5], [0.8, -0.8]);
 
   return (
-    <section id="hero" className={styles.hero} ref={sectionRef}>
+    <section
+      id="hero"
+      className={styles.hero}
+      ref={sectionRef}
+      onPointerMove={(event) => {
+        if (reduceMotion) return;
+        const bounds = event.currentTarget.getBoundingClientRect();
+        pointerX.set((event.clientX - bounds.left) / bounds.width - 0.5);
+        pointerY.set((event.clientY - bounds.top) / bounds.height - 0.5);
+      }}
+      onPointerLeave={() => {
+        pointerX.set(0);
+        pointerY.set(0);
+      }}
+    >
+      <div className={styles.orbitScene} aria-hidden="true">
+        <motion.div
+          className={`${styles.orbit} ${styles.orbitOuter}`}
+          style={{ scaleY: 0.68 }}
+          animate={reduceMotion ? undefined : { rotate: 360 }}
+          transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+        >
+          <span className={styles.orbitNode} />
+        </motion.div>
+        <motion.div
+          className={`${styles.orbit} ${styles.orbitInner}`}
+          style={{ scaleY: 0.72 }}
+          animate={reduceMotion ? undefined : { rotate: -360 }}
+          transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+        >
+          <span className={styles.orbitNode} />
+        </motion.div>
+        <motion.div
+          className={styles.orbitCore}
+          animate={reduceMotion ? undefined : { scale: [1, 1.12, 1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <span className={`${styles.floatingLabel} ${styles.labelOne}`}>
+          React / Next.js
+        </span>
+        <span className={`${styles.floatingLabel} ${styles.labelTwo}`}>
+          Ideas to products
+        </span>
+      </div>
+
       <div className={`container ${styles.container}`}>
         <motion.div
           className={styles.eyebrow}
@@ -43,10 +97,15 @@ export const Hero: NextComponentType = () => {
 
         <motion.div
           className={styles.titleWrap}
-          style={{ y: titleY, opacity: titleOpacity }}
+          style={{
+            y: titleY,
+            opacity: titleOpacity,
+            rotate: reduceMotion ? 0 : titleRotate,
+          }}
         >
           <h1 aria-label="Full-stack digital developer">
             <motion.span
+              style={{ x: reduceMotion ? 0 : firstLineX }}
               initial={{ y: "110%" }}
               animate={{ y: 0 }}
               transition={{ delay: 0.15, duration: 1 }}
@@ -55,6 +114,7 @@ export const Hero: NextComponentType = () => {
             </motion.span>
             <motion.span
               className={styles.titleAccent}
+              style={{ x: reduceMotion ? 0 : accentLineX }}
               initial={{ y: "110%" }}
               animate={{ y: 0 }}
               transition={{ delay: 0.25, duration: 1 }}
@@ -63,6 +123,7 @@ export const Hero: NextComponentType = () => {
             </motion.span>
             <motion.span
               className={styles.titleLast}
+              style={{ x: reduceMotion ? 0 : lastLineX }}
               initial={{ y: "110%" }}
               animate={{ y: 0 }}
               transition={{ delay: 0.35, duration: 1 }}
@@ -82,7 +143,17 @@ export const Hero: NextComponentType = () => {
             transition={{ delay: 0.8 }}
             whileHover={{ scale: 1.08 }}
           >
-            <Arrow width={22} height={22} />
+            <motion.span
+              className={styles.scrollIcon}
+              animate={reduceMotion ? undefined : { y: [0, 5, 0] }}
+              transition={{
+                duration: 1.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Arrow width={22} height={22} />
+            </motion.span>
             <span>Explore work</span>
           </motion.a>
 

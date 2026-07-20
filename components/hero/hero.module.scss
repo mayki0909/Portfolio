@@ -225,6 +225,92 @@
     $dark;
 }
 
+.orbitScene {
+  position: absolute;
+  z-index: 0;
+  top: 8%;
+  right: -7vw;
+  width: min(52vw, 720px);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+.orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.orbitOuter {
+  transform: rotate(-16deg) scaleY(0.68);
+}
+
+.orbitInner {
+  inset: 18%;
+  border-color: rgba(176, 43, 255, 0.28);
+  transform: rotate(22deg) scaleY(0.72);
+}
+
+.orbitNode {
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $purple;
+  box-shadow: 0 0 24px 8px rgba(176, 43, 255, 0.35);
+}
+
+.orbitInner .orbitNode {
+  top: 8%;
+  right: 16%;
+  left: auto;
+  width: 7px;
+  height: 7px;
+  background: $white;
+}
+
+.orbitCore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(176, 43, 255, 0.08);
+  box-shadow:
+    0 0 50px rgba(176, 43, 255, 0.3),
+    inset 0 0 30px rgba(176, 43, 255, 0.22);
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(8px);
+}
+
+.floatingLabel {
+  position: absolute;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: rgba(30, 30, 30, 0.58);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(12px);
+}
+
+.labelOne {
+  top: 18%;
+  left: 11%;
+}
+
+.labelTwo {
+  right: 6%;
+  bottom: 23%;
+}
+
 .hero::after {
   position: absolute;
   top: 8%;
@@ -317,13 +403,18 @@
     transform: translateY(4px);
   }
 
-  span {
+  > span:last-child {
     position: absolute;
     width: 1px;
     height: 1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
   }
+}
+
+.scrollIcon {
+  display: grid;
+  place-items: center;
 }
 
 .intro {
@@ -371,6 +462,17 @@
 }
 
 @media (max-width: 767px) {
+  .orbitScene {
+    top: 17%;
+    right: -38vw;
+    width: 92vw;
+    opacity: 0.6;
+  }
+
+  .floatingLabel {
+    display: none;
+  }
+
   .container {
     padding-top: 92px;
   }
@@ -566,6 +668,9 @@
   }
 
   a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     padding-bottom: 5px;
     border-bottom: 1px solid $purple;
     color: $white;
