@@ -13,8 +13,8 @@ export const ProjectDetails = (props: Props) => {
     <section className={styles.projectDetails}>
       <div className={`container ${styles.detailContainer}`}>
         <div className={styles.detailEyebrow}>
-          <a href="/#work">
-            <ArrowIcon direction="left" size={14} /> Selected work
+          <a href="/projects">
+            <ArrowIcon direction="left" size={14} /> All projects
           </a>
           <span>{new Date(props.project.createdAt).getFullYear()}</span>
         </div>
@@ -89,8 +89,8 @@ export const ProjectDetails = (props: Props) => {
 
         <Reveal className={styles.nextProject}>
           <span>Continue exploring</span>
-          <a href="/#work">
-            View all selected work
+          <a href="/projects">
+            View all projects
             <i>
               <ArrowIcon size={24} />
             </i>

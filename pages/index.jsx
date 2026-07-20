@@ -23,7 +23,7 @@ const Index = () => {
       <main>
         <Navbar />
         <Hero />
-        <Projects />
+        <Projects limit={3} showViewMore />
         <About />
         <Banner />
         <Footer />

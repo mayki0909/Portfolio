@@ -20,6 +20,11 @@ export const About: NextComponentType = () => {
       "Back-end platforms",
       "Reliable APIs, data models, integrations, and operations.",
     ],
+    [
+      "04",
+      "Smart contracts & Solidity",
+      "Secure on-chain logic for minting, wallets, and blockchain products.",
+    ],
   ];
 
   return (

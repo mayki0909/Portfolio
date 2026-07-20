@@ -357,19 +357,30 @@
     font-family: $display;
     font-size: clamp(58px, 9.5vw, 154px);
     font-weight: 600;
-    line-height: 0.83;
-    letter-spacing: -0.075em;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
   }
 
-  h1 > span {
+  .titleLine {
     display: block;
     overflow: hidden;
+    // Room for glyph overflow (stroke + descenders) inside the reveal mask
+    padding: 0.08em 0.08em 0.22em;
+    margin: -0.08em -0.08em -0.12em;
+
+    > span {
+      display: block;
+    }
   }
 
   .titleAccent {
-    margin-left: 13vw;
+    margin-left: calc(13vw - 0.08em);
+    padding-left: 0.12em;
+    padding-bottom: 0.28em;
     color: transparent;
-    -webkit-text-stroke: 1.5px $purple;
+    // Slight positive tracking so outline strokes don't collide
+    letter-spacing: 0.01em;
+    -webkit-text-stroke: 1.25px $purple;
   }
 
   .titleLast {
@@ -379,6 +390,7 @@
   .dot {
     display: inline;
     color: $purple;
+    -webkit-text-stroke: 0;
   }
 }
 
@@ -487,11 +499,13 @@
 
     h1 {
       font-size: clamp(54px, 17vw, 82px);
-      line-height: 0.88;
+      line-height: 1;
+      letter-spacing: -0.02em;
     }
 
     .titleAccent {
-      margin-left: 9vw;
+      margin-left: calc(9vw - 0.08em);
+      letter-spacing: 0.015em;
     }
 
     .titleLast {

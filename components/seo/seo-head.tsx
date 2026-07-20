@@ -4,6 +4,7 @@ import { absoluteUrl, formatPageTitle, PageSeo, siteMetadata } from '../../lib/s
 
 type Props = PageSeo & {
   schemas?: string[];
+  keywords?: string[];
 };
 
 export function SeoHead({
@@ -14,12 +15,13 @@ export function SeoHead({
   ogType = 'website',
   noindex = false,
   schemas = [],
+  keywords: keywordsProp,
 }: Props) {
   const pageTitle = formatPageTitle(title);
   const canonical = absoluteUrl(path);
   const ogImage = absoluteUrl(image);
   const robots = noindex ? 'noindex, nofollow' : 'index, follow';
-  const keywords = metadata.keywords.join(', ');
+  const keywords = (keywordsProp ?? metadata.keywords).join(', ');
 
   return (
     <Head>

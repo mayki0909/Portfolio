@@ -44,7 +44,7 @@ export const Navbar: NextComponentType = () => {
         </a>
 
         <div className={styles.desktopLinks}>
-          <a href="/#work">Work</a>
+          <a href="/projects">Work</a>
           <a href="/about">About</a>
           <a href="/#contact">Contact</a>
         </div>
@@ -96,7 +96,7 @@ export const Navbar: NextComponentType = () => {
           <a href="/" onClick={closeMenu}>
             Home <small>01</small>
           </a>
-          <a href="/#work" onClick={closeMenu}>
+          <a href="/projects" onClick={closeMenu}>
             Work <small>02</small>
           </a>
           <a href="/about" onClick={closeMenu}>

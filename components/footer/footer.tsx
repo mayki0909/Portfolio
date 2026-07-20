@@ -29,7 +29,7 @@ export const Footer: NextComponentType = () => {
             <span>Explore</span>
             <p className={styles.linkList}>
               <a href="/">Home</a>
-              <a href="/#work">Work</a>
+              <a href="/projects">Work</a>
               <a href="/about">About</a>
             </p>
           </div>
@@ -55,7 +55,13 @@ export const Footer: NextComponentType = () => {
         </div>
         <div className={styles.bottomline}>
           <span>© {new Date().getFullYear()} Miha Žnidar</span>
-          <a href="#hero">
+          <a
+            href="#top"
+            onClick={(event) => {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
             Back to top <ArrowIcon direction="up" size={14} />
           </a>
         </div>

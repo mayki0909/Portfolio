@@ -104,32 +104,36 @@ export const Hero: NextComponentType = () => {
           }}
         >
           <h1 aria-label="Full-stack digital developer">
-            <motion.span
-              style={{ x: reduceMotion ? 0 : firstLineX }}
-              initial={{ y: "110%" }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.15, duration: 1 }}
-            >
-              Full-stack
-            </motion.span>
-            <motion.span
-              className={styles.titleAccent}
-              style={{ x: reduceMotion ? 0 : accentLineX }}
-              initial={{ y: "110%" }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.25, duration: 1 }}
-            >
-              digital
-            </motion.span>
-            <motion.span
-              className={styles.titleLast}
-              style={{ x: reduceMotion ? 0 : lastLineX }}
-              initial={{ y: "110%" }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.35, duration: 1 }}
-            >
-              developer<span className={styles.dot}>.</span>
-            </motion.span>
+            <span className={styles.titleLine}>
+              <motion.span
+                style={{ x: reduceMotion ? 0 : firstLineX }}
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.15, duration: 1 }}
+              >
+                Full-stack
+              </motion.span>
+            </span>
+            <span className={`${styles.titleLine} ${styles.titleAccent}`}>
+              <motion.span
+                style={{ x: reduceMotion ? 0 : accentLineX }}
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.25, duration: 1 }}
+              >
+                digital
+              </motion.span>
+            </span>
+            <span className={`${styles.titleLine} ${styles.titleLast}`}>
+              <motion.span
+                style={{ x: reduceMotion ? 0 : lastLineX }}
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.35, duration: 1 }}
+              >
+                developer<span className={styles.dot}>.</span>
+              </motion.span>
+            </span>
           </h1>
         </motion.div>
 

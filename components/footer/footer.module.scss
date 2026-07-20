@@ -245,6 +245,14 @@
     line-height: 1.5;
     text-decoration: none;
   }
+
+  a {
+    transition: color 250ms $ease-out;
+
+    &:hover {
+      color: $purple;
+    }
+  }
 }
 
 .linkList {
@@ -262,6 +270,11 @@
     gap: 7px;
     color: $dark;
     text-decoration: none;
+    transition: color 250ms $ease-out;
+
+    &:hover {
+      color: $purple;
+    }
   }
 }
 
