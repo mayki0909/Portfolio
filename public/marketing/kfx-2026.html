@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>KFX Posting Timeline</title>
+<meta name="description" content="Planned Instagram and Facebook posts for KFX, November and December 2026.">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Manrope:wght@600;800&display=swap">
+<style>
+  /* Same layout as the Kranfix Posting Timeline: a date rail on the left, a vertical line, and the posts as they would appear in the app. */
+  :root {
+    --bg: #f4f2f3;
+    --surface: #ffffff;
+    --ink: #141113;
+    --muted: #6f686c;
+    --line: #e2dde0;
+    --accent: #af1a44;
+    --accent-soft: rgba(175, 26, 68, 0.1);
+    --tag: #1d4f91;
+    --ready: #2f7a3d;
+    --ready-soft: rgba(47, 122, 61, 0.12);
+    --warn: #8a5a00;
+    --warn-soft: rgba(196, 132, 0, 0.14);
+    --placeholder: #ece8ea;
+    --display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --body: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f0d0e;
+      --surface: #1a1618;
+      --ink: #f3eff1;
+      --muted: #a69ea2;
+      --line: #2f2a2d;
+      --accent: #e4587f;
+      --accent-soft: rgba(228, 88, 127, 0.16);
+      --tag: #8fb8f4;
+      --ready: #6fcf83;
+      --ready-soft: rgba(111, 207, 131, 0.14);
+      --warn: #f0b84a;
+      --warn-soft: rgba(240, 184, 74, 0.14);
+      --placeholder: #252023;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f0d0e;
+    --surface: #1a1618;
+    --ink: #f3eff1;
+    --muted: #a69ea2;
+    --line: #2f2a2d;
+    --accent: #e4587f;
+    --accent-soft: rgba(228, 88, 127, 0.16);
+    --tag: #8fb8f4;
+    --ready: #6fcf83;
+    --ready-soft: rgba(111, 207, 131, 0.14);
+    --warn: #f0b84a;
+    --warn-soft: rgba(240, 184, 74, 0.14);
+    --placeholder: #252023;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+  }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Header ---------- */
+  .top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .top-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-block: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .brand-logo {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 44px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+  }
+  .brand-logo img { width: 58px; height: 13px; }
+  .brand h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .brand p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip-link, .toggle {
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .toggle[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* ---------- Months and timeline ---------- */
+  main {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 32px 96px;
+  }
+  .month { max-width: 1040px; margin: 0 auto; scroll-margin-top: 90px; }
+  .month + .month { margin-top: 24px; }
+  .month-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin: 0 0 24px; }
+  .month h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 40px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .month-head p { margin: 0; color: var(--muted); max-width: 70ch; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .day {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 20px;
+  }
+  .when {
+    text-align: right;
+    padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-variant-numeric: tabular-nums;
+  }
+  .when .dow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .when .dnum { font-family: var(--display); font-weight: 800; font-size: 36px; line-height: 1; letter-spacing: -0.04em; margin-top: 2px; }
+  .when .mon { font-size: 13px; color: var(--muted); }
+  .when .time { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+  .stack {
+    position: relative;
+    min-width: 0;
+    border-left: 2px solid var(--line);
+    padding: 0 0 56px 28px;
+  }
+  .stack::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--muted);
+  }
+  .day.ready .stack::before { border-color: var(--accent); background: var(--accent); }
+  .day:last-child .stack { border-left-color: transparent; }
+
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .pill.ready { background: var(--ready-soft); border-color: transparent; color: var(--ready); }
+  .pill.template { background: var(--warn-soft); border-color: transparent; color: var(--warn); }
+  .pill.todo { background: var(--placeholder); border-color: transparent; color: var(--muted); }
+  .note { margin: 0 0 16px; max-width: 62ch; color: var(--muted); font-size: 14px; }
+
+  .items { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; }
+
+  /* ---------- One post or Story, with its label and Comment button ---------- */
+  .item { margin: 0; width: min(100%, var(--w)); display: flex; flex-direction: column; gap: 8px; }
+  .item > .post, .item > .story { width: 100%; }
+  .item-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 30px; font-size: 12.5px; color: var(--muted); }
+  .item-label .label-text { min-width: 0; }
+  .comment-btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .comment-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .brand .hint { margin-top: 4px; }
+
+  /* ---------- Feed post ---------- */
+  .post {
+    width: min(100%, 440px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .post.reel { width: min(100%, 360px); }
+  .post-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
+  /* The KFX logo is wide, so the round avatar shows it small on white, as Instagram crops a wide logo. */
+  .avatar {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .avatar img { width: 26px; height: 6px; }
+  .post-head .who { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+  .post-head b { font-size: 14px; font-weight: 600; }
+  .post-head span { font-size: 12px; color: var(--muted); }
+  .post-head .dots { margin-left: auto; color: var(--ink); display: flex; }
+
+  .media { position: relative; background: var(--placeholder); aspect-ratio: 4 / 5; max-width: 100%; }
+  .media.tall { aspect-ratio: 9 / 16; }
+  .media > img, .media > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .carousel .track {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .carousel .track::-webkit-scrollbar { display: none; }
+  .carousel .track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: start; }
+  .carousel .nav {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #141113;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .carousel .nav[disabled] { opacity: 0; pointer-events: none; }
+  .carousel .prev { left: 10px; }
+  .carousel .next { right: 10px; }
+  .carousel .count {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(20, 17, 19, 0.72);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .placeholder-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px;
+    border: 2px dashed var(--line);
+    color: var(--muted);
+  }
+  .placeholder-art strong { font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: var(--ink); }
+  .placeholder-art p { margin: 0; font-size: 14px; }
+
+  .actions { position: relative; display: flex; align-items: center; gap: 14px; padding: 10px 12px 4px; }
+  .actions svg { display: block; }
+  .actions .save { margin-left: auto; }
+  .page-dots { position: absolute; left: 50%; translate: -50% 0; display: flex; gap: 4px; }
+  .page-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+  .page-dots i.on { background: var(--accent); }
+
+  .caption { padding: 4px 12px 0; font-size: 14.5px; white-space: pre-line; overflow-wrap: anywhere; }
+  .caption b { font-weight: 600; }
+  .caption .tag { color: var(--tag); }
+  .caption .more { border: 0; background: none; padding: 0; color: var(--muted); cursor: pointer; }
+  .stamp { display: block; padding: 8px 12px 14px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- Story ---------- */
+  .story {
+    position: relative;
+    width: min(100%, 270px);
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .story > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .story .shade-top, .story .shade-bottom { position: absolute; left: 0; right: 0; pointer-events: none; }
+  .story .shade-top { top: 0; height: 72px; background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0)); }
+  .story .shade-bottom { bottom: 0; height: 72px; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.42)); }
+  .story .bar { position: absolute; top: 8px; left: 8px; right: 8px; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, 0.95); }
+  .story .story-head { position: absolute; top: 18px; left: 10px; right: 10px; display: flex; align-items: center; gap: 8px; color: #fff; font-size: 12.5px; }
+  .story .story-head .avatar { width: 26px; height: 26px; border: 0; }
+  .story .story-head .avatar img { width: 20px; height: 5px; }
+  .story .story-head span { opacity: 0.8; }
+  .story .reply { position: absolute; left: 10px; right: 10px; bottom: 12px; display: flex; align-items: center; gap: 10px; color: #fff; }
+  .story .reply span { flex: 1; height: 34px; border: 1px solid rgba(255, 255, 255, 0.85); border-radius: 999px; padding: 0 14px; display: flex; align-items: center; font-size: 12.5px; }
+
+  @media (max-width: 640px) {
+    .day { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .when { flex-direction: row; align-items: baseline; gap: 6px; text-align: left; }
+    .when .dnum { font-size: 22px; margin: 0; }
+    .when .time { margin: 0 0 0 auto; }
+    .stack { padding-left: 18px; }
+    .month h2 { font-size: 32px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    .carousel .track { scroll-behavior: smooth; }
+  }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="brand-logo"><img src="kfx-2026/media/kfx-logo.svg" alt="KFX" width="58" height="13"></span>
+      <div>
+        <h1>Posting timeline</h1>
+        <p id="summary">Instagram @kfx_kranj and Facebook, 12 Nov to 30 Dec 2026. Planned, not posted yet.</p>
+        <p class="hint" id="comment-hint" hidden></p>
+      </div>
+    </div>
+    <nav class="controls" aria-label="Timeline">
+      <a class="chip-link" href="#november">November</a>
+      <a class="chip-link" href="#december">December</a>
+      <button class="toggle" id="expand-all" type="button" aria-pressed="false">Show full captions</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="month" id="november" aria-labelledby="h-nov">
+    <div class="month-head">
+      <h2 id="h-nov">November</h2>
+      <p>Every image and reel is made. Swipe the carousels and play the reels. The Black Friday post and the Cyber Monday Story are templates until the owner sets the offer.</p>
+    </div>
+    <ol class="timeline" data-month="11"></ol>
+  </section>
+  <section class="month" id="december" aria-labelledby="h-dec">
+    <div class="month-head">
+      <h2 id="h-dec">December</h2>
+      <p>Every image is made. The four reels (3, 7, 14 and 30 Dec) are still planned. The last order day (16 Dec) and the holiday hours (18 Dec) are templates until the owner sets them.</p>
+    </div>
+    <ol class="timeline" data-month="12"></ol>
+  </section>
+</main>
+
+<script>
+  const HANDLE = "kfx_kranj";
+  /* Suggested times, not measured best times. */
+  const TIME = "17:30";
+  const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const img = (name) => "kfx-2026/media/" + name + ".jpg";
+
+  /*
+   * Facts come from kfxservis.si on 9 Nov 2026: Drulovka 51, 4000 Kranj, +386 70 646 482,
+   * Mon–Fri 9–16 and Sat 9–12, free diagnostics, pickup at the customer's address, most repairs in 24–48 h,
+   * 12 months' warranty on work. Prices are the shop's on 9 Nov 2026. Rules for e-scooters: policija.si
+   * and Uradni list RS 16/2026 (riders 15 and over since 28 Feb 2026, helmet until 18).
+   */
+  const DAYS = [
+    {
+      date: "2026-11-12", format: "Reel, 17 s",
+      note: "Rename the Instagram profile to KFX first. Pin this reel to the profile and add music in the app.",
+      items: [{ kind: "reel", label: "Reel: Krgofix is now KFX", video: "kfx-2026/media/KfxNov12-RenameReel.mp4", poster: "kfx-2026/media/KfxNov12-RenameReel.jpg", place: "Drulovka 51, Kranj",
+        caption: "Krgofix je zdaj KFX.\n\nNovo ime, ista ekipa. Še naprej servisiramo in prodajamo e-skiroje in e-kolesa, zdaj na novi lokaciji na Drulovki 51 v Kranju.\n\nNova spletna stran: kfxservis.si\n\n#kfx #kranj #eskiro" }]
+    },
+    {
+      date: "2026-11-14", time: "10:00", format: "Carousel, 4 slides",
+      note: "What is new and what stays: name, location, website and profile are new; the team stays.",
+      items: [{ kind: "post", label: "What's new carousel", images: ["KfxNov14-Rename-1", "KfxNov14-Rename-2", "KfxNov14-Rename-3", "KfxNov14-Rename-4"].map(img),
+        caption: "Kaj je novo pri KFX in kaj ostaja?\n\nNovo so ime, lokacija in spletna stran. Ekipa ostaja ista.\n\nDrulovka 51, 4000 Kranj\nPon–pet 9.00–16.00, sob 9.00–12.00\n+386 70 646 482\nkfxservis.si\n\n#kfx #kranj #ekolo" }]
+    },
+    {
+      date: "2026-11-16", format: "Reel, 18 s",
+      note: "The existing service reel. One line changed to \"V Kranju od leta 2019\" so it matches the rename reel; the site also says \"več kot 10 let\". Pick one.",
+      items: [{ kind: "reel", label: "Reel: e-scooter and e-bike service", video: "kfx-2026/media/KfxNov16-ServiceReel.mp4", poster: "kfx-2026/media/KfxNov16-ServiceReel.jpg", place: "Drulovka 51, Kranj",
+        caption: "Servis e-skirojev in e-koles v Kranju.\n\nPrijavite se prek obrazca na kfxservis.si/servis ali nas pokličite. Diagnostika je brezplačna, večina popravil je končana v 24–48 urah, na delo dajemo 12 mesecev garancije.\n\nDrulovka 51, Kranj · +386 70 646 482\n\n#kfx #eskiro #kranj" }]
+    },
+    {
+      date: "2026-11-18", format: "Carousel, 7 slides",
+      note: "Winter battery care: five rules, then free diagnostics. A post people save.",
+      items: [{ kind: "post", label: "Battery in winter carousel", images: ["KfxNov18-Battery-1", "KfxNov18-Battery-2", "KfxNov18-Battery-3", "KfxNov18-Battery-4", "KfxNov18-Battery-5", "KfxNov18-Battery-6", "KfxNov18-Battery-7"].map(img),
+        caption: "Skiro pozimi počiva. Za baterijo pa poskrbite.\n\n1. Hranite ga v suhem prostoru na sobni temperaturi.\n2. Za daljšo hrambo naj bo baterija napolnjena na 30–60 %.\n3. Mrzle baterije ne polnite, najprej naj se ogreje.\n4. Enkrat na mesec preverite, koliko je napolnjena.\n5. Na mrazu je doseg krajši. To je normalno.\n\nBaterija ne zdrži več? Diagnostika pri nas je brezplačna. Termin rezervirate na kfxservis.si/servis.\n\n#kfx #eskiro #ekolo" }]
+    },
+    {
+      date: "2026-11-20", time: "16:00", format: "Carousel, 2 slides",
+      note: "Posted at four, just before dark. Check the three prices on kfxservis.si before posting.",
+      items: [{ kind: "post", label: "Lights carousel", images: ["KfxNov20-Lights-1", "KfxNov20-Lights-2"].map(img),
+        caption: "Pred peto je že tema.\n\nPonoči in ob slabi vidljivosti mora imeti e-skiro belo luč spredaj, rdečo luč zadaj, rdeč odsevnik zadaj ter rumene ali oranžne odsevnike ob strani.\n\nV trgovini KFX so odsevni jopič LED (17,99 €), zadnja zavorna luč za Xiaomi M365 ali Ninebot Max G30 (14,99 €) in odsevne nalepke (9,99 €). Na Drulovki 51 in na kfxservis.si.\n\n#kfx #eskiro #varnost" }]
+    },
+    {
+      date: "2026-11-23", format: "Reel, 16 s",
+      note: "New reel. Opens on the snowy scooter with no logo sting, so the hook is the first frame.",
+      items: [{ kind: "reel", label: "Reel: winter service", video: "kfx-2026/media/KfxNov23-WinterReel.mp4", poster: "kfx-2026/media/KfxNov23-WinterReel.jpg", place: "Drulovka 51, Kranj",
+        caption: "Skiro pozimi počiva. Pravi čas za servis.\n\nBrezplačna diagnostika, prevzem skiroja na vašem naslovu, večina popravil v 24–48 urah in 12 mesecev garancije na delo. Spomladi bo pripravljen.\n\nTermin rezervirate na kfxservis.si/servis ali na +386 70 646 482.\n\n#kfx #eskiro #kranj" }]
+    },
+    {
+      date: "2026-11-25", time: "12:00", format: "Story",
+      note: "Teaser. Makes no offer, so it can go out as it is.",
+      items: [{ kind: "story", label: "Story: Black Friday is coming", image: img("KfxNov25-BlackFridayTeaserStory") }]
+    },
+    {
+      date: "2026-11-27", time: "08:00", format: "Single image", template: true,
+      note: "Template: the offer reads \"−XX %\" until the owner decides it. Then re-render the image and add an 8 s reel.",
+      items: [{ kind: "post", label: "Black Friday offer", images: [img("KfxNov27-BlackFriday")],
+        caption: "Black Friday pri KFX.\n\n[PONUDBA: −XX % na …]. Velja do [datum] v trgovini na Drulovki 51 in na kfxservis.si.\n\n#kfx #blackfriday #kranj" }]
+    },
+    {
+      date: "2026-11-30", time: "09:00", format: "Story", template: true,
+      note: "Template: Cyber Monday, last day online. Same offer as Black Friday.",
+      items: [{ kind: "story", label: "Story: Cyber Monday", image: img("KfxNov30-CyberMondayStory") }]
+    },
+
+    {
+      date: "2026-12-01", format: "Carousel, 5 slides",
+      note: "Spare parts. Sizes and prices are the shop's on 9 Nov 2026: check them before posting.",
+      items: [{ kind: "post", label: "The right inner tube carousel", images: ["KfxDec01-Tubes-1", "KfxDec01-Tubes-2", "KfxDec01-Tubes-3", "KfxDec01-Tubes-4", "KfxDec01-Tubes-5"].map(img),
+        caption: "Guma je prazna? Preden kupite zračnico, preverite velikost na boku pnevmatike.\n\nNa zalogi imamo zračnice 8,5 col, 10 × 2,0, 10 × 3,0 in 200 × 50. Za nekatere velikosti imamo raven in kriv ventil. Na Drulovki 51 in na kfxservis.si, lahko pa jo zamenjamo tudi mi.\n\n#kfx #eskiro #kranj" }]
+    },
+    {
+      date: "2026-12-03", format: "Reel, planned",
+      note: "Gift guide from the shop. Say on screen that e-scooters are for riders 15 and over.",
+      items: [{ kind: "post", tall: true, label: "Reel: gifts on wheels", brief: "Fast product cuts: LED vest 17.99 €, phone holder 14.99 €, e-scooter from 599.90 € (Engwe Y400), e-bike from 1,149.90 € (Engwe M1), Asiwo Manta 2 underwater scooter 649 € for summer.",
+        caption: "Darila na kolesih, od 14,99 € naprej.\n\nOd odsevnega jopiča do e-kolesa. Vse najdete na Drulovki 51 in na kfxservis.si.\n\n#kfx #darila #kranj" }]
+    },
+    {
+      date: "2026-12-05", time: "10:00", format: "Story",
+      note: "Miklavž is Sunday 6 Dec, so the Story goes out on Saturday, with Saturday hours.",
+      items: [{ kind: "story", label: "Story: Miklavž", image: img("KfxDec05-MiklavzStory") }]
+    },
+    {
+      date: "2026-12-07", format: "Reel, planned",
+      note: "Most likely to be shared. Better still with a 10 s clip of a robot in the showroom, if there is one.",
+      items: [{ kind: "post", tall: true, label: "Reel: we sell robots in Kranj", brief: "Did you know? Unitree GO2 robot dog 2,349.90 €, VIGX π exoskeleton 1,599.90 €, Unitree G1 humanoid 21,139.90 €. Product photos from the shop, or a real clip.",
+        caption: "Ste vedeli, da v Kranju prodajamo robote?\n\nRobotski pes, eksoskelet in humanoidni robot. Vse na kfxservis.si.\n\n#kfx #robotika #kranj" }]
+    },
+    {
+      date: "2026-12-09", format: "Carousel, 7 slides",
+      note: "Rules from policija.si and Uradni list RS 16/2026. A post people save and share. The source is on every rule slide.",
+      items: [{ kind: "post", label: "E-scooter rules in 2026 carousel", images: ["KfxDec09-Rules-1", "KfxDec09-Rules-2", "KfxDec09-Rules-3", "KfxDec09-Rules-4", "KfxDec09-Rules-5", "KfxDec09-Rules-6", "KfxDec09-Rules-7"].map(img),
+        caption: "E-skiro v letu 2026: kaj velja.\n\nOd 28. februarja 2026 smejo e-skiro na cesti voziti le starejši od 15 let. Do 18. leta je obvezna čelada, največja hitrost je 25 km/h. Preostala pravila so v karuselu.\n\nVir: policija.si\n\n#kfx #eskiro #varnost" }]
+    },
+    {
+      date: "2026-12-11", format: "Single image",
+      note: "The main thing KFX offers that rivals in Gorenjska don't: free diagnostics and pickup.",
+      items: [{ kind: "post", label: "Free diagnostics and pickup", images: [img("KfxDec11-Diagnostics")],
+        caption: "Skiro se ne vključi, ropota ali ne zdrži? Pregled je brezplačen.\n\nČe ga ne morete pripeljati, ga prevzamemo na vašem naslovu. Termin rezervirate na kfxservis.si/servis ali na +386 70 646 482.\n\n#kfx #eskiro #kranj" }]
+    },
+    {
+      date: "2026-12-14", format: "Reel, planned",
+      note: "Sound-led reel with sound effects: squeaking brakes, rattling, a shorter range.",
+      items: [{ kind: "post", tall: true, label: "Reel: 5 signs it needs a service", brief: "Five signs with a sound for each: squeaking brakes, a soft tyre, a shorter range, a loose stem, an error on the display. Ends on booking.",
+        caption: "Pet znakov, da skiro potrebuje servis.\n\nČe prepoznate vsaj enega, ga pripeljite na brezplačno diagnostiko na Drulovko 51.\n\n#kfx #eskiro #kranj" }]
+    },
+    {
+      date: "2026-12-16", format: "Single image", template: true,
+      note: "Template: both dates read [datum] until the owner sets the last order and pick-up days. Then re-render.",
+      items: [{ kind: "post", label: "Last day to order before the holidays", images: [img("KfxDec16-LastOrder")],
+        caption: "Darilo pod jelko? Naročite na kfxservis.si do [datum].\n\nV trgovini na Drulovki 51 ga lahko prevzamete do [datum].\n\n#kfx #darila #kranj" }]
+    },
+    {
+      date: "2026-12-18", format: "Single image", template: true,
+      note: "Template: 24 and 31 Dec read [vpišite] until the owner sets them. 28–30 Dec show the normal 9:00–16:00.",
+      items: [{ kind: "post", label: "Holiday opening hours", images: [img("KfxDec18-HolidayHours")],
+        caption: "Praznični delovni čas:\n\nčet, 24. 12.: [vpišite]\npet, 25. 12., in sob, 26. 12.: zaprto\npon–sre, 28.–30. 12.: 9.00–16.00\nčet, 31. 12.: [vpišite]\npet, 1. 1., in sob, 2. 1.: zaprto\n\n#kfx #kranj" }]
+    },
+    {
+      date: "2026-12-22", format: "Carousel, 7 slides",
+      note: "For people who find an e-scooter under the tree.",
+      items: [{ kind: "post", label: "New e-scooter: first 5 steps carousel", images: ["KfxDec22-FirstRide-1", "KfxDec22-FirstRide-2", "KfxDec22-FirstRide-3", "KfxDec22-FirstRide-4", "KfxDec22-FirstRide-5", "KfxDec22-FirstRide-6", "KfxDec22-FirstRide-7"].map(img),
+        caption: "Pod jelko je bil e-skiro? Pred prvo vožnjo naredite teh pet stvari.\n\n1. Preberite navodila in baterijo napolnite, kot piše v njih.\n2. Preverite tlak v gumah.\n3. Preizkusite zavore pri majhni hitrosti.\n4. Nadenite si čelado. Do 18. leta je obvezna.\n5. Preverite pravila: na cesti od 15. leta naprej, največ 25 km/h.\n\nČe kaj ne deluje, je diagnostika pri nas brezplačna.\n\n#kfx #eskiro #kranj" }]
+    },
+    {
+      date: "2026-12-24", time: "10:00", format: "Single image",
+      note: "A real team photo in the shop is better if you can take one. This is the fallback.",
+      items: [{ kind: "post", label: "Merry Christmas", images: [img("KfxDec24-Christmas")],
+        caption: "Vesel božič in mirne praznike vam želi ekipa KFX.\n\nHvala za zaupanje v letu 2026.\n\n#kfx #kranj" }]
+    },
+    {
+      date: "2026-12-28", format: "Single image",
+      note: "Off-season booking push.",
+      items: [{ kind: "post", label: "Service in January", images: [img("KfxDec28-January")],
+        caption: "Januar je pravi čas za servis. Skiro bo pripravljen, ko pride pomlad.\n\nBrezplačna diagnostika, prevzem na vašem naslovu, večina popravil v 24–48 urah in 12 mesecev garancije na delo. Termin rezervirate na kfxservis.si/servis.\n\n#kfx #eskiro #kranj" }]
+    },
+    {
+      date: "2026-12-30", format: "Reel, planned",
+      note: "Short, built from the KfxOutroCharge sting: the battery charges to 100 % and turns into 2027.",
+      items: [{ kind: "post", tall: true, label: "Reel: happy 2027", brief: "8 s: the charging logo fills to 100 %, then \"Srečno 2027\" and kfxservis.si.",
+        caption: "Napolnjeni za 2027. Srečno!\n\nHvala vsem, ki ste letos pripeljali skiro ali e-kolo k nam.\n\n#kfx #kranj" }]
+    }
+  ];
+
+  const ICON = {
+    dots: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>',
+    heart: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-9.2-9.3C1.7 7.6 3.8 4.5 7 4.5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.2 0 5.3 3.1 4.2 6.2C19.5 15.4 12 20 12 20Z"/></svg>',
+    comment: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>',
+    send: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5 21 3Z"/></svg>',
+    save: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17Z"/></svg>',
+    prev: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>',
+    commentSmall: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>',
+    next: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>'
+  };
+
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const tags = (s) => esc(s).replace(/([#@][\p{L}\p{N}_]+(?:\.[\p{L}\p{N}_]+)*)/gu, '<span class="tag">$1</span>');
+  const timeOf = (day) => day.time || TIME;
+
+  function parts(iso) {
+    const [y, m, d] = iso.split("-").map(Number);
+    const wd = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+    return { month: m, day: d, dow: DOW[wd], mon: MON[m - 1] };
+  }
+
+  function avatar() {
+    return '<span class="avatar"><img src="kfx-2026/media/kfx-logo.svg" alt="" width="26" height="6"></span>';
+  }
+
+  function captionHtml(text, id) {
+    const cut = text.indexOf("\n\n");
+    const head = cut === -1 ? text : text.slice(0, cut);
+    const rest = cut === -1 ? "" : text.slice(cut);
+    return '<div class="caption"><b>' + HANDLE + "</b> " + tags(head) +
+      (rest
+        ? '<span class="rest" id="' + id + '" hidden>' + tags(rest) + '</span> <button class="more" type="button" aria-expanded="false" aria-controls="' + id + '">… more</button>'
+        : "") +
+      "</div>";
+  }
+
+  function placeholderHtml(item) {
+    return '<div class="media' + (item.tall ? " tall" : "") + '"><div class="placeholder-art"><strong>' +
+      (item.tall ? "Reel not made yet" : "Image not made yet") + "</strong><p>" + esc(item.brief) + "</p></div></div>";
+  }
+
+  function mediaHtml(item, key) {
+    if (item.brief) return placeholderHtml(item);
+    if (item.kind === "reel") {
+      return '<div class="media tall"><video src="' + item.video + '" poster="' + item.poster + '" controls playsinline preload="none"></video></div>';
+    }
+    if (item.images.length === 1) {
+      return '<div class="media"><img src="' + item.images[0] + '" alt="" width="1080" height="1350" loading="lazy"></div>';
+    }
+    const n = item.images.length;
+    return '<div class="media carousel" data-key="' + key + '">' +
+      '<div class="track" tabindex="0" aria-label="Carousel, ' + n + ' slides">' +
+      item.images.map((src, i) => '<img src="' + src + '" alt="Slide ' + (i + 1) + '" width="1080" height="1350" loading="lazy">').join("") +
+      "</div>" +
+      '<button class="nav prev" type="button" aria-label="Previous slide" disabled>' + ICON.prev + "</button>" +
+      '<button class="nav next" type="button" aria-label="Next slide">' + ICON.next + "</button>" +
+      '<span class="count">1/' + n + "</span></div>";
+  }
+
+  function postHtml(item, day, key) {
+    const n = item.images ? item.images.length : 0;
+    const dots = n > 1 ? '<span class="page-dots" data-for="' + key + '">' + Array.from({ length: n }, (_, i) => '<i class="' + (i === 0 ? "on" : "") + '"></i>').join("") + "</span>" : "";
+    const p = parts(day.date);
+    const reelish = item.kind === "reel" || item.tall;
+    return '<article class="post' + (reelish ? " reel" : "") + '">' +
+      '<header class="post-head">' + avatar() +
+      '<div class="who"><b>' + HANDLE + "</b>" + (item.place ? "<span>" + esc(item.place) + "</span>" : "") + "</div>" +
+      '<span class="dots">' + ICON.dots + "</span></header>" +
+      mediaHtml(item, key) +
+      '<div class="actions">' + ICON.heart + ICON.comment + ICON.send + dots + '<span class="save">' + ICON.save + "</span></div>" +
+      captionHtml(item.caption, "cap-" + key) +
+      '<time class="stamp" datetime="' + day.date + "T" + timeOf(day) + '">Planned for ' + p.dow + " " + p.day + " " + p.mon + ", " + timeOf(day) + "</time>" +
+      "</article>";
+  }
+
+  function storyHtml(item) {
+    const inner = item.brief
+      ? '<div class="placeholder-art" style="background: var(--surface)"><strong>Story not made yet</strong><p>' + esc(item.brief) + "</p></div>"
+      : '<img src="' + item.image + '" alt="" width="1080" height="1920" loading="lazy">' +
+        '<div class="shade-top"></div><div class="shade-bottom"></div><div class="bar"></div>' +
+        '<div class="story-head">' + avatar() + "<b>" + HANDLE + "</b><span>Story</span></div>" +
+        '<div class="reply"><span>Send message</span>' + ICON.heart + ICON.send + "</div>";
+    return '<article class="story" aria-label="Story">' + inner + "</article>";
+  }
+
+  /* A comment is anchored to the label, so its quote names the post ("Wed 18 Nov · Battery in winter carousel"). */
+  function itemHtml(item, day, i, inner) {
+    const p = parts(day.date);
+    const width = item.kind === "story" ? 270 : item.kind === "reel" || item.tall ? 360 : 440;
+    return '<figure class="item" id="item-' + day.date + "-" + i + '" data-comment-target style="--w: ' + width + 'px">' +
+      '<figcaption class="item-label"><span class="label-text">' + p.dow + " " + p.day + " " + p.mon + " · " + esc(item.label) + "</span>" +
+      '<button class="comment-btn" type="button" hidden>' + ICON.commentSmall + "Comment</button></figcaption>" +
+      inner + "</figure>";
+  }
+
+  function statusPill(day) {
+    const made = day.items.every((item) => !item.brief);
+    if (day.template) return '<span class="pill template">' + (made ? "Template, needs the owner" : "Planned, needs the owner") + "</span>";
+    return made ? '<span class="pill ready">Ready</span>' : '<span class="pill todo">Planned</span>';
+  }
+
+  function render() {
+    let posts = 0;
+    let stories = 0;
+    let made = 0;
+    DAYS.forEach((day, d) => {
+      const p = parts(day.date);
+      const ready = day.items.every((item) => !item.brief) && !day.template;
+      const list = document.querySelector('.timeline[data-month="' + p.month + '"]');
+      const li = document.createElement("li");
+      li.className = "day" + (ready ? " ready" : "");
+      li.innerHTML =
+        '<div class="when"><span class="dow">' + p.dow + '</span><span class="dnum">' + p.day + '</span><span class="mon">' + p.mon + '</span><span class="time">' + timeOf(day) + "</span></div>" +
+        '<div class="stack">' +
+        '<div class="meta"><span class="pill">' + esc(day.format) + "</span>" + statusPill(day) + "</div>" +
+        '<p class="note">' + esc(day.note) + "</p>" +
+        '<div class="items">' +
+        day.items.map((item, i) => {
+          if (!item.brief) made++;
+          if (item.kind === "story") { stories++; return itemHtml(item, day, i, storyHtml(item)); }
+          posts++;
+          return itemHtml(item, day, i, postHtml(item, day, d + "-" + i));
+        }).join("") +
+        "</div></div>";
+      list.appendChild(li);
+    });
+    document.getElementById("summary").textContent =
+      "Instagram @kfx_kranj and Facebook, 12 Nov to 30 Dec 2026: " + posts + " posts and " + stories + " Stories, " + made + " made. Planned, not posted yet.";
+  }
+
+  function wireCarousels() {
+    document.querySelectorAll(".carousel").forEach((box) => {
+      const track = box.querySelector(".track");
+      const prev = box.querySelector(".prev");
+      const next = box.querySelector(".next");
+      const count = box.querySelector(".count");
+      const dots = document.querySelectorAll('.page-dots[data-for="' + box.dataset.key + '"] i');
+      const n = track.children.length;
+      const index = () => Math.round(track.scrollLeft / track.clientWidth);
+      const go = (i) => track.scrollTo({ left: Math.max(0, Math.min(n - 1, i)) * track.clientWidth });
+      const update = () => {
+        const i = index();
+        count.textContent = i + 1 + "/" + n;
+        prev.disabled = i === 0;
+        next.disabled = i === n - 1;
+        dots.forEach((dot, k) => dot.classList.toggle("on", k === i));
+      };
+      prev.addEventListener("click", () => go(index() - 1));
+      next.addEventListener("click", () => go(index() + 1));
+      track.addEventListener("scroll", update, { passive: true });
+      track.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); go(index() + 1); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); go(index() - 1); }
+      });
+    });
+  }
+
+  function setCaption(button, open) {
+    const rest = document.getElementById(button.getAttribute("aria-controls"));
+    rest.hidden = !open;
+    button.setAttribute("aria-expanded", String(open));
+    button.textContent = open ? "less" : "… more";
+  }
+
+  function wireCaptions() {
+    document.addEventListener("click", (e) => {
+      const button = e.target.closest(".more");
+      if (button) setCaption(button, button.getAttribute("aria-expanded") !== "true");
+    });
+    const all = document.getElementById("expand-all");
+    all.addEventListener("click", () => {
+      const open = all.getAttribute("aria-pressed") !== "true";
+      all.setAttribute("aria-pressed", String(open));
+      all.textContent = open ? "Hide full captions" : "Show full captions";
+      document.querySelectorAll(".more").forEach((b) => setCaption(b, open));
+    });
+  }
+
+  async function wireComments() {
+    const hint = document.getElementById("comment-hint");
+    const api = window.claude && window.claude.use
+      ? await window.claude.use("comments").catch(() => null)
+      : null;
+    if (!api) {
+      return;
+    }
+    const buttons = document.querySelectorAll(".comment-btn");
+    const off = (text) => { buttons.forEach((b) => { b.hidden = true; }); hint.textContent = text; };
+    buttons.forEach((b) => { b.hidden = false; });
+    hint.hidden = false;
+    hint.textContent = "Press Comment above a post to leave a note. Everyone the page is shared with sees it.";
+    document.addEventListener("click", async (e) => {
+      const button = e.target.closest(".comment-btn");
+      if (!button) return;
+      const range = document.createRange();
+      range.selectNodeContents(button.parentElement.querySelector(".label-text"));
+      try {
+        await api.openComposer({ range });
+      } catch (err) {
+        const code = err && err.code;
+        if (code === "rate_limited") return;
+        if (code === "invalid") {
+          api.openComposer({ element: button.closest(".item") }).catch(() => {});
+          return;
+        }
+        off("Commenting from the page is off in this view. Use the comment tool in claude.ai instead.");
+      }
+    });
+  }
+
+  render();
+  wireCarousels();
+  wireCaptions();
+  wireComments();
+</script>
+</body>
+</html>

@@ -81,6 +81,18 @@ Load the `artifact-design` and `artifact-capabilities` skills, then publish with
 
 The artifact is private until the user shares it. Sharing with the owner for commenting is the user's step; tell them it is needed for the Comment buttons.
 
+## 5b. Or publish on znidar.dev
+
+When the user asks for a page on the site (as with `/marketing/kfx-2026`), put the timeline in the Portfolio repo instead of, or as well as, the Artifact:
+
+- Page: `public/marketing/<client>-<year>.html`, served at `https://znidar.dev/marketing/<client>-<year>`. Media: `public/marketing/<client>-<year>/media/`.
+- In the page, every media path is `<client>-<year>/media/<file>`, not `media/<file>`, because the page is served from `/marketing/`.
+- Make it a complete document: `<!doctype html>`, `<html lang="en">`, `<head>` with charset, viewport, `<meta name="robots" content="noindex, nofollow">`, title and description. Keep `noindex`; do not link the page from the site or add it to the sitemap.
+- There is no comment API outside claude.ai, so the comment hint stays hidden and the Comment buttons do not appear. Review comments need the Artifact.
+- Media is committed to the repo (KFX: 16 MB). Leave it uncommitted unless the user asks.
+
+`public/marketing/kfx-2026.html` is the reference for this form.
+
 ## 6. After the owner reviews
 
 Comments arrive on the artifact, each quoting the post's label ("Wed 18 Nov · Battery in winter carousel"). Read them with the `ArtifactComments` tool, make the change in the plan, the media or both, re-render what changed, republish to the same URL, and answer each comment with what was done. When the owner supplies a missing value for a template, re-render the image with `--props`, replace the placeholder in the caption, remove `template: true`, and update the note.
