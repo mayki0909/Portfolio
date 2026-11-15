@@ -1,0 +1,90 @@
+# Stage 3: Posting Timeline
+
+Build the review page and publish it as an Artifact. The page is one HTML file that renders a `DAYS` array as Instagram-style posts, carousels, reels and Stories along a date rail, plus a `media/` folder.
+
+## 1. Start from the right source
+
+| Case | Start from |
+|---|---|
+| New client | `reference/timeline.html` in this skill's folder, copied to `/Users/miha/Documents/Projects/kranfix/tools/reel/out/<client>/timeline/<client>-timeline.html` |
+| Existing client, same or next period | That client's existing file in `out/<client>/timeline/`. If it is not on this machine, read the published artifact (Artifact `read`, then its `media/` files by path) and save it there |
+
+Before changing an existing timeline, read the live artifact and compare it with the local file. The owner or the user may have changed it since; build on the newer one.
+
+Do not redesign the page. The layout, both colour themes and the phone layout are done; a new client changes only the things below.
+
+## 2. Client-specific parts
+
+- `<title>`: `<Client> Posting Timeline`.
+- `--accent` and `--accent-soft` in all three colour blocks (light, dark by media query, dark by `data-theme`): the client's brand colour, with a lighter variant for dark mode that still reads on the dark surface.
+- `media/logo.svg`, and the logo's three sizes (header `.brand-logo img`, `.avatar img`, `.story .story-head .avatar img`, and the matching `width`/`height` attributes), set to its real aspect ratio. A wide logo sits small on a white disc, as Instagram crops it.
+- `HANDLE` (without `@`), `TIME` (the campaign's default posting time) and `PERIOD`.
+- The fact comment above `DAYS`: every source and the date it was checked.
+- One `<section class="month">` per month, with `id`, heading, a nav chip linking to it, and `data-month` set to the month number. A day whose month has no section is not rendered at all, so add the section before the days. A period that spans two years needs the selector extended to include the year.
+- The paragraph under each month heading: what is made, what is still planned, which posts wait for the owner.
+
+## 3. The DAYS array
+
+One entry per posting day, in date order:
+
+```js
+{
+  date: "2026-11-18",              // ISO date; the weekday is computed from it
+  time: "16:00",                   // optional; defaults to TIME
+  format: "Carousel, 7 slides",    // shown as a pill: "Reel, 17 s", "Single image", "Story", "Reel, planned"
+  template: true,                  // optional; the post waits for a decision by the owner
+  note: "…",                       // reviewer note, English, one or two sentences
+  items: [ /* one or more of the items below */ ]
+}
+```
+
+Items:
+
+| Item | Fields |
+|---|---|
+| Made reel | `kind: "reel"`, `label`, `video: "media/<id>.mp4"`, `poster: "media/<id>.jpg"`, `place` (optional, shown under the handle), `caption` |
+| Made image or carousel | `kind: "post"`, `label`, `images: [ … ]` (one path for a single image, several for a carousel; `img("<id>")` gives `media/<id>.jpg`), `caption` |
+| Made Story | `kind: "story"`, `label`, `image: img("<id>")` |
+| Planned image | `kind: "post"`, `label`, `brief`, `caption` |
+| Planned reel | `kind: "post"`, `tall: true`, `label`, `brief`, `caption` |
+| Planned Story | `kind: "story"`, `label`, `brief` |
+
+- `brief` and media are alternatives: an item with `brief` shows a dashed placeholder with the brief's text. When the media is made, remove `brief` and add the media fields (and change a planned reel to `kind: "reel"`).
+- `label` is the short English name shown above the item and quoted in comments ("Battery in winter carousel", "Reel: winter service", "Story: Miklavž").
+- `caption`: paragraphs separated by `\n\n`. The first paragraph is shown; the rest opens with "… more". Hashtags and `@handles` are coloured automatically.
+- The status pill is computed: **Ready** (all media made, not a template), **Planned** (some media missing), **Template, needs the owner** (made, but `template: true`), **Planned, needs the owner** (both).
+- The header summary counts posts, Stories and how many are made. Do not type those numbers by hand anywhere else on the page, or keep them in step if you do (the month paragraphs).
+
+## 4. Check the page locally
+
+Open the file in a browser from its folder, so `media/` resolves:
+
+- every day appears under the right month, in order, with the right weekday;
+- no broken image; every carousel has the right number of slides and its arrows, counter and dots move together; every reel plays;
+- each caption's first paragraph works alone, and "Show full captions" opens all of them;
+- templates show their placeholder in both the image and the caption;
+- light and dark theme, and phone width (the date rail moves above the post below 640 px);
+- every media file named in `DAYS` exists in `media/`, and `media/` holds no file that `DAYS` does not use.
+
+Comment buttons stay hidden outside claude.ai; that is expected.
+
+## 5. Publish
+
+Load the `artifact-design` and `artifact-capabilities` skills, then publish with the Artifact tool:
+
+- `file_path`: the timeline HTML.
+- `files`: every file in `media/`, published under the same `media/<name>` path the page uses. Each file must be under 15 MB and one publish under 64 MB; with many reels, publish the page first and add media in further publishes to the same `url`.
+- `capabilities`: `{"comments": {"composer_only": true}}`. This is what makes the **Comment** button above each post work for people the page is shared with.
+- `icon`: `calendar`. `description`: one sentence, for example "Planned Instagram and Facebook posts for KFX, November and December 2026."
+
+**Same client, same link.** An update republishes to that client's existing URL (pass it as `url` after reading it), so the link the owner already has keeps working. On an update, send only the media that is new or changed and pass `null` for files that were removed. A new client gets a new artifact.
+
+The artifact is private until the user shares it. Sharing with the owner for commenting is the user's step; tell them it is needed for the Comment buttons.
+
+## 6. After the owner reviews
+
+Comments arrive on the artifact, each quoting the post's label ("Wed 18 Nov · Battery in winter carousel"). Read them with the `ArtifactComments` tool, make the change in the plan, the media or both, re-render what changed, republish to the same URL, and answer each comment with what was done. When the owner supplies a missing value for a template, re-render the image with `--props`, replace the placeholder in the caption, remove `template: true`, and update the note.
+
+## Output of this stage
+
+The artifact link, and the summary the main skill asks for: posts and Stories planned, how many are made, which are templates and what each needs from the owner, and anything that should be checked again on the day of posting (prices, stock, hours).

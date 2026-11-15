@@ -1,0 +1,677 @@
+<title>Client Posting Timeline</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Manrope:wght@600;800&display=swap">
+<style>
+  /* A date rail on the left, a vertical line, and the posts as they would appear in the app. */
+  :root {
+    --bg: #f4f2f3;
+    --surface: #ffffff;
+    --ink: #141113;
+    --muted: #6f686c;
+    --line: #e2dde0;
+    --accent: #af1a44;
+    --accent-soft: rgba(175, 26, 68, 0.1);
+    --tag: #1d4f91;
+    --ready: #2f7a3d;
+    --ready-soft: rgba(47, 122, 61, 0.12);
+    --warn: #8a5a00;
+    --warn-soft: rgba(196, 132, 0, 0.14);
+    --placeholder: #ece8ea;
+    --display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --body: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f0d0e;
+      --surface: #1a1618;
+      --ink: #f3eff1;
+      --muted: #a69ea2;
+      --line: #2f2a2d;
+      --accent: #e4587f;
+      --accent-soft: rgba(228, 88, 127, 0.16);
+      --tag: #8fb8f4;
+      --ready: #6fcf83;
+      --ready-soft: rgba(111, 207, 131, 0.14);
+      --warn: #f0b84a;
+      --warn-soft: rgba(240, 184, 74, 0.14);
+      --placeholder: #252023;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f0d0e;
+    --surface: #1a1618;
+    --ink: #f3eff1;
+    --muted: #a69ea2;
+    --line: #2f2a2d;
+    --accent: #e4587f;
+    --accent-soft: rgba(228, 88, 127, 0.16);
+    --tag: #8fb8f4;
+    --ready: #6fcf83;
+    --ready-soft: rgba(111, 207, 131, 0.14);
+    --warn: #f0b84a;
+    --warn-soft: rgba(240, 184, 74, 0.14);
+    --placeholder: #252023;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+  }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Header ---------- */
+  .top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .top-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-block: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .brand-logo {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 44px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+  }
+  .brand-logo img { width: 58px; height: 13px; }
+  .brand h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .brand p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip-link, .toggle {
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .toggle[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* ---------- Months and timeline ---------- */
+  main {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 32px 96px;
+  }
+  .month { max-width: 1040px; margin: 0 auto; scroll-margin-top: 90px; }
+  .month + .month { margin-top: 24px; }
+  .month-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin: 0 0 24px; }
+  .month h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 40px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .month-head p { margin: 0; color: var(--muted); max-width: 70ch; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .day {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 20px;
+  }
+  .when {
+    text-align: right;
+    padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-variant-numeric: tabular-nums;
+  }
+  .when .dow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .when .dnum { font-family: var(--display); font-weight: 800; font-size: 36px; line-height: 1; letter-spacing: -0.04em; margin-top: 2px; }
+  .when .mon { font-size: 13px; color: var(--muted); }
+  .when .time { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+  .stack {
+    position: relative;
+    min-width: 0;
+    border-left: 2px solid var(--line);
+    padding: 0 0 56px 28px;
+  }
+  .stack::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--muted);
+  }
+  .day.ready .stack::before { border-color: var(--accent); background: var(--accent); }
+  .day:last-child .stack { border-left-color: transparent; }
+
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .pill.ready { background: var(--ready-soft); border-color: transparent; color: var(--ready); }
+  .pill.template { background: var(--warn-soft); border-color: transparent; color: var(--warn); }
+  .pill.todo { background: var(--placeholder); border-color: transparent; color: var(--muted); }
+  .note { margin: 0 0 16px; max-width: 62ch; color: var(--muted); font-size: 14px; }
+
+  .items { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; }
+
+  /* ---------- One post or Story, with its label and Comment button ---------- */
+  .item { margin: 0; width: min(100%, var(--w)); display: flex; flex-direction: column; gap: 8px; }
+  .item > .post, .item > .story { width: 100%; }
+  .item-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 30px; font-size: 12.5px; color: var(--muted); }
+  .item-label .label-text { min-width: 0; }
+  .comment-btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .comment-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .brand .hint { margin-top: 4px; }
+
+  /* ---------- Feed post ---------- */
+  .post {
+    width: min(100%, 440px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .post.reel { width: min(100%, 360px); }
+  .post-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
+  /* A wide logo is shown small on white in the round avatar, as Instagram crops it. Set the three logo sizes to the logo's real aspect ratio. */
+  .avatar {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .avatar img { width: 26px; height: 6px; }
+  .post-head .who { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+  .post-head b { font-size: 14px; font-weight: 600; }
+  .post-head span { font-size: 12px; color: var(--muted); }
+  .post-head .dots { margin-left: auto; color: var(--ink); display: flex; }
+
+  .media { position: relative; background: var(--placeholder); aspect-ratio: 4 / 5; max-width: 100%; }
+  .media.tall { aspect-ratio: 9 / 16; }
+  .media > img, .media > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .carousel .track {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .carousel .track::-webkit-scrollbar { display: none; }
+  .carousel .track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: start; }
+  .carousel .nav {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #141113;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .carousel .nav[disabled] { opacity: 0; pointer-events: none; }
+  .carousel .prev { left: 10px; }
+  .carousel .next { right: 10px; }
+  .carousel .count {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(20, 17, 19, 0.72);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .placeholder-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px;
+    border: 2px dashed var(--line);
+    color: var(--muted);
+  }
+  .placeholder-art strong { font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: var(--ink); }
+  .placeholder-art p { margin: 0; font-size: 14px; }
+
+  .actions { position: relative; display: flex; align-items: center; gap: 14px; padding: 10px 12px 4px; }
+  .actions svg { display: block; }
+  .actions .save { margin-left: auto; }
+  .page-dots { position: absolute; left: 50%; translate: -50% 0; display: flex; gap: 4px; }
+  .page-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+  .page-dots i.on { background: var(--accent); }
+
+  .caption { padding: 4px 12px 0; font-size: 14.5px; white-space: pre-line; overflow-wrap: anywhere; }
+  .caption b { font-weight: 600; }
+  .caption .tag { color: var(--tag); }
+  .caption .more { border: 0; background: none; padding: 0; color: var(--muted); cursor: pointer; }
+  .stamp { display: block; padding: 8px 12px 14px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- Story ---------- */
+  .story {
+    position: relative;
+    width: min(100%, 270px);
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .story > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .story .shade-top, .story .shade-bottom { position: absolute; left: 0; right: 0; pointer-events: none; }
+  .story .shade-top { top: 0; height: 72px; background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0)); }
+  .story .shade-bottom { bottom: 0; height: 72px; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.42)); }
+  .story .bar { position: absolute; top: 8px; left: 8px; right: 8px; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, 0.95); }
+  .story .story-head { position: absolute; top: 18px; left: 10px; right: 10px; display: flex; align-items: center; gap: 8px; color: #fff; font-size: 12.5px; }
+  .story .story-head .avatar { width: 26px; height: 26px; border: 0; }
+  .story .story-head .avatar img { width: 20px; height: 5px; }
+  .story .story-head span { opacity: 0.8; }
+  .story .reply { position: absolute; left: 10px; right: 10px; bottom: 12px; display: flex; align-items: center; gap: 10px; color: #fff; }
+  .story .reply span { flex: 1; height: 34px; border: 1px solid rgba(255, 255, 255, 0.85); border-radius: 999px; padding: 0 14px; display: flex; align-items: center; font-size: 12.5px; }
+
+  @media (max-width: 640px) {
+    .day { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .when { flex-direction: row; align-items: baseline; gap: 6px; text-align: left; }
+    .when .dnum { font-size: 22px; margin: 0; }
+    .when .time { margin: 0 0 0 auto; }
+    .stack { padding-left: 18px; }
+    .month h2 { font-size: 32px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    .carousel .track { scroll-behavior: smooth; }
+  }
+</style>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="brand-logo"><img src="media/logo.svg" alt="Client" width="58" height="13"></span>
+      <div>
+        <h1>Posting timeline</h1>
+        <p id="summary">Instagram and Facebook. Planned, not posted yet.</p>
+        <p class="hint" id="comment-hint">To leave a note on a post, open this page in claude.ai.</p>
+      </div>
+    </div>
+    <nav class="controls" aria-label="Timeline">
+      <a class="chip-link" href="#march">March</a>
+      <a class="chip-link" href="#april">April</a>
+      <button class="toggle" id="expand-all" type="button" aria-pressed="false">Show full captions</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- One section per month. data-month is the month number; render() puts each day into the list of its month. -->
+  <section class="month" id="march" aria-labelledby="h-mar">
+    <div class="month-head">
+      <h2 id="h-mar">March</h2>
+      <p>What is made, what is still planned, and which posts wait for the owner.</p>
+    </div>
+    <ol class="timeline" data-month="3"></ol>
+  </section>
+  <section class="month" id="april" aria-labelledby="h-apr">
+    <div class="month-head">
+      <h2 id="h-apr">April</h2>
+      <p>What is made, what is still planned, and which posts wait for the owner.</p>
+    </div>
+    <ol class="timeline" data-month="4"></ol>
+  </section>
+</main>
+
+<script>
+  const HANDLE = "client_handle";
+  /* First and last day, as shown in the header summary. */
+  const PERIOD = "1 Mar to 5 Apr 2027";
+  /* Suggested times, not measured best times. */
+  const TIME = "17:30";
+  const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const img = (name) => "media/" + name + ".jpg";
+
+  /*
+   * FACTS: where every fact on the posts comes from and the date it was checked, e.g.
+   * "Address, phone, hours and prices from example.si on 1 Mar 2027."
+   */
+  const DAYS = [
+    {
+      date: "2027-03-01", format: "Reel, 15 s",
+      note: "A made reel: video plus its poster frame. Notes are for the reviewer, in English.",
+      items: [{ kind: "reel", label: "Reel: short name", video: "media/ClientMar01-ExampleReel.mp4", poster: "media/ClientMar01-ExampleReel.jpg", place: "Street 1, Town",
+        caption: "First paragraph is the hook shown before \"… more\".\n\nThe rest of the caption, with the contact line.\n\n#tag #town #topic" }]
+    },
+    {
+      date: "2027-03-03", time: "10:00", format: "Carousel, 3 slides",
+      note: "A made carousel. `time` overrides the default TIME for this day.",
+      items: [{ kind: "post", label: "Example carousel", images: ["ClientMar03-Example-1", "ClientMar03-Example-2", "ClientMar03-Example-3"].map(img),
+        caption: "Hook.\n\nBody.\n\n#tag #town #topic" }]
+    },
+    {
+      date: "2027-03-05", format: "Single image", template: true,
+      note: "Template: the image is made but shows a placeholder until the owner decides. Say exactly what is missing.",
+      items: [{ kind: "post", label: "Example offer", images: [img("ClientMar05-Offer")],
+        caption: "Hook.\n\n[PONUDBA: −XX % na …]. Velja do [datum].\n\n#tag #town" }]
+    },
+    {
+      date: "2027-03-08", time: "12:00", format: "Story",
+      note: "A made Story.",
+      items: [{ kind: "story", label: "Story: short name", image: img("ClientMar08-ExampleStory") }]
+    },
+    {
+      date: "2027-04-02", format: "Reel, planned",
+      note: "Not made yet: `brief` replaces the media with a dashed placeholder. `tall: true` gives it the reel shape.",
+      items: [{ kind: "post", tall: true, label: "Reel: short name", brief: "What the reel shows, scene by scene, with the facts and prices it uses.",
+        caption: "Hook.\n\nBody.\n\n#tag #town" }]
+    },
+    {
+      date: "2027-04-05", format: "Single image, planned",
+      note: "Not made yet: a planned feed image.",
+      items: [{ kind: "post", label: "Example image", brief: "What the image shows.",
+        caption: "Hook.\n\nBody.\n\n#tag #town" }]
+    }
+  ];
+
+  const ICON = {
+    dots: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>',
+    heart: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-9.2-9.3C1.7 7.6 3.8 4.5 7 4.5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.2 0 5.3 3.1 4.2 6.2C19.5 15.4 12 20 12 20Z"/></svg>',
+    comment: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>',
+    send: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5 21 3Z"/></svg>',
+    save: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17Z"/></svg>',
+    prev: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>',
+    commentSmall: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>',
+    next: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>'
+  };
+
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const tags = (s) => esc(s).replace(/([#@][\p{L}\p{N}_]+(?:\.[\p{L}\p{N}_]+)*)/gu, '<span class="tag">$1</span>');
+  const timeOf = (day) => day.time || TIME;
+
+  function parts(iso) {
+    const [y, m, d] = iso.split("-").map(Number);
+    const wd = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+    return { month: m, day: d, dow: DOW[wd], mon: MON[m - 1] };
+  }
+
+  function avatar() {
+    return '<span class="avatar"><img src="media/logo.svg" alt="" width="26" height="6"></span>';
+  }
+
+  function captionHtml(text, id) {
+    const cut = text.indexOf("\n\n");
+    const head = cut === -1 ? text : text.slice(0, cut);
+    const rest = cut === -1 ? "" : text.slice(cut);
+    return '<div class="caption"><b>' + HANDLE + "</b> " + tags(head) +
+      (rest
+        ? '<span class="rest" id="' + id + '" hidden>' + tags(rest) + '</span> <button class="more" type="button" aria-expanded="false" aria-controls="' + id + '">… more</button>'
+        : "") +
+      "</div>";
+  }
+
+  function placeholderHtml(item) {
+    return '<div class="media' + (item.tall ? " tall" : "") + '"><div class="placeholder-art"><strong>' +
+      (item.tall ? "Reel not made yet" : "Image not made yet") + "</strong><p>" + esc(item.brief) + "</p></div></div>";
+  }
+
+  function mediaHtml(item, key) {
+    if (item.brief) return placeholderHtml(item);
+    if (item.kind === "reel") {
+      return '<div class="media tall"><video src="' + item.video + '" poster="' + item.poster + '" controls playsinline preload="none"></video></div>';
+    }
+    if (item.images.length === 1) {
+      return '<div class="media"><img src="' + item.images[0] + '" alt="" width="1080" height="1350" loading="lazy"></div>';
+    }
+    const n = item.images.length;
+    return '<div class="media carousel" data-key="' + key + '">' +
+      '<div class="track" tabindex="0" aria-label="Carousel, ' + n + ' slides">' +
+      item.images.map((src, i) => '<img src="' + src + '" alt="Slide ' + (i + 1) + '" width="1080" height="1350" loading="lazy">').join("") +
+      "</div>" +
+      '<button class="nav prev" type="button" aria-label="Previous slide" disabled>' + ICON.prev + "</button>" +
+      '<button class="nav next" type="button" aria-label="Next slide">' + ICON.next + "</button>" +
+      '<span class="count">1/' + n + "</span></div>";
+  }
+
+  function postHtml(item, day, key) {
+    const n = item.images ? item.images.length : 0;
+    const dots = n > 1 ? '<span class="page-dots" data-for="' + key + '">' + Array.from({ length: n }, (_, i) => '<i class="' + (i === 0 ? "on" : "") + '"></i>').join("") + "</span>" : "";
+    const p = parts(day.date);
+    const reelish = item.kind === "reel" || item.tall;
+    return '<article class="post' + (reelish ? " reel" : "") + '">' +
+      '<header class="post-head">' + avatar() +
+      '<div class="who"><b>' + HANDLE + "</b>" + (item.place ? "<span>" + esc(item.place) + "</span>" : "") + "</div>" +
+      '<span class="dots">' + ICON.dots + "</span></header>" +
+      mediaHtml(item, key) +
+      '<div class="actions">' + ICON.heart + ICON.comment + ICON.send + dots + '<span class="save">' + ICON.save + "</span></div>" +
+      captionHtml(item.caption, "cap-" + key) +
+      '<time class="stamp" datetime="' + day.date + "T" + timeOf(day) + '">Planned for ' + p.dow + " " + p.day + " " + p.mon + ", " + timeOf(day) + "</time>" +
+      "</article>";
+  }
+
+  function storyHtml(item) {
+    const inner = item.brief
+      ? '<div class="placeholder-art" style="background: var(--surface)"><strong>Story not made yet</strong><p>' + esc(item.brief) + "</p></div>"
+      : '<img src="' + item.image + '" alt="" width="1080" height="1920" loading="lazy">' +
+        '<div class="shade-top"></div><div class="shade-bottom"></div><div class="bar"></div>' +
+        '<div class="story-head">' + avatar() + "<b>" + HANDLE + "</b><span>Story</span></div>" +
+        '<div class="reply"><span>Send message</span>' + ICON.heart + ICON.send + "</div>";
+    return '<article class="story" aria-label="Story">' + inner + "</article>";
+  }
+
+  /* A comment is anchored to the label, so its quote names the post ("Wed 18 Nov · Battery in winter carousel"). */
+  function itemHtml(item, day, i, inner) {
+    const p = parts(day.date);
+    const width = item.kind === "story" ? 270 : item.kind === "reel" || item.tall ? 360 : 440;
+    return '<figure class="item" id="item-' + day.date + "-" + i + '" data-comment-target style="--w: ' + width + 'px">' +
+      '<figcaption class="item-label"><span class="label-text">' + p.dow + " " + p.day + " " + p.mon + " · " + esc(item.label) + "</span>" +
+      '<button class="comment-btn" type="button" hidden>' + ICON.commentSmall + "Comment</button></figcaption>" +
+      inner + "</figure>";
+  }
+
+  function statusPill(day) {
+    const made = day.items.every((item) => !item.brief);
+    if (day.template) return '<span class="pill template">' + (made ? "Template, needs the owner" : "Planned, needs the owner") + "</span>";
+    return made ? '<span class="pill ready">Ready</span>' : '<span class="pill todo">Planned</span>';
+  }
+
+  function render() {
+    let posts = 0;
+    let stories = 0;
+    let made = 0;
+    DAYS.forEach((day, d) => {
+      const p = parts(day.date);
+      const ready = day.items.every((item) => !item.brief) && !day.template;
+      const list = document.querySelector('.timeline[data-month="' + p.month + '"]');
+      const li = document.createElement("li");
+      li.className = "day" + (ready ? " ready" : "");
+      li.innerHTML =
+        '<div class="when"><span class="dow">' + p.dow + '</span><span class="dnum">' + p.day + '</span><span class="mon">' + p.mon + '</span><span class="time">' + timeOf(day) + "</span></div>" +
+        '<div class="stack">' +
+        '<div class="meta"><span class="pill">' + esc(day.format) + "</span>" + statusPill(day) + "</div>" +
+        '<p class="note">' + esc(day.note) + "</p>" +
+        '<div class="items">' +
+        day.items.map((item, i) => {
+          if (!item.brief) made++;
+          if (item.kind === "story") { stories++; return itemHtml(item, day, i, storyHtml(item)); }
+          posts++;
+          return itemHtml(item, day, i, postHtml(item, day, d + "-" + i));
+        }).join("") +
+        "</div></div>";
+      list.appendChild(li);
+    });
+    document.getElementById("summary").textContent =
+      "Instagram @" + HANDLE + " and Facebook, " + PERIOD + ": " + posts + " posts and " + stories + " Stories, " + made + " made. Planned, not posted yet.";
+  }
+
+  function wireCarousels() {
+    document.querySelectorAll(".carousel").forEach((box) => {
+      const track = box.querySelector(".track");
+      const prev = box.querySelector(".prev");
+      const next = box.querySelector(".next");
+      const count = box.querySelector(".count");
+      const dots = document.querySelectorAll('.page-dots[data-for="' + box.dataset.key + '"] i');
+      const n = track.children.length;
+      const index = () => Math.round(track.scrollLeft / track.clientWidth);
+      const go = (i) => track.scrollTo({ left: Math.max(0, Math.min(n - 1, i)) * track.clientWidth });
+      const update = () => {
+        const i = index();
+        count.textContent = i + 1 + "/" + n;
+        prev.disabled = i === 0;
+        next.disabled = i === n - 1;
+        dots.forEach((dot, k) => dot.classList.toggle("on", k === i));
+      };
+      prev.addEventListener("click", () => go(index() - 1));
+      next.addEventListener("click", () => go(index() + 1));
+      track.addEventListener("scroll", update, { passive: true });
+      track.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); go(index() + 1); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); go(index() - 1); }
+      });
+    });
+  }
+
+  function setCaption(button, open) {
+    const rest = document.getElementById(button.getAttribute("aria-controls"));
+    rest.hidden = !open;
+    button.setAttribute("aria-expanded", String(open));
+    button.textContent = open ? "less" : "… more";
+  }
+
+  function wireCaptions() {
+    document.addEventListener("click", (e) => {
+      const button = e.target.closest(".more");
+      if (button) setCaption(button, button.getAttribute("aria-expanded") !== "true");
+    });
+    const all = document.getElementById("expand-all");
+    all.addEventListener("click", () => {
+      const open = all.getAttribute("aria-pressed") !== "true";
+      all.setAttribute("aria-pressed", String(open));
+      all.textContent = open ? "Hide full captions" : "Show full captions";
+      document.querySelectorAll(".more").forEach((b) => setCaption(b, open));
+    });
+  }
+
+  async function wireComments() {
+    const hint = document.getElementById("comment-hint");
+    const api = window.claude && window.claude.use
+      ? await window.claude.use("comments").catch(() => null)
+      : null;
+    if (!api) {
+      hint.textContent = "Commenting works when this page is open in claude.ai and shared with you for commenting.";
+      return;
+    }
+    const buttons = document.querySelectorAll(".comment-btn");
+    const off = (text) => { buttons.forEach((b) => { b.hidden = true; }); hint.textContent = text; };
+    buttons.forEach((b) => { b.hidden = false; });
+    hint.textContent = "Press Comment above a post to leave a note. Everyone the page is shared with sees it.";
+    document.addEventListener("click", async (e) => {
+      const button = e.target.closest(".comment-btn");
+      if (!button) return;
+      const range = document.createRange();
+      range.selectNodeContents(button.parentElement.querySelector(".label-text"));
+      try {
+        await api.openComposer({ range });
+      } catch (err) {
+        const code = err && err.code;
+        if (code === "rate_limited") return;
+        if (code === "invalid") {
+          api.openComposer({ element: button.closest(".item") }).catch(() => {});
+          return;
+        }
+        off("Commenting from the page is off in this view. Use the comment tool in claude.ai instead.");
+      }
+    });
+  }
+
+  render();
+  wireCarousels();
+  wireCaptions();
+  wireComments();
+</script>
