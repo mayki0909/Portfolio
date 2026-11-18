@@ -1,7 +1,6 @@
 import { brand } from "../../brand";
 import {
   BadgeRow as SharedBadgeRow,
-  handleSize,
   JoinLine,
   Steps,
   StoryFrame,
@@ -124,25 +123,21 @@ export const GiveawayLastDayStory = () => (
   </StoryFrame>
 );
 
-export type WinnerProps = {
-  /** The winner's profile name, e.g. "@ana.novak". Render with --props='{"winner":"@ana.novak"}'. */
-  readonly winner: string;
-};
+/**
+ * Empty space under "prejme:" for the winner. The name is not in the image: the owner adds it in
+ * Instagram as a Mention sticker, which is tappable and notifies the winner (steps on the timeline page).
+ */
+const MENTION_SPACE = 260;
 
 /** Thu 3 Dec story: the draw result. Gender-neutral wording ("prejme"). */
-export const GiveawayWinnerStory = ({ winner }: WinnerProps) => (
+export const GiveawayWinnerStory = () => (
   <StoryFrame>
     <Badge>Nagradna igra</Badge>
     <Lead style={{ marginTop: 48, fontSize: 52, color: brand.ink }}>
       Žreb je opravljen. Popravilo na naš račun prejme:
     </Lead>
-    <Headline
-      size={handleSize(winner)}
-      style={{ marginTop: 40, color: brand.primary }}
-    >
-      {winner}
-    </Headline>
-    <Lead style={{ marginTop: 56, fontSize: 46 }}>
+    <div style={{ height: MENTION_SPACE }} />
+    <Lead style={{ marginTop: 0, fontSize: 46 }}>
       Čestitamo! Javi se nam v sporočilu do ponedeljka, 7. 12.
     </Lead>
     <JoinLine>Hvala vsem, ki ste sodelovali.</JoinLine>
