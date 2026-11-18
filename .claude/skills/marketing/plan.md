@@ -64,4 +64,4 @@ For each image or reel still to make, write a brief that is enough to build it: 
 
 ## Output of this stage
 
-The entries of the `DAYS` array described in `timeline.md`, complete except for media paths. Show the calendar to the user as a short table (date, format, topic, status) before spending time on media, and proceed unless they change it.
+The entries of the `DAYS` array described in `../posting-timeline/timeline.md`, complete except for media paths. Show the calendar to the user as a short table (date, format, topic, status) before spending time on media, and proceed unless they change it.
