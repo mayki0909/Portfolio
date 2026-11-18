@@ -511,6 +511,8 @@ export const Christmas = () => (
 
 const GOLD = "#ffd27a";
 const ROSE = "#ff6f97";
+/** The white-hot head of a burning star. */
+const HOT = "#fff6e8";
 
 type Firework = {
   readonly cx: number;
@@ -519,81 +521,207 @@ type Firework = {
   readonly color: string;
   readonly inner: string;
   readonly rays: number;
+  /** A willow's stars fall in long, thin golden arcs; a peony (the default) keeps its round shape. */
+  readonly kind?: "peony" | "willow";
   /** Where its rocket left the ground; no trail if absent. */
   readonly from?: number;
 };
 
-/** One burst: long rays ending in sparks, a shorter inner ring and a glowing core. */
-const Burst = ({ cx, cy, r, color, inner, rays }: Firework) => (
-  <g filter="url(#glow)">
-    {Array.from({ length: rays }, (_, i) => {
-      const angle = (i / rays) * Math.PI * 2 + random(`a-${cx}-${i}`) * 0.08;
-      const reach = r * (0.86 + random(`l-${cx}-${i}`) * 0.14);
-      const cos = Math.cos(angle);
-      const sin = Math.sin(angle);
+type Point = { readonly x: number; readonly y: number };
 
-      return (
-        <g key={i}>
-          <line
-            x1={cx + cos * r * 0.3}
-            y1={cy + sin * r * 0.3}
-            x2={cx + cos * reach * 0.88}
-            y2={cy + sin * reach * 0.88}
-            stroke={color}
-            strokeWidth={4}
-            strokeLinecap="round"
-            opacity={0.75}
-          />
-          <circle cx={cx + cos * reach} cy={cy + sin * reach} r={6} fill={color} />
-        </g>
-      );
-    })}
-    {Array.from({ length: rays }, (_, i) => {
-      const angle = ((i + 0.5) / rays) * Math.PI * 2;
-      const cos = Math.cos(angle);
-      const sin = Math.sin(angle);
+/**
+ * Where one star flies: thrown out from the centre at `angle` and pulled down by `gravity`
+ * (in burst radii), sampled from `t0` (the faint end of its tail) to 1 (its head).
+ */
+const flight = (
+  centre: Point,
+  reach: number,
+  angle: number,
+  gravity: number,
+  t0: number,
+): Point[] =>
+  Array.from({ length: 13 }, (_, k) => {
+    const t = t0 + ((1 - t0) * k) / 12;
+    return {
+      x: centre.x + Math.cos(angle) * reach * t,
+      y: centre.y + Math.sin(angle) * reach * t + 0.5 * gravity * reach * t * t,
+    };
+  });
 
-      return (
-        <g key={`in-${i}`}>
-          <line
-            x1={cx + cos * r * 0.18}
-            y1={cy + sin * r * 0.18}
-            x2={cx + cos * r * 0.5}
-            y2={cy + sin * r * 0.5}
-            stroke={inner}
-            strokeWidth={3}
-            strokeLinecap="round"
-            opacity={0.85}
-          />
-          <circle cx={cx + cos * r * 0.58} cy={cy + sin * r * 0.58} r={4} fill={inner} />
-        </g>
-      );
-    })}
-    <circle cx={cx} cy={cy} r={r * 0.08} fill={inner} opacity={0.9} />
-  </g>
-);
+/** A ribbon along the points, a hair at the tail and `width` at the head, as one closed path. */
+const ribbon = (points: readonly Point[], width: number) => {
+  const last = points.length - 1;
+  const side = (sign: number) =>
+    points.map((p, k) => {
+      const a = points[Math.max(0, k - 1)];
+      const b = points[Math.min(last, k + 1)];
+      const len = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+      const half = (width / 2) * (0.1 + 0.9 * (k / last) ** 1.4) * sign;
+      return `${(p.x - ((b.y - a.y) / len) * half).toFixed(1)},${(p.y + ((b.x - a.x) / len) * half).toFixed(1)}`;
+    });
+  return `M${side(1).join(" L")} L${side(-1).reverse().join(" L")} Z`;
+};
 
-/** The rocket's climb: a dotted, slightly curved line that fades out towards the ground. */
-const Trail = ({ cx, cy, r, color, from }: Firework) => {
-  if (from === undefined) return null;
-  const id = `trail-${cx}`;
-  const bottom = POST.height + 10;
-  const endY = cy + r * 0.2;
+/** One star: a tapered tail that fades in towards a white-hot head with a coloured halo. */
+const Streak = ({
+  id,
+  points,
+  color,
+  width,
+  head = 1,
+}: {
+  readonly id: string;
+  readonly points: readonly Point[];
+  readonly color: string;
+  readonly width: number;
+  /** Size of the head against the tail; willow stars have almost burnt out. */
+  readonly head?: number;
+}) => {
+  const tail = points[0];
+  const tip = points[points.length - 1];
 
   return (
     <g>
-      <linearGradient id={id} gradientUnits="userSpaceOnUse" x1={0} y1={bottom} x2={0} y2={endY}>
+      <linearGradient
+        id={id}
+        gradientUnits="userSpaceOnUse"
+        x1={tail.x}
+        y1={tail.y}
+        x2={tip.x}
+        y2={tip.y}
+      >
         <stop offset="0" stopColor={color} stopOpacity={0} />
-        <stop offset="1" stopColor={color} stopOpacity={0.9} />
+        <stop offset="0.55" stopColor={color} stopOpacity={0.55} />
+        <stop offset="1" stopColor={HOT} stopOpacity={1} />
       </linearGradient>
-      <path
-        d={`M${from},${bottom} Q${(from + cx) / 2 + 40},${(bottom + endY) / 2} ${cx},${endY}`}
-        stroke={`url(#${id})`}
-        strokeWidth={6}
-        strokeLinecap="round"
-        strokeDasharray="3 14"
-        fill="none"
-      />
+      <path d={ribbon(points, width)} fill={`url(#${id})`} />
+      {head > 0 ? (
+        <>
+          <circle cx={tip.x} cy={tip.y} r={width * 1.25 * head} fill={color} opacity={0.5} />
+          <circle cx={tip.x} cy={tip.y} r={width * 0.62 * head} fill={HOT} />
+        </>
+      ) : null}
+    </g>
+  );
+};
+
+/**
+ * One burst, drawn like a real shell: a soft light on the sky, an outer ring of stars that droop
+ * as they fall, an inner ring in a second colour, a flash at the centre and crackling glitter.
+ */
+const Burst = ({ cx, cy, r, color, inner, rays, kind = "peony" }: Firework) => {
+  const key = `${cx}-${cy}`;
+  const willow = kind === "willow";
+  const width = Math.max(4, r * (willow ? 0.03 : 0.052));
+  const innerRays = Math.round(rays * 0.6);
+
+  return (
+    <g>
+      <radialGradient id={`bloom-${key}`}>
+        <stop offset="0" stopColor={color} stopOpacity={0.3} />
+        <stop offset="0.5" stopColor={color} stopOpacity={0.08} />
+        <stop offset="1" stopColor={color} stopOpacity={0} />
+      </radialGradient>
+      <radialGradient id={`flash-${key}`}>
+        <stop offset="0" stopColor={HOT} stopOpacity={0.95} />
+        <stop offset="0.4" stopColor={inner} stopOpacity={0.5} />
+        <stop offset="1" stopColor={inner} stopOpacity={0} />
+      </radialGradient>
+      <circle cx={cx} cy={cy + r * 0.15} r={r * 1.7} fill={`url(#bloom-${key})`} />
+      <g filter="url(#glow)">
+        {Array.from({ length: rays }, (_, i) => {
+          const angle = (i / rays) * Math.PI * 2 + (random(`a-${key}-${i}`) - 0.5) * 0.12;
+          const reach = r * (0.82 + random(`l-${key}-${i}`) * 0.18);
+          return (
+            <Streak
+              key={i}
+              id={`s-${key}-${i}`}
+              points={flight({ x: cx, y: cy }, reach, angle, willow ? 1.15 : 0.34, willow ? 0.04 : 0.22)}
+              color={color}
+              width={width}
+              head={willow ? 0.45 : 1}
+            />
+          );
+        })}
+        {willow
+          ? null
+          : Array.from({ length: innerRays }, (_, i) => {
+              const angle = ((i + 0.5) / innerRays) * Math.PI * 2;
+              return (
+                <Streak
+                  key={`in-${i}`}
+                  id={`si-${key}-${i}`}
+                  points={flight({ x: cx, y: cy }, r * 0.52, angle, 0.2, 0.3)}
+                  color={inner}
+                  width={width * 0.8}
+                />
+              );
+            })}
+        <circle cx={cx} cy={cy} r={r * 0.24} fill={`url(#flash-${key})`} />
+        {Array.from({ length: Math.round(rays * 1.3) }, (_, i) => {
+          const angle = random(`g-a-${key}-${i}`) * Math.PI * 2;
+          const t = 0.55 + random(`g-d-${key}-${i}`) * 0.7;
+          const fall = willow ? 1.15 : 0.34;
+          const x = cx + Math.cos(angle) * r * t;
+          const y = cy + Math.sin(angle) * r * t + 0.5 * fall * r * t * t;
+          return (
+            <circle
+              key={`g-${i}`}
+              cx={x}
+              cy={y}
+              r={1.4 + random(`g-r-${key}-${i}`) * 2.6}
+              fill={i % 3 === 0 ? color : HOT}
+              opacity={0.45 + random(`g-o-${key}-${i}`) * 0.55}
+            />
+          );
+        })}
+      </g>
+    </g>
+  );
+};
+
+/** The rocket's climb: a tapered, curving spark trail that fades out towards the ground. */
+const Trail = ({ cx, cy, r, color, from }: Firework) => {
+  if (from === undefined) return null;
+  const key = `${cx}-${cy}`;
+  const bottom = POST.height + 10;
+  const end = { x: cx, y: cy + r * 0.12 };
+  const bend = (from + cx) / 2 + 40;
+  const points = Array.from({ length: 25 }, (_, k) => {
+    const t = k / 24;
+    const u = 1 - t;
+    return {
+      x: u * u * from + 2 * u * t * bend + t * t * end.x,
+      y: u * u * bottom + 2 * u * t * ((bottom + end.y) / 2) + t * t * end.y,
+    };
+  });
+
+  return (
+    <g filter="url(#glow)">
+      {/* Dimmer than the stars, so the climb does not read as one more streak of the burst. */}
+      <linearGradient
+        id={`trail-${key}`}
+        gradientUnits="userSpaceOnUse"
+        x1={0}
+        y1={bottom}
+        x2={0}
+        y2={end.y}
+      >
+        <stop offset="0" stopColor={color} stopOpacity={0} />
+        <stop offset="0.8" stopColor={color} stopOpacity={0.45} />
+        <stop offset="1" stopColor={color} stopOpacity={0.1} />
+      </linearGradient>
+      <path d={ribbon(points, 4.5)} fill={`url(#trail-${key})`} />
+      {points.slice(4).map((p, k) => (
+        <circle
+          key={k}
+          cx={p.x + (random(`tx-${key}-${k}`) - 0.5) * 26}
+          cy={p.y + (random(`ty-${key}-${k}`) - 0.5) * 18}
+          r={1.2 + random(`tr-${key}-${k}`) * 2}
+          fill={HOT}
+          opacity={(k / points.length) * 0.9}
+        />
+      ))}
     </g>
   );
 };
@@ -618,14 +746,14 @@ const Sparkle = ({
 
 /** Kept clear of the logo and the headline; the big ones rise from the bottom edge. */
 const FIREWORKS: readonly Firework[] = [
-  { cx: 118, cy: 290, r: 110, color: ROSE, inner: brand.white, rays: 18 },
-  { cx: 955, cy: 250, r: 130, color: GOLD, inner: ROSE, rays: 20 },
-  { cx: 220, cy: 1100, r: 158, color: GOLD, inner: brand.white, rays: 22, from: 330 },
-  { cx: 845, cy: 1075, r: 186, color: ROSE, inner: GOLD, rays: 24, from: 700 },
-  { cx: 535, cy: 1220, r: 78, color: brand.white, inner: ROSE, rays: 14, from: 520 },
-  { cx: 812, cy: 66, r: 46, color: brand.white, inner: GOLD, rays: 12 },
-  { cx: 1020, cy: 690, r: 64, color: brand.white, inner: ROSE, rays: 12 },
-  { cx: 58, cy: 720, r: 58, color: GOLD, inner: brand.white, rays: 12 },
+  { cx: 118, cy: 290, r: 110, color: ROSE, inner: brand.white, rays: 22 },
+  { cx: 955, cy: 250, r: 130, color: GOLD, inner: ROSE, rays: 24 },
+  { cx: 215, cy: 1060, r: 175, color: GOLD, inner: GOLD, rays: 30, kind: "willow", from: 330 },
+  { cx: 845, cy: 1075, r: 186, color: ROSE, inner: GOLD, rays: 30, from: 700 },
+  { cx: 535, cy: 1220, r: 78, color: brand.white, inner: ROSE, rays: 16, from: 520 },
+  { cx: 812, cy: 66, r: 46, color: brand.white, inner: GOLD, rays: 14 },
+  { cx: 1020, cy: 690, r: 64, color: brand.white, inner: ROSE, rays: 14 },
+  { cx: 58, cy: 720, r: 58, color: GOLD, inner: brand.white, rays: 14 },
 ];
 
 const CONFETTI_COLORS = [ROSE, GOLD, brand.white, PINK];
