@@ -70,7 +70,6 @@ export const NovemberPosts = () => (
     <Still
       id="Dec03-GiveawayWinnerStory"
       component={GiveawayWinnerStory}
-      defaultProps={{ winner: "@profil" }}
       {...STORY}
     />
   </Folder>

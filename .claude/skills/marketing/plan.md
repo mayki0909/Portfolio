@@ -4,6 +4,8 @@ Produce the calendar that the other two stages build: for each posting day a dat
 
 ## 1. Collect the facts first
 
+Start from `projects/<client>/` (`README.md` for facts, open questions and what not to claim; `brand.md` for logo, colours, photos and tone; `marketing.md` for what was already posted). It names the source of every fact: check the ones the campaign will use there again, and update the folder when something changed.
+
 Before writing any post, gather and write down, with the source and the date checked:
 
 - Name and handle exactly as on the profile (KFX: `@kfx_kranj`). Check the real profile; site links can be stale.
@@ -39,7 +41,7 @@ A typical month for KFX: 3 reels, 3 to 4 carousels, 3 to 4 single images, 1 to 2
 
 ## 4. Write the captions
 
-- Slovenian, formal plural (vi). Short sentences. No emoji unless the client already uses them.
+- Slovenian, in the client's form of address from `projects/<client>/brand.md`: formal plural (vi) for KFX and Savne Dolium, informal ti for Kranfix (as in its posts so far). Short sentences. No emoji unless the client already uses them.
 - **The first paragraph is the hook.** It is all a follower sees before "… more", so it must carry the post alone. Leave a blank line after it.
 - Then the body: the facts, a numbered list where the carousel has one.
 - Then one clear action with the real contact: booking URL, phone, or address and hours.

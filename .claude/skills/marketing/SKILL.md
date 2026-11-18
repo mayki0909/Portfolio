@@ -22,7 +22,7 @@ Run all three in order for a new campaign. Run one alone when `$ARGUMENTS` or th
 
 - **Media source:** the Remotion project at `tools/reel` in this repo (moved from the kranfix repo in November 2026). Its `README.md` documents every composition and command; read it first. Each client has its own folder under `src/` (`src/kfx`, `src/dolium`; Kranfix itself is in `src/posts` and the top-level folders).
 - **Renders and the timeline source:** `tools/reel/out/<client>/<month>/` and `tools/reel/out/<client>/timeline/`. `out/` is ignored by git, so these exist only on this machine. If the timeline source is missing locally, read it back from the published artifact.
-- **Client facts:** the client's own website and its repo if there is one (KFX: `/Users/miha/Documents/Projects/krgofix`).
+- **Client facts:** start with the client's folder in `projects/` at the repo root (`projects/kfx`, `projects/kranfix`, `projects/savne-dolium`): what the business does, contact facts and prices with their source files, brand, tone of voice, where the repo is, open questions and what not to claim. Re-check each fact at the source it names (the client's live site or repo) before it goes on a post, and update the folder when something changed. A new client gets a folder first (`projects/README.md`).
 - **Preview:** the Posting Timeline artifact. Do not load campaigns into Pendpost or any other scheduling tool for preview.
 
 ## Rules for every stage

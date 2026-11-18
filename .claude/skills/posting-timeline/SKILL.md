@@ -10,7 +10,7 @@ A Posting Timeline is one private claude.ai artifact per client. It shows every 
 
 | Client | Artifact | Local source in `tools/reel/out/` |
 |---|---|---|
-| Kranfix (phone repairs, `@_kranfix_`) | https://claude.ai/artifact/CtauMamWm6Yr8b9cBe2zVQ | `kranfix/timeline.html` (preview variant reading `../posts/*.png`), renders in `posts/` |
+| Kranfix (phone repairs, `@_kranfix_`) | https://claude.ai/artifact/CtauMamWm6Yr8b9cBe2zVQ | `kranfix/timeline.html` (preview variant reading `../posts/*.png`), renders in `posts/`; also on znidar.dev as `public/marketing/kranfix-2026.html`, with Download and Copy caption under each post |
 | KFX (e-scooters, `@kfx_kranj`) | https://claude.ai/artifact/Djh8jHt5VkqZEY3S44jXrQ | `kfx/timeline/kfx-timeline.html` and `media/`, renders in `kfx/<month>/`; also on znidar.dev as `public/marketing/kfx-2026.html` |
 
 `out/` is ignored by git and exists only on this machine. When a local copy is missing or older, the live artifact is the source.
@@ -25,7 +25,7 @@ A Posting Timeline is one private claude.ai artifact per client. It shows every 
 | **`sips`** (macOS) | Converting PNG renders to JPGs for the page: `sips -s format jpeg -s formatOptions 85 in.png --out out.jpg` |
 | **Artifact tool** | `read` the live page (with `url`, before any republish), `read` with `path` to save a file, `list` with `scope: "files"`, `publish` with `file_path`, `root` and a `files` map (`null` removes a file). New timelines: load the `artifact-design` and `artifact-capabilities` skills first and publish with `capabilities: {"comments": {"composer_only": true}}` and `icon: "calendar"` |
 | **ArtifactComments tool** | Reading the owner's comments on a post and answering each with what was changed |
-| **Client sources** | Facts for posts: the client's live site (WebFetch or the Chrome browser) and its repo (Kranfix: `/Users/miha/Documents/Projects/kranfix`, KFX: `/Users/miha/Documents/Projects/krgofix`) |
+| **Client sources** | Facts for posts: start with `projects/<client>/` in this repo (facts with their source files, brand, tone, repo path), then check at the source it names: the client's live site (WebFetch or the Chrome browser) and its repo (Kranfix: `/Users/miha/Documents/Projects/kranfix`, KFX: `/Users/miha/Documents/Projects/krgofix`, Savne Dolium: `/Users/miha/Documents/Projects/saunas-shop`) |
 | **Background Bash** | Rendering many stills or reels (`run_in_background`), so you can edit the page while they render |
 
 ## What to do

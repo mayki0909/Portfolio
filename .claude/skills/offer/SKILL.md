@@ -21,7 +21,7 @@ Start from a copy of an existing offer in `public/offer/`. Do not design from sc
 
 ## 1. Gather the inputs
 
-Take what `$ARGUMENTS` and the conversation give. Research the company yourself (website, Facebook/Instagram page) for what it sells, its tone, brand colour and logo. Ask the user only for what you cannot find or must not guess:
+Take what `$ARGUMENTS` and the conversation give. If the company has a folder in `projects/` (repo root), start there: it holds the business, brand, logo paths and tone already researched. Otherwise research the company yourself (website, Facebook/Instagram page) for what it sells, its tone, brand colour and logo. Ask the user only for what you cannot find or must not guess:
 
 - **Scope**: what is actually offered (website, admin system, data import, marketing, something else).
 - **Prices**: build price, maintenance, marketing. Never invent prices. If the user gives none, propose the KranFix numbers below as a starting point and ask for confirmation before finishing.

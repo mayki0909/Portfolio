@@ -97,6 +97,8 @@ When the user asks for a page on the site (as with `/marketing/kfx-2026`), put t
 
 `public/marketing/kfx-2026.html` is the reference for this form.
 
+When the page is for the person who posts (not only for review), use `public/marketing/kranfix-2026.html` as the reference instead: under each post it has **Download** (the image, or every slide of a carousel, as `<client>-<file>.jpg`) and **Copy caption** (the full caption, line breaks and hashtags included), so posting takes two clicks. On iPhone and iPad, Download opens the share sheet so "Save Image" puts the files in Photos, where Instagram finds them. Days with a placeholder in the image or caption get `template: true`, so the pill warns before anyone copies `[vpišite]` or `@profil`.
+
 ## 6. After the owner reviews
 
 Comments arrive on the artifact, each quoting the post's label ("Wed 18 Nov · Battery in winter carousel"). Read them with the `ArtifactComments` tool, make the change in the plan, the media or both, re-render what changed, republish to the same URL, and answer each comment with what was done. When the owner supplies a missing value for a template, re-render the image with `--props`, replace the placeholder in the caption, remove `template: true`, and update the note.
