@@ -1,6 +1,8 @@
 import { Composition, Folder, Still } from "remotion";
 import { DoliumIntro } from "./dolium/DoliumIntro";
 import { DOLIUM_OUTRO_DURATION, DoliumOutro } from "./dolium/DoliumOutro";
+import { DoliumDecemberPosts } from "./dolium/posts/december";
+import { ROUND_DURATION, RoundReel } from "./dolium/round/RoundReel";
 import { RITUAL_DURATION, RitualReel } from "./dolium/ritual/RitualReel";
 import {
   COVER,
@@ -181,6 +183,15 @@ export const RemotionRoot = () => (
         width={1080}
         height={1920}
       />
+      <Composition
+        id="DoliumDec21-RoundReel"
+        component={RoundReel}
+        durationInFrames={ROUND_DURATION}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <DoliumDecemberPosts />
     </Folder>
   </>
 );

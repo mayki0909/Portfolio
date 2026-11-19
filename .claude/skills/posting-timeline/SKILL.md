@@ -12,6 +12,7 @@ A Posting Timeline is one private claude.ai artifact per client. It shows every 
 |---|---|---|
 | Kranfix (phone repairs, `@_kranfix_`) | https://claude.ai/artifact/CtauMamWm6Yr8b9cBe2zVQ | `kranfix/timeline.html` (preview variant reading `../posts/*.png`), renders in `posts/`; also on znidar.dev as `public/marketing/kranfix-2026.html`, with Download and Copy caption under each post |
 | KFX (e-scooters, `@kfx_kranj`) | https://claude.ai/artifact/Djh8jHt5VkqZEY3S44jXrQ | `kfx/timeline/kfx-timeline.html` and `media/`, renders in `kfx/<month>/`; also on znidar.dev as `public/marketing/kfx-2026.html` |
+| Savne Dolium (outdoor saunas, `@savne_dolium`) | None yet | Page only on znidar.dev: `public/marketing/dolium-2026.html` and `dolium-2026/media/` (built from the Kranfix page, with Download and Copy caption); renders in `dolium/december/` |
 
 `out/` is ignored by git and exists only on this machine. When a local copy is missing or older, the live artifact is the source.
 

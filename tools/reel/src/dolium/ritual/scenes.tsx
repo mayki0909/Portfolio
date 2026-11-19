@@ -1,139 +1,206 @@
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import fire from "../assets/ritual/fire.mp4";
-import stones from "../assets/ritual/stones.mp4";
-import stove from "../assets/ritual/stove.mp4";
-import rest from "../assets/ritual/rest.jpg";
-import vihta from "../assets/ritual/vihta.mp4";
-import { clamp, dolium } from "../brand";
-import { DOLIUM_OUTRO_DURATION, DoliumOutro } from "../DoliumOutro";
-import { Mist, Steam } from "../film";
-import { Caption, Footage, RitualScene, Still, WINDOW } from "./parts";
+import { AbsoluteFill, Img, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import garden from "../assets/posts/barrel-garden.jpg";
+import interior from "../assets/posts/custom-interior.jpg";
+import lake from "../assets/sauna-lake.jpg";
+import view from "../assets/posts/window-lake.jpg";
+import { clamp, dmSans, dmSerif, dolium, ease, expoOut } from "../brand";
+import {
+  barrel,
+  dolium as doliumLine,
+  LOGO_VIEWBOX,
+  savne,
+} from "../logoPaths";
 
-export const SCENE_FRAMES = 105;
-/** Where each caption starts: once the transition into its scene has finished. */
-const CAPTION = 18;
-/** Frames between shots in a scene, dissolved. */
-const DISSOLVE = 6;
+/** Daylight scenes. The last one holds long enough for the line, then the logo. */
+export const VRT_FRAMES = 110;
+export const VIEW_FRAMES = 96;
+export const WOOD_FRAMES = 96;
+export const CLOSE_FRAMES = 124;
 
-/** 01 · Ogenj: the stove in the barrel, then the fire behind its glass. */
-export const Ogenj = () => (
-  <RitualScene
-    caption={
-      <Caption number="01" label="Ogenj" line="Zakurite peč." start={CAPTION} />
-    }
-  >
-    <Footage src={stove} clipFrames={26} focus={0.5} from={0} durationInFrames={58} />
-    <Footage
-      src={fire}
-      clipFrames={27}
-      focus={0.55}
-      from={52}
-      durationInFrames={SCENE_FRAMES - 52}
-      fadeIn={DISSOLVE}
-    />
-  </RitualScene>
-);
-
-/** 02 · Para: water on the hot stones raises a burst of steam, then the birch whisks. */
-export const Para = () => (
-  <RitualScene
-    caption={
-      <Caption number="02" label="Para" line="Polijte kamne." start={CAPTION} />
-    }
-  >
-    <Footage src={stones} clipFrames={25} focus={0.62} from={0} durationInFrames={62} />
-    <Footage
-      src={vihta}
-      clipFrames={25}
-      focus={0.6}
-      from={56}
-      durationInFrames={SCENE_FRAMES - 56}
-      fadeIn={DISSOLVE}
-    />
-    {/* Window pixels: the stones fill the lower part of the shot. */}
-    <Steam
-      seed="pour"
-      x={140}
-      y={780}
-      width={620}
-      count={18}
-      start={24}
-      every={2}
-      life={64}
-      rise={760}
-      size={640}
-      peak={0.7}
-    />
-  </RitualScene>
-);
-
-/** 03 · Počitek: resting in the barrel, looking out of its window onto the forest. */
-export const Pocitek = () => (
-  <RitualScene
-    caption={
-      <Caption
-        number="03"
-        label="Počitek"
-        line="Prepustite se toplini."
-        start={CAPTION}
-      />
-    }
-  >
-    {/* The website's hero photo (saunas-shop/public/assets/Hero.png, 1440×903). */}
-    <Still src={rest} aspect={1440 / 903} focus={0.5} />
-  </RitualScene>
-);
-
-/** Frames the outro's opening photo plays as the last scene before its logo comes in. */
-export const MIR_HOLD = 60;
-export const MIR_FRAMES = DOLIUM_OUTRO_DURATION + MIR_HOLD;
-/** The window opens up to full bleed over these frames. */
-const OPEN = [14, 48] as const;
+const LINE_BOTTOM = 320;
 
 /**
- * 04 · Mir: the outro's barrel sauna by the lake starts in the window, opens up to full bleed,
- * and plays under the last caption before the outro's logo comes in.
+ * A photograph, full frame, drifting. `focus` is where the frame looks,
+ * as a share of the photo's width, from the start of the scene to the end.
  */
-export const Mir = () => {
+const Plate = ({
+  src,
+  focus,
+  focusY = 46,
+  zoom = 1.08,
+  rise = 1.04,
+}: {
+  readonly src: string;
+  readonly focus: readonly [number, number];
+  /** Where the frame looks vertically, as a share of the photo's height. */
+  readonly focusY?: number;
+  /** Starting scale. Above 1 crops a landscape photo top and bottom. */
+  readonly zoom?: number;
+  readonly rise?: number;
+}) => {
   const frame = useCurrentFrame();
-  const closed = 1 - interpolate(frame, OPEN, [0, 1], {
+  const { durationInFrames } = useVideoConfig();
+  const t = interpolate(frame, [0, durationInFrames], [0, 1], {
     ...clamp,
-    easing: (t) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2),
+    easing: ease,
   });
-  const inset = {
-    top: WINDOW.y * closed,
-    right: (1080 - WINDOW.x - WINDOW.width) * closed,
-    bottom: (1920 - WINDOW.y - WINDOW.height) * closed,
-    left: WINDOW.x * closed,
-  };
+  const x = focus[0] + (focus[1] - focus[0]) * t;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: dolium.night }}>
-      <Mist opacity={0.8} />
-      <AbsoluteFill
+    <Img
+      src={src}
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        objectPosition: `${x}% ${focusY}%`,
+        transform: `scale(${interpolate(t, [0, 1], [zoom, rise])})`,
+        transformOrigin: `${x}% ${focusY}%`,
+        filter: "contrast(1.04) saturate(1.06)",
+      }}
+    />
+  );
+};
+
+/** A short darkening at the bottom so a light line can sit on a bright photograph. */
+const Floor = () => (
+  <AbsoluteFill
+    style={{
+      backgroundImage:
+        "linear-gradient(to top, rgba(28, 18, 12, 0.62) 0%, rgba(28, 18, 12, 0.16) 26%, rgba(28, 18, 12, 0) 48%)",
+    }}
+  />
+);
+
+/** One line, large, at the lower left. Not a numbered caption. */
+const Line = ({
+  text,
+  start = 10,
+  end,
+}: {
+  readonly text: string;
+  readonly start?: number;
+  readonly end?: number;
+}) => {
+  const frame = useCurrentFrame();
+  const inOpacity = interpolate(frame, [start, start + 14], [0, 1], {
+    ...clamp,
+    easing: ease,
+  });
+  const outOpacity =
+    end === undefined
+      ? 1
+      : interpolate(frame, [end, end + 12], [1, 0], { ...clamp, easing: ease });
+  const rise = interpolate(frame, [start, start + 18], [36, 0], {
+    ...clamp,
+    easing: expoOut,
+  });
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 84,
+        right: 140,
+        bottom: LINE_BOTTOM,
+        transform: `translateY(${rise}px)`,
+        opacity: inOpacity * outOpacity,
+        fontFamily: dmSerif,
+        fontStyle: "italic",
+        fontWeight: 400,
+        fontSize: 104,
+        lineHeight: 0.98,
+        color: "#F6F1EA",
+        textShadow: "0 12px 40px rgba(20, 10, 6, 0.45)",
+      }}
+    >
+      {text}
+    </div>
+  );
+};
+
+/** 1 · The barrel in a garden, in daylight. */
+export const Vrt = () => (
+  <AbsoluteFill style={{ backgroundColor: "#c5d6e4" }}>
+    <Plate src={garden} focus={[24, 36]} focusY={28} zoom={1.32} rise={1.4} />
+    <Floor />
+    <Line text="Na vrtu." />
+  </AbsoluteFill>
+);
+
+/** 2 · The arched window onto the trees. */
+export const Razgled = () => (
+  <AbsoluteFill style={{ backgroundColor: "#8ea37a" }}>
+    <Plate src={view} focus={[42, 56]} rise={1.12} />
+    <Floor />
+    <Line text="Z razgledom." />
+  </AbsoluteFill>
+);
+
+/** 3 · The wood inside. Cropped clear of the bench engraving on the right. */
+export const Les = () => (
+  <AbsoluteFill style={{ backgroundColor: "#c4a574" }}>
+    <Plate src={interior} focus={[34, 48]} focusY={42} rise={1.1} />
+    <Floor />
+    <Line text="Iz lesa." />
+  </AbsoluteFill>
+);
+
+const LOGO_WIDTH = 460;
+const LOGO_HEIGHT = (LOGO_VIEWBOX.height / LOGO_VIEWBOX.width) * LOGO_WIDTH;
+
+/**
+ * 4 · The barrel by the lake stays bright. The line leaves, and a small logo
+ * sits where the line was. This is not the dimmed outro card.
+ */
+export const Vecer = () => {
+  const frame = useCurrentFrame();
+  const logo = interpolate(frame, [62, 78], [0, 1], { ...clamp, easing: ease });
+  const tracking = interpolate(frame, [74, 100], [0.62, 0.38], {
+    ...clamp,
+    easing: expoOut,
+  });
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#8fb4d4" }}>
+      <Plate src={lake} focus={[62, 74]} rise={1.06} />
+      <Floor />
+      <Line text="Za vsak večer." end={54} />
+      <div
         style={{
-          clipPath: `inset(${inset.top}px ${inset.right}px ${inset.bottom}px ${inset.left}px round ${4 * closed}px)`,
+          position: "absolute",
+          left: 84,
+          bottom: 280,
+          opacity: logo,
+          transform: `translateY(${(1 - logo) * 16}px)`,
         }}
       >
-        <DoliumOutro hold={MIR_HOLD} />
-      </AbsoluteFill>
-      {/* Keeps the caption legible over the photo, and leaves with it. */}
-      <AbsoluteFill
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse 70% 14% at 50% 70%, rgba(18, 16, 25, 0.6), rgba(18, 16, 25, 0))",
-          opacity:
-            interpolate(frame, [OPEN[0], OPEN[1]], [0, 1], clamp) *
-            interpolate(frame, [MIR_HOLD + 22, MIR_HOLD + 34], [1, 0], clamp),
-        }}
-      />
-      <Caption
-        number="04"
-        label="Mir"
-        line="Vaša savna. Vaš ritual."
-        start={28}
-        end={MIR_HOLD + 22}
-      />
+        <svg
+          width={LOGO_WIDTH}
+          height={LOGO_HEIGHT}
+          viewBox={`0 0 ${LOGO_VIEWBOX.width} ${LOGO_VIEWBOX.height}`}
+        >
+          {[...barrel.paths, ...savne.paths, ...doliumLine.paths].map((d) => (
+            <path key={d} d={d} fill={dolium.primaryLight} />
+          ))}
+        </svg>
+        <div
+          style={{
+            marginTop: 28,
+            fontFamily: dmSans,
+            fontWeight: 500,
+            fontSize: 28,
+            letterSpacing: `${tracking}em`,
+            paddingLeft: `${tracking}em`,
+            textTransform: "uppercase",
+            color: dolium.primaryLight,
+          }}
+        >
+          savne-dolium.si
+        </div>
+      </div>
     </AbsoluteFill>
   );
 };

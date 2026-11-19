@@ -74,17 +74,44 @@ The old logo is in `src/kfx/rename/oldLogo.ts`, from `logo-primary.svg` at the c
 
 `DoliumOutro` is a 4 s end card (1080×1920, 30 fps) to close Savne Dolium videos, darker and slower than the intro. A barrel sauna by a lake at golden hour fills the frame, with a slow camera drift and push-in, soft mist rising and fine film grain. The photo then dims and falls out of focus, and the logo (in `primaryLight`) comes into focus over it as its steam curls up. Then "Razkošje popolne sprostitve" (DM Serif Display italic, adapted from the homepage hero's "Prepustite se razkošju popolne sprostitve"), a hairline and a widely spaced "SAVNE-DOLIUM.SI" follow. It has no sound effects; add music in the Instagram app. The photo is `src/dolium/assets/sauna-lake.jpg`, copied from `saunas-shop/public/navbar/sod-savna.jpg`; if you replace it, update `PHOTO_WIDTH` and `FOCUS` in `src/dolium/DoliumOutro.tsx`. `night` (#121019) in `src/dolium/brand.ts` is the only colour that is not on the site.
 
-`RitualReel` ("Večerni ritual") is a 17.3 s reel (1080×1920, 30 fps): an evening in your own sauna, step by step, in the same dark, filmic look as the outro. Each step plays in a framed window with a numbered caption under it, and the scenes dissolve into each other.
+`RitualReel` ("Na vrtu") is a 13.4 s reel (1080×1920, 30 fps, 402 frames). It is a daylight film of where the sauna stands, not a numbered ritual. Photographs fill the frame and slide across each other. One italic line sits at the lower left. The last photograph stays bright; a small logo and the domain replace the line. It does not use `DoliumOutro`.
 
 | Scene | Frames | Content |
 | --- | --- | --- |
-| Intro | 0–105 | `DoliumIntro`, held a little longer before it dissolves |
-| 01 Ogenj | 85–190 | The stove in the barrel, then its fire: "Zakurite peč." |
-| 02 Para | 170–275 | The hot stones, a burst of steam as if water were poured on, then the birch whisks: "Polijte kamne." |
-| 03 Počitek | 255–360 | Resting in the barrel, looking out of its window onto the forest: "Prepustite se toplini." |
-| 04 Mir + Outro | 340–520 | The outro's lakeside sauna starts in the window, opens up to full bleed under "Vaša savna. Vaš ritual.", then `DoliumOutro` plays on (its `hold` prop delays the logo by 60 frames) |
+| Vrt | 0–110 | The barrel in a garden (`posts/barrel-garden.jpg`, cropped off the "Relax" sign): "Na vrtu." |
+| Razgled | 102–198 | The arched window onto the trees (`posts/window-lake.jpg`): "Z razgledom." |
+| Les | 190–286 | The wood interior (`posts/custom-interior.jpg`, cropped off the bench engraving): "Iz lesa." |
+| Večer | 278–402 | The lakeside barrel (`sauna-lake.jpg`) stays bright under "Za vsak večer.", then the logo and savne-dolium.si |
 
-The footage is cut from `saunas-shop/public/hero.mp4` (1920×1080, 25 fps) into `src/dolium/assets/ritual/` (`stove`, `stones`, `fire`, `vihta`, each about one second, without sound). `Footage` in `src/dolium/ritual/parts.tsx` slows each clip so it fills its shot (about 0.55×) and sizes it to the window's height, so it stays close to its own resolution. The rest scene is the website's hero photo, `rest.jpg`, a JPEG of `saunas-shop/public/assets/Hero.png`. Every scene is about the sauna; the reel leaves out the hot tubs. The grain, mist and steam are in `src/dolium/film.tsx`, shared with the outro. The only sound is the intro's two whooshes; add music in the Instagram app.
+The photographs are `posts/barrel-garden.jpg`, `posts/window-lake.jpg` and `posts/custom-interior.jpg` from the saunas-shop site, plus `sauna-lake.jpg` (the outro's photograph, used here without the dim). The garden crop stays on the flowers and the round front, clear of the "Relax" sign. The interior crop stays on the stove and the meadow, clear of the brand engraved on the right-hand bench. No sound; add music in the Instagram app. `DoliumIntro` and `DoliumOutro` are unchanged and still used by other films.
+
+`DoliumDec21-RoundReel` ("one round of sauna") is a 17.8 s reel (1080×1920, 30 fps, 534 frames) for 21 Dec, the winter solstice. It keeps the framed night look and closes with `DoliumOutro`. The opening darkens the outro's lakeside barrel so the lit door reads as the longest night. The fire clip is cropped tight so the stove brand on the door stays out of frame.
+
+| Scene | Frames | Content |
+| --- | --- | --- |
+| 01 Noč | 0–96 | The barrel fills the frame, the window closes: "Najdaljša noč v letu." |
+| 02 Krog | 82–172 | The fire: "01 — Krog / 10 do 15 minut." Terme Krka, Talaso Strunjan, "Finska savna" (checked 19 Nov 2026) |
+| 03 Para | 158–262 | The stones and steam: "02 — Para / Polijte kamne. / Ne nad peč." Finnish Sauna Society, "Sauna bathing and customs" |
+| 04 Mir | 248–338 | The barrel's window onto the trees: "03 — Mir / Ohladite se. / Umirjeno, nato počivajte." |
+| 05 Voda | 324–428 | "04 — Voda / Pijte vodo. / Med savnanjem brez alkohola." and "Terme Krka · Suomen Saunaseura". Water: Terme Krka, "Savna rituali". Alcohol: Finnish Sauna Society, "Saunan terveysvaikutukset" |
+| Outro | 414–534 | `DoliumOutro` |
+
+No health claims. The Society's own health page says löyly suits pregnancy, so the reel does not tell pregnant people to see a doctor. It has no sound; add music in the Instagram app. The poster is frame 70.
+
+### Savne Dolium posts
+
+`src/dolium/posts/` holds the Savne Dolium feed posts (1080×1350) and Stories (1080×1920), in Studio folder "Dolium-December". The 2 Dec electric-stove carousel and the 4 Dec wood-stove carousel (`december/Electric.tsx`, `december/Wood.tsx`) sit before the 5 Dec "Drva ali elektrika?" Story. Their facts are the FAQ answer on electric versus wood heaters and the supply lines on the foundations page (`ELECTRIC_SUPPLY`, `SAUNA_LIGHTS`, `STOVE_TEMP` in `shared.tsx`). The stove shop categories still show "Kmalu v ponudbi", so the last slide points at the sauna configurator. The Story's tile title and body use DM Serif Display, the same face as the headline. The 11 Dec tub post, the 12 Dec holiday Story and the 14 Dec holiday post are no longer in the timeline. `shared.tsx` has the frame (light pages in `primaryLight`, dark pages in `night`), the logo drawn from `logoPaths.ts`, DM Serif Display headlines with an italic second line (`Soft`), the outlined pill label, the dark pill button, and every fact as a constant with its source: phone, domain, handle, rental prices, the rental refund, heating time, and `MODELS` (sauna names, capacity, price, discount). `slides.tsx` has the slide layouts: `PhotoCover`, `TipSlide`, `StepsSlide`, `ChecklistSlide`, `PriceSlide`, `CtaSlide`, `ProductSlide`, `GiftSlide`.
+
+Products, prices and rental prices are not in the saunas-shop code: they come from the Directus CMS (`cms.savne-dolium.si`, collections `Saunas`, `Products`, `RentPrices`), read on 18 Nov 2026. The rental fallbacks in `components/Rent/RentSauna.tsx` (55/70/200/350 €) are outdated; the live prices are 95/100/250/500 €. Sauna prices are the basic kit with delivery and without a stove, which every product slide says. Update `shared.tsx` and re-render when a price changes. The heating tips are from the shop's blog post, the care rules and winter tub tips from its FAQ (`constants.tsx`), the custom build steps from `components/SavnePoMeri/ProcessSection.tsx`, the rental steps from `components/Rent/Process.tsx` with the site's own icons (`public/icons`, copied to `src/dolium/assets/posts/icons`).
+
+Photos are copied into `src/dolium/assets/posts/` from `saunas-shop/public` (rental trailer and interior, stove, accessories, tubs, gardens) and from the CMS (`products/`, `accessories/`), so no other client's folder is used. The S2V photo is only 600×450 in the CMS; a sharper one from the owner would help. The Christmas card (`december/Holidays.tsx`) keeps the logo and adds hanging baubles, the logo's own barrel in the middle, snowflakes and presents. The New Year card keeps the logo and draws the same kind of shells, in Dolium violet and lilac on the night sky: tapered streaks with pale heads, a lilac willow, confetti and sparkles.
+
+```bash
+npx remotion bundle --bundle-cache=false --out-dir=/tmp/dolium-bundle
+npx remotion still /tmp/dolium-bundle DoliumDec03-Rent-1 out/dolium/december/DoliumDec03-Rent-1.png   # one still; loop over the IDs for all
+```
+
+The December reel on 1 Dec is `RitualReel` (copied to `out/dolium/december/DoliumDec01-RitualReel.mp4`). The 21 Dec reel is `DoliumDec21-RoundReel` (copied to `out/dolium/december/DoliumDec21-RoundReel.mp4`).
 
 `RefurbishedReel` is a 33 s reel (1080×1920, 30 fps), "Kako preverimo obnovljen telefon?", fully animated on a drawn generic phone (`src/refurbished/Phone.tsx`), so it stands for any model. It opens with the question instead of `LogoIntro`, since the first seconds decide whether people keep watching.
 
