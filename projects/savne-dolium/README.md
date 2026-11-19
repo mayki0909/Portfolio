@@ -75,16 +75,18 @@ Model names (from the generated sitemap, no prices): saunas S2, S2V, S28V, S3, S
 
 Product prices are **not in the repo**: they come from the Directus CMS at runtime (`services/*.tsx`). Read them on the live product page.
 
-Mobile sauna rental, code fallbacks that match the structured data (`components/Rent/RentSauna.tsx:84-99`, `schemas.tsx:393-426`). The live values come from the CMS (`RentPrices`) and may differ:
+Mobile sauna rental, **live values from the CMS** (`RentPrices`, last changed 9 Oct 2025, read 18 Nov 2026), which `/najem` shows:
 
 | Package | Price |
 |---|---|
-| Pon–Čet | 55,00 € / dan |
-| Pet–Ned | 70,00 € / dan |
-| Vikend paket (Pet–Ned) | 200,00 € |
-| Tedenski paket (Pon–Ned) | 350,00 € |
+| Pon–Čet | 95,00 € / dan |
+| Pet–Ned | 100,00 € / dan |
+| Vikend paket (Pet–Ned) | 250,00 € |
+| Tedenski paket (Pon–Ned) | 500,00 € |
 
-"V ceno je všteto končno čiščenje, stroški dostave po dogovoru odvisno od lokacije najema."
+"V ceno je všteto končno čiščenje, stroški dostave po dogovoru odvisno od lokacije najema." The code fallbacks (55 / 70 / 200 / 350 €, `components/Rent/RentSauna.tsx:84-96`) and the structured data in `schemas.tsx:393-426` are **outdated**: Google may still show the old prices.
+
+Product prices (CMS, 18 Nov 2026) are for the basic kit with delivery, **without a stove**: the configurator adds Harvia wood stoves (+1.110 € to +1.990 €) or electric heaters (+360 €, +410 €). The cart shows "Brezplačna poštnina" and "Rok dobave 3-4 tedne" for every order; each sauna lists its own production time (3–4 up to 7–8 weeks). Examples: Mini 1,6 m 2.790 €, Vertikalna 2.900 €, 2,4 m S2V 3.400 € (−5 % = 3.230 €, "najbolj priljubljena"), 3 m S3 3.650 €, 4 m S4P 4.550 €. Accessories: zajemalka 20 €, peščena ura 15 €, vedro 3 L 30 €, brezova palica 22 €, termometer in higrometer 20 €, naslonjalo z blazino 40 €. No gift cards are on sale (the CMS list is empty).
 
 ## Open questions for the owner
 
@@ -96,6 +98,8 @@ Sources disagree. Do not pick one silently: ask, or leave the detail out of the 
 - **Wood types:** spruce and thermowood (`constants.tsx:56`) vs custom builds in "nordijska smreka, macesen, termo les, lipa ali trepetlika" (`SavnePoMeri/DetailsSection.tsx:14`).
 - **Delivery time:** "3-4 tedne" in the cart, but delivery times "niso zavezujoči".
 - **Legal data:** a code comment says it may be placeholders.
+- **Rental prices in Google:** the structured data still says 55 / 70 / 200 / 350 €, the page shows 95 / 100 / 250 / 500 €.
+- **Testimonials:** the CMS has three; two (Maja Horvat, Luka Zupančič) date from the site build in 2023 and may be placeholders. Do not quote any until the owner confirms they are real.
 
 ## Do not claim
 

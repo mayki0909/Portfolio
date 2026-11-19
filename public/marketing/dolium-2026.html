@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Savne Dolium Posting Timeline</title>
+<meta name="description" content="Planned Instagram and Facebook posts for Savne Dolium, December 2026, with images to download and captions to copy.">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap">
+<style>
+  /* Layout: a date rail on the left, a vertical line, and the posts as they would appear in the app.
+     Under each post: Download (the image or every slide) and Copy caption, so posting takes two clicks. */
+  :root {
+    --bg: #f3f3f8;
+    --surface: #ffffff;
+    --ink: #1d1b26;
+    --muted: #6b6877;
+    --line: #dddce8;
+    --accent: #5d5a88;
+    --accent-soft: rgba(93, 90, 136, 0.12);
+    --on-accent: #ffffff;
+    --tag: #1d4f91;
+    --ready: #2f7a3d;
+    --ready-soft: rgba(47, 122, 61, 0.12);
+    --warn: #8a5a00;
+    --warn-soft: rgba(196, 132, 0, 0.14);
+    --placeholder: #e9e8f1;
+    --display: "DM Serif Display", Georgia, "Times New Roman", serif;
+    --body: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f0e14;
+      --surface: #19171f;
+      --ink: #efeef6;
+      --muted: #a19fae;
+      --line: #2c2a36;
+      --accent: #b4b1e6;
+      --accent-soft: rgba(180, 177, 230, 0.16);
+      --on-accent: #16141f;
+      --tag: #8fb8f4;
+      --ready: #6fcf83;
+      --ready-soft: rgba(111, 207, 131, 0.14);
+      --warn: #f0b84a;
+      --warn-soft: rgba(240, 184, 74, 0.14);
+      --placeholder: #24222d;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f0e14;
+    --surface: #19171f;
+    --ink: #efeef6;
+    --muted: #a19fae;
+    --line: #2c2a36;
+    --accent: #b4b1e6;
+    --accent-soft: rgba(180, 177, 230, 0.16);
+    --on-accent: #16141f;
+    --tag: #8fb8f4;
+    --ready: #6fcf83;
+    --ready-soft: rgba(111, 207, 131, 0.14);
+    --warn: #f0b84a;
+    --warn-soft: rgba(240, 184, 74, 0.14);
+    --placeholder: #24222d;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+  }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* ---------- Header ---------- */
+  .top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .top-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-block: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  /* The barrel mark is the logo's violet, so it sits on white in both themes, as Instagram shows it. */
+  .brand-logo {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 52px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+  }
+  .brand-logo img { width: 22px; height: 36px; }
+  .brand h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .brand p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip-link, .toggle {
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .toggle[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+  /* ---------- Months and timeline ---------- */
+  main {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 32px 96px;
+  }
+  .month { max-width: 1040px; margin: 0 auto; scroll-margin-top: 90px; }
+  .month + .month { margin-top: 24px; }
+  .month-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin: 0 0 24px; }
+  .month h2 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 40px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .month-head p { margin: 0; color: var(--muted); max-width: 70ch; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .day {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 20px;
+  }
+  .when {
+    text-align: right;
+    padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-variant-numeric: tabular-nums;
+  }
+  .when .dow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .when .dnum { font-family: var(--display); font-weight: 800; font-size: 36px; line-height: 1; letter-spacing: -0.04em; margin-top: 2px; }
+  .when .mon { font-size: 13px; color: var(--muted); }
+  .when .time { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+  .stack {
+    position: relative;
+    min-width: 0;
+    border-left: 2px solid var(--line);
+    padding: 0 0 56px 28px;
+  }
+  .stack::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--muted);
+  }
+  .day.ready .stack::before { border-color: var(--accent); background: var(--accent); }
+  .day:last-child .stack { border-left-color: transparent; }
+
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .pill.ready { background: var(--ready-soft); border-color: transparent; color: var(--ready); }
+  .pill.template { background: var(--warn-soft); border-color: transparent; color: var(--warn); }
+  .pill.todo { background: var(--placeholder); border-color: transparent; color: var(--muted); }
+  .note { margin: 0 0 16px; max-width: 62ch; color: var(--muted); font-size: 14px; }
+  .howto {
+    max-width: 62ch;
+    margin: 0 0 20px;
+    padding: 14px 18px 16px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+  }
+  .howto h3 { margin: 0 0 8px; font-family: var(--display); font-weight: 800; font-size: 16px; letter-spacing: -0.01em; }
+  .howto ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 14px; }
+  .howto li::marker { color: var(--accent); font-weight: 600; }
+
+  .items { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; }
+
+  /* ---------- One post or Story, with its label, Comment button, and Download and Copy under it ---------- */
+  .item { margin: 0; width: min(100%, var(--w)); display: flex; flex-direction: column; gap: 8px; }
+  .item > .post, .item > .story { width: 100%; }
+  .item-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 30px; font-size: 12.5px; color: var(--muted); }
+  .item-label .label-text { min-width: 0; }
+  .comment-btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .comment-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .brand .hint { margin-top: 4px; }
+
+  /* Side by side when both fit, stacked full width on a narrow phone. */
+  .take { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .take-btn {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .take-btn svg { flex: none; display: block; }
+  .take-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .take-btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .take-btn.primary:hover { color: var(--on-accent); filter: brightness(1.08); }
+  .take-btn.done, .take-btn.done:hover { background: var(--ready-soft); border-color: transparent; color: var(--ready); filter: none; }
+  .take-btn[aria-busy="true"] { opacity: 0.7; cursor: progress; }
+
+  /* ---------- Feed post ---------- */
+  .post {
+    width: min(100%, 440px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .post.reel { width: min(100%, 360px); }
+  .post-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
+  .avatar {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .avatar img { width: 13px; height: 22px; }
+  .post-head .who { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+  .post-head b { font-size: 14px; font-weight: 600; }
+  .post-head span { font-size: 12px; color: var(--muted); }
+  .post-head .dots { margin-left: auto; color: var(--ink); display: flex; }
+
+  .media { position: relative; background: var(--placeholder); aspect-ratio: 4 / 5; max-width: 100%; }
+  .media.tall { aspect-ratio: 9 / 16; }
+  .media > img, .media > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .carousel .track {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .carousel .track::-webkit-scrollbar { display: none; }
+  .carousel .track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: start; }
+  .carousel .nav {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #141113;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .carousel .nav[disabled] { opacity: 0; pointer-events: none; }
+  .carousel .prev { left: 10px; }
+  .carousel .next { right: 10px; }
+  .carousel .count {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(20, 17, 19, 0.72);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .placeholder-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px;
+    border: 2px dashed var(--line);
+    color: var(--muted);
+  }
+  .placeholder-art strong { font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: var(--ink); }
+  .placeholder-art p { margin: 0; font-size: 14px; }
+
+  .actions { position: relative; display: flex; align-items: center; gap: 14px; padding: 10px 12px 4px; }
+  .actions svg { display: block; }
+  .actions .save { margin-left: auto; }
+  .page-dots { position: absolute; left: 50%; translate: -50% 0; display: flex; gap: 4px; }
+  .page-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+  .page-dots i.on { background: var(--accent); }
+
+  .caption { padding: 4px 12px 0; font-size: 14.5px; white-space: pre-line; overflow-wrap: anywhere; }
+  .caption b { font-weight: 600; }
+  .caption .tag { color: var(--tag); }
+  .caption .more { border: 0; background: none; padding: 0; color: var(--muted); cursor: pointer; }
+  .stamp { display: block; padding: 8px 12px 14px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- Story ---------- */
+  .story {
+    position: relative;
+    width: min(100%, 270px);
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .story > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .story .shade-top, .story .shade-bottom { position: absolute; left: 0; right: 0; pointer-events: none; }
+  .story .shade-top { top: 0; height: 72px; background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0)); }
+  .story .shade-bottom { bottom: 0; height: 72px; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.42)); }
+  .story .bar { position: absolute; top: 8px; left: 8px; right: 8px; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, 0.95); }
+  .story .story-head { position: absolute; top: 18px; left: 10px; right: 10px; display: flex; align-items: center; gap: 8px; color: #fff; font-size: 12.5px; }
+  .story .story-head .avatar { width: 26px; height: 26px; border: 0; }
+  .story .story-head .avatar img { width: 10px; height: 17px; }
+  .story .story-head span { opacity: 0.8; }
+  .story .reply { position: absolute; left: 10px; right: 10px; bottom: 12px; display: flex; align-items: center; gap: 10px; color: #fff; }
+  .story .reply span { flex: 1; height: 34px; border: 1px solid rgba(255, 255, 255, 0.85); border-radius: 999px; padding: 0 14px; display: flex; align-items: center; font-size: 12.5px; }
+
+  @media (max-width: 640px) {
+    .day { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .when { flex-direction: row; align-items: baseline; gap: 6px; text-align: left; }
+    .when .dnum { font-size: 22px; margin: 0; }
+    .when .time { margin: 0 0 0 auto; }
+    .stack { padding-left: 18px; }
+    .month h2 { font-size: 32px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    .carousel .track { scroll-behavior: smooth; }
+  }
+  /* DM Serif Display comes in one weight, so the headings set in it use 400 instead of the reference's 800. */
+  .brand h1, .month h2, .when .dnum, .howto h3, .placeholder-art strong { font-weight: 400; letter-spacing: 0; }
+  .brand h1 { font-size: 24px; }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="brand-logo"><img src="dolium-2026/media/logo-mark.svg" alt="Savne Dolium" width="22" height="36"></span>
+      <div>
+        <h1>Posting timeline</h1>
+        <p id="summary">Instagram @savne_dolium and Facebook, 1 to 30 Dec 2026. Planned, not posted yet.</p>
+        <p class="hint" id="take-hint">Under each post: Download saves the image, Copy caption copies the text.</p>
+        <p class="hint" id="comment-hint" hidden></p>
+      </div>
+    </div>
+    <nav class="controls" aria-label="Timeline">
+      <a class="chip-link" href="#december">December</a>
+      <button class="toggle" id="expand-all" type="button" aria-pressed="false">Show full captions</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="month" id="december" aria-labelledby="h-dec">
+    <div class="month-head">
+      <h2 id="h-dec">December</h2>
+      <p>Every post is made. The 5 Dec Story gets a poll sticker in Instagram, with the steps on its day. The 11 Dec tub post is removed. The 12 Dec holiday Story and the 14 Dec holiday post are replaced by the stove carousels on 2 and 4 Dec, before the wood-or-electric Story. Check prices and rental dates as the notes say.</p>
+    </div>
+    <ol class="timeline" data-month="12"></ol>
+  </section>
+</main>
+<p class="sr-only" id="status" aria-live="polite"></p>
+
+<script>
+  const HANDLE = "savne_dolium";
+  const TIME = "19:00";
+  const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const MEDIA = "dolium-2026/media/";
+  const img = (name) => MEDIA + name + ".jpg";
+
+
+  /*
+   * Facts, checked 18 Nov 2026. Every number on a post comes from the shop's own sources:
+   * - Phone +386 68 601 072, savne-dolium.si, @savne_dolium: saunas-shop/constants.tsx and the live homepage.
+   * - Rental 95 € (Mon–Thu day), 100 € (Fri–Sun day), 250 € (weekend), 500 € (week): Directus RentPrices on
+   *   cms.savne-dolium.si (changed 9 Oct 2025), which /najem shows. The site's structured data still has the
+   *   old 55/70/200/350 €. Final cleaning included, delivery by agreement (components/Rent/RentSauna.tsx);
+   *   rental refunded on purchase (rental FAQ, constants.tsx); Harvia M3 wood stove, no electricity needed.
+   * - Sauna prices (Directus Saunas): basic kit with delivery, without a stove. S2V 3.400 € with 5 % off.
+   * - Accessories (Directus Products): zajemalka 20 €, vedro 3 L 30 €, brezova palica 22 €,
+   *   termometer in higrometer 20 €, naslonjalo z blazino 40 €. The cart says "Rok dobave 3-4 tedne".
+   * - Heating tips: the shop's blog post "Kako čim hitreje segreti savno na drva?". Care rules and heating
+   *   times: the FAQ (savne-dolium.si/faq). Stove choice (about 70–100 °C, wood vs electric): the same FAQ.
+   *   Electric supply and lights: components/PostavitevTemeljev/KajUreditiSection.tsx. Stove categories
+   *   elektricne-peci and peci-na-drva still show "Kmalu v ponudbi" (config/shopCategories.ts), so the
+   *   carousels point at the sauna configurator.
+   * - UNESCO: "Sauna culture in Finland", Representative List of the Intangible Cultural Heritage of Humanity,
+   *   17 Dec 2020 (ich.unesco.org; Finnish Government, valtioneuvosto.fi).
+   * - 21 Dec reel, checked 19 Nov 2026. Finnish sauna 10–15 min: Terme Krka, Talaso Strunjan saunas page
+   *   ("Finska savna"). Drink water: Terme Krka, "Savna rituali v Termah Krka". Do not lean over the heater,
+   *   and do not go in drunk: Finnish Sauna Society (sauna.fi, "Sauna bathing and customs" and
+   *   "Saunan terveysvaikutukset"). No health claims, and no pregnancy warning: the Society says löyly suits
+   *   pregnancy, and Terme Krka's pages do not say otherwise.
+   */
+  const DAYS = [
+    {
+      date: "2026-12-01", format: "Reel, 17 s",
+      note: "Opens the month. Daylight film of the sauna in a garden: Na vrtu, Z razgledom, Iz lesa, Za vsak večer. Add calm music in the app. If it is already on the profile, post the 3 Dec carousel today instead.",
+      items: [{ kind: "reel", label: "Reel: Na vrtu", video: MEDIA + "DoliumDec01-RitualReel.mp4", poster: img("DoliumDec01-RitualReel"),
+        caption: "Na vrtu. Z razgledom. Iz lesa. Za vsak večer.\n\nDolgi decembrski večeri so kot ustvarjeni za savno. Zunanje finske sod savne iz smreke in termo lesa, s pečjo na drva ali električnim grelcem, dostavimo po vsej Sloveniji.\n\nModeli in cene: savne-dolium.si\n\n#savnedolium #sodsavna #finskasavna" }]
+    },
+    {
+      date: "2026-12-02", format: "Carousel, 5 slides",
+      note: "Runs the day before the rental carousel and two days before the wood-or-electric Story. The stove shop categories still say \"Kmalu v ponudbi\", so the post points at the sauna configurator. Supply (400 V or 230 V) is from the foundations page.",
+      items: [{ kind: "post", label: "Electric stove carousel", images: ["DoliumDec02-Electric-1", "DoliumDec02-Electric-2", "DoliumDec02-Electric-3", "DoliumDec02-Electric-4", "DoliumDec02-Electric-5"].map(img),
+        caption: "Električna peč: manj dela z ognjem.\n\nZ električnim grelcem temperaturo lažje znižate ali zvišate. Ni drv, kurjenja in pepela, vzdrževanje je lažje. Za peč potrebujete 3-fazni priključek (400 V) ali 1-fazni (230 V), odvisno od moči.\n\nElektrični grelec in peč na drva segrejeta savno na okoli 70–100 °C. Peč izberete v konfiguratorju na savne-dolium.si.\n\n#savnedolium #elektricnasavna #sodsavna" }]
+    },
+    {
+      date: "2026-12-03", format: "Carousel, 5 slides",
+      note: "The rental refund on purchase is the strongest point: no competitor we found shows one. Prices are the live /najem ones; Google still shows older ones from the site's code. Check the sauna is free in December before posting.",
+      items: [{ kind: "post", label: "Mobile sauna rental carousel", images: ["DoliumDec03-Rent-1", "DoliumDec03-Rent-2", "DoliumDec03-Rent-3", "DoliumDec03-Rent-4", "DoliumDec03-Rent-5"].map(img),
+        caption: "Savna, ki pride k vam.\n\nMobilno sod savno na drva pripeljemo na vašo lokacijo, jo prižgemo in vam jo predstavimo. Električni priključek ni potreben. V ceno je všteto končno čiščenje, dostavo uredimo po dogovoru, glede na lokacijo.\n\nEn dan od 95 €, vikend paket 250 €, teden 500 €. Če se po najemu odločite za nakup savne, vam ceno najema povrnemo.\n\nRezervacija: savne-dolium.si/najem ali +386 68 601 072\n\n#savnedolium #najemsavne #sodsavna" }]
+    },
+    {
+      date: "2026-12-04", format: "Carousel, 5 slides",
+      note: "The day before the wood-or-electric Story. A wood stove needs no supply to run; lights in the sauna still need 230 V, including with a wood stove. That line is on the slide so it is not read as \"no electricity at all\".",
+      items: [{ kind: "post", label: "Wood stove carousel", images: ["DoliumDec04-Wood-1", "DoliumDec04-Wood-2", "DoliumDec04-Wood-3", "DoliumDec04-Wood-4", "DoliumDec04-Wood-5"].map(img),
+        caption: "Peč na drva: vonj po lesu, brez priključka za peč.\n\nPeč deluje brez elektrike. Za luči v savni je še vedno potreben dovod 230 V. Vonj po gorečem lesu ustvari tradicionalno vzdušje, temperaturo pa je težje nadzorovati kot pri električnem grelcu.\n\nSod savna se segreje v 30–40 minut. Peč izberete v konfiguratorju na savne-dolium.si.\n\n#savnedolium #savnanadrva #sodsavna" }]
+    },
+    {
+      date: "2026-12-05", time: "10:00", format: "Story",
+      note: "A poll to get replies, after the two stove carousels. Saturday morning, the day before Miklavž (and Finland's Independence Day). The text inside both tiles uses DM Serif Display, the same face as the headline.",
+      howTo: {
+        title: "How to post the poll Story",
+        steps: [
+          "Press Download under the Story to save the image.",
+          "In Instagram, tap + and choose Story, then pick the image.",
+          "Tap the sticker icon at the top and choose POLL.",
+          "Type the question \"Kaj izberete?\" and the two answers \"Drva\" and \"Elektrika\".",
+          "Drag the sticker into the empty space under the two cards, then tap Your story."
+        ]
+      },
+      items: [{ kind: "story", label: "Story: wood or electric? (poll)", image: img("DoliumDec05-PollStory") }]
+    },
+    {
+      date: "2026-12-07", format: "Carousel, 7 slides",
+      note: "A post people save. Every tip is from the shop's own blog post on heating a wood-fired sauna.",
+      items: [{ kind: "post", label: "Heating a wood-fired sauna carousel", images: ["DoliumDec07-Heating-1", "DoliumDec07-Heating-2", "DoliumDec07-Heating-3", "DoliumDec07-Heating-4", "DoliumDec07-Heating-5", "DoliumDec07-Heating-6", "DoliumDec07-Heating-7"].map(img),
+        caption: "Kako hitreje segreti savno na drva?\n\nPet nasvetov iz našega bloga:\n1. Kurite s suhimi drvi, z največ 20 % vlage.\n2. Izberite trd les: hrast, javor, breza in bukev grejejo hitreje kot smreka, bor ali jelša.\n3. Pred kurjenjem očistite kurišče in izpraznite pepelnik.\n4. Kurišče naj bo napolnjeno med polovico in dvema tretjinama, drva dodajte na 10 do 15 minut.\n5. Peči ne pregrejte: kovina naj ne zažari rdeče.\n\nCeloten vodnik: savne-dolium.si/blog\n\n#savnedolium #savnanadrva #savnanje" }]
+    },
+    {
+      date: "2026-12-09", format: "Carousel, 5 slides",
+      note: "Gift ideas from the accessories. The cart says \"Rok dobave 3-4 tedne\" for every order, so the post promises nothing about delivery before Christmas. If accessories ship faster, tell us and we change the caption. Check the five prices.",
+      items: [{ kind: "post", label: "Gifts for sauna lovers carousel", images: ["DoliumDec09-Gifts-1", "DoliumDec09-Gifts-2", "DoliumDec09-Gifts-3", "DoliumDec09-Gifts-4", "DoliumDec09-Gifts-5"].map(img),
+        caption: "Iščete darilo za nekoga, ki ima rad savno?\n\nLesena zajemalka (20 €) in leseno vedro (30 €) za polivanje kamnov, brezova palica (22 €), termometer in higrometer (20 €) ter leseno naslonjalo za glavo z blazino (40 €).\n\nNaročite na savne-dolium.si. Če želite darilo pred prazniki, nas pokličite na +386 68 601 072, da preverimo rok dobave.\n\n#savnedolium #darila #savnanje" }]
+    },
+    {
+      date: "2026-12-16", format: "Carousel, 6 slides",
+      note: "A post people save. All four rules are from the shop's FAQ.",
+      items: [{ kind: "post", label: "Outdoor sauna care carousel", images: ["DoliumDec16-Care-1", "DoliumDec16-Care-2", "DoliumDec16-Care-3", "DoliumDec16-Care-4", "DoliumDec16-Care-5", "DoliumDec16-Care-6"].map(img),
+        caption: "Štiri pravila za zunanjo savno.\n\n1. Prezračevalne odprtine naj bodo vedno odprte, saj so zaprte eden glavnih vzrokov za plesen.\n2. Savne ne postavljajte na vlažna tla: betonska podlaga, asfalt ali temelji jo ločijo od tal.\n3. Pravočasno uredite obroče, da se vrata ne povesijo.\n4. Zunanjost vsaj enkrat na leto zaščitite z impregnacijo.\n\nVeč odgovorov: savne-dolium.si/faq\n\n#savnedolium #zunanjasavna #sodsavna" }]
+    },
+    {
+      date: "2026-12-17", format: "Story",
+      note: "Anniversary of Finnish sauna culture joining UNESCO's list of intangible heritage (17 Dec 2020). The source is on the image.",
+      items: [{ kind: "story", label: "Story: Finnish sauna is UNESCO heritage", image: img("DoliumDec17-UnescoStory") }]
+    },
+    {
+      date: "2026-12-18", format: "Carousel, 7 slides",
+      note: "Prices are the shop's on 18 Nov 2026, the S2V with its 5 % discount. Check all five on the day; if one changed, we re-render. Production takes 3–4 to 7–8 weeks by model, so nothing here promises a date.",
+      items: [{ kind: "post", label: "Which sauna for how many people carousel", images: ["DoliumDec18-Sizes-1", "DoliumDec18-Sizes-2", "DoliumDec18-Sizes-3", "DoliumDec18-Sizes-4", "DoliumDec18-Sizes-5", "DoliumDec18-Sizes-6", "DoliumDec18-Sizes-7"].map(img),
+        caption: "Za koliko oseb bo vaša savna?\n\nVertikalna savna, za 2 osebi: 2.900 €\nSod savna Mini, 1,6 m, za 3 osebe: 2.790 €\nSod savna S2V, 2,4 m, za 4 osebe: 3.230 € (najbolj priljubljena)\nSod savna S3, 3 m, za 6 oseb: 3.650 €\nSod savna s predsobo S4P, 4 m, za 8 oseb: 4.550 €\n\nCene so za osnovni komplet z dostavo, brez peči. Peč na drva ali električni grelec izberete v konfiguratorju na savne-dolium.si.\n\n#savnedolium #sodsavna #zunanjasavna" }]
+    },
+    {
+      date: "2026-12-21", format: "Reel, 18 s",
+      note: "Posted on the winter solstice. 10–15 minutes is Terme Krka's time for a Finnish sauna, checked 19 Nov 2026. Not leaning over the heater, and not going in drunk, are from the Finnish Sauna Society; drinking water is from Terme Krka's ritual article. Both are named on the water frame. No health claims. Add calm music in the app. The opening is the lakeside barrel, darkened: a clip of your own sauna on a winter evening would still be better.",
+      items: [{ kind: "reel", label: "Reel: one round of sauna", video: MEDIA + "DoliumDec21-RoundReel.mp4", poster: img("DoliumDec21-RoundReel"),
+        caption: "Najdaljša noč v letu. Najlepša v savni.\n\nEn krog v finski savni traja 10 do 15 minut. Polijte kamne, a se ne nagibajte nad peč. Nato se umirjeno ohladite in počivajte. Pijte vodo in v savno ne hodite vinjeni.\n\n#savnedolium #savnanje #finskasavna" }]
+    },
+    {
+      date: "2026-12-24", time: "10:00", format: "Single image",
+      note: "Night card: the logo, hanging baubles, the logo's barrel in the middle, snow and presents. If you close over the holidays, tell us and we add a line.",
+      items: [{ kind: "post", label: "Merry Christmas", images: [img("DoliumDec24-Christmas")],
+        caption: "Vesel božič in tople praznike!\n\nHvala za zaupanje v letu 2026. Naj bodo prazniki mirni, topli in polni lepih trenutkov z vašimi najbližjimi.\n\n#savnedolium #bozic #prazniki" }]
+    },
+    {
+      date: "2026-12-30", format: "Single image",
+      note: "Last post of the year. Night sky with violet and lilac fireworks in the Dolium colours, and the logo on top.",
+      items: [{ kind: "post", label: "Happy 2027", images: [img("DoliumDec30-NewYear")],
+        caption: "Srečno 2027!\n\nHvala, da ste bili z nami v letu 2026. Naj bo novo leto toplo in sproščeno.\n\n#savnedolium #novoleto #srecno2027" }]
+    }
+  ];
+
+  const ICON = {
+    dots: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>',
+    heart: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-9.2-9.3C1.7 7.6 3.8 4.5 7 4.5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.2 0 5.3 3.1 4.2 6.2C19.5 15.4 12 20 12 20Z"/></svg>',
+    comment: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>',
+    send: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5 21 3Z"/></svg>',
+    save: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17Z"/></svg>',
+    prev: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>',
+    commentSmall: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>',
+    next: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>',
+    download: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>',
+    copy: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11.5" height="12" rx="2.5"/><path d="M15.5 8.5V6a2.5 2.5 0 0 0-2.5-2.5H6.5A2.5 2.5 0 0 0 4 6v7.5A2.5 2.5 0 0 0 6.5 16h2"/></svg>',
+    check: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>'
+  };
+
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const tags = (s) => esc(s).replace(/([#@][\p{L}\p{N}_]+(?:\.[\p{L}\p{N}_]+)*)/gu, '<span class="tag">$1</span>');
+  const timeOf = (day) => day.time || TIME;
+
+  function parts(iso) {
+    const [y, m, d] = iso.split("-").map(Number);
+    const wd = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+    return { month: m, day: d, dow: DOW[wd], mon: MON[m - 1] };
+  }
+
+  function avatar() {
+    return '<span class="avatar"><img src="' + MEDIA + 'logo-mark.svg" alt="" width="13" height="22"></span>';
+  }
+
+  function captionHtml(text, id) {
+    const cut = text.indexOf("\n\n");
+    const head = cut === -1 ? text : text.slice(0, cut);
+    const rest = cut === -1 ? "" : text.slice(cut);
+    return '<div class="caption"><b>' + HANDLE + "</b> " + tags(head) +
+      (rest
+        ? '<span class="rest" id="' + id + '" hidden>' + tags(rest) + '</span> <button class="more" type="button" aria-expanded="false" aria-controls="' + id + '">… more</button>'
+        : "") +
+      "</div>";
+  }
+
+  function placeholderHtml(item) {
+    return '<div class="media' + (item.tall ? " tall" : "") + '"><div class="placeholder-art"><strong>' +
+      (item.tall ? "Reel not made yet" : "Image not made yet") + "</strong><p>" + esc(item.brief) + "</p></div></div>";
+  }
+
+  function mediaHtml(item, key) {
+    if (item.brief) return placeholderHtml(item);
+    if (item.kind === "reel") {
+      return '<div class="media tall"><video src="' + item.video + '" poster="' + item.poster + '" controls playsinline preload="none"></video></div>';
+    }
+    if (item.images.length === 1) {
+      return '<div class="media"><img src="' + item.images[0] + '" alt="" width="1080" height="1350" loading="lazy"></div>';
+    }
+    const n = item.images.length;
+    return '<div class="media carousel" data-key="' + key + '">' +
+      '<div class="track" tabindex="0" aria-label="Carousel, ' + n + ' slides">' +
+      item.images.map((src, i) => '<img src="' + src + '" alt="Slide ' + (i + 1) + '" width="1080" height="1350" loading="lazy">').join("") +
+      "</div>" +
+      '<button class="nav prev" type="button" aria-label="Previous slide" disabled>' + ICON.prev + "</button>" +
+      '<button class="nav next" type="button" aria-label="Next slide">' + ICON.next + "</button>" +
+      '<span class="count">1/' + n + "</span></div>";
+  }
+
+  function postHtml(item, day, key) {
+    const n = item.images ? item.images.length : 0;
+    const dots = n > 1 ? '<span class="page-dots" data-for="' + key + '">' + Array.from({ length: n }, (_, i) => '<i class="' + (i === 0 ? "on" : "") + '"></i>').join("") + "</span>" : "";
+    const p = parts(day.date);
+    const reelish = item.kind === "reel" || item.tall;
+    return '<article class="post' + (reelish ? " reel" : "") + '">' +
+      '<header class="post-head">' + avatar() +
+      '<div class="who"><b>' + HANDLE + "</b>" + (item.place ? "<span>" + esc(item.place) + "</span>" : "") + "</div>" +
+      '<span class="dots">' + ICON.dots + "</span></header>" +
+      mediaHtml(item, key) +
+      '<div class="actions">' + ICON.heart + ICON.comment + ICON.send + dots + '<span class="save">' + ICON.save + "</span></div>" +
+      captionHtml(item.caption, "cap-" + key) +
+      '<time class="stamp" datetime="' + day.date + "T" + timeOf(day) + '">Planned for ' + p.dow + " " + p.day + " " + p.mon + ", " + timeOf(day) + "</time>" +
+      "</article>";
+  }
+
+  function storyHtml(item) {
+    const inner = item.brief
+      ? '<div class="placeholder-art" style="background: var(--surface)"><strong>Story not made yet</strong><p>' + esc(item.brief) + "</p></div>"
+      : '<img src="' + item.image + '" alt="" width="1080" height="1920" loading="lazy">' +
+        '<div class="shade-top"></div><div class="shade-bottom"></div><div class="bar"></div>' +
+        '<div class="story-head">' + avatar() + "<b>" + HANDLE + "</b><span>Story</span></div>" +
+        '<div class="reply"><span>Send message</span>' + ICON.heart + ICON.send + "</div>";
+    return '<article class="story" aria-label="Story">' + inner + "</article>";
+  }
+
+  /* ---------- Download and Copy caption ---------- */
+
+  /* What each item's buttons act on, by index: the files to save and the caption to copy. */
+  const TAKE = [];
+
+  function mediaOf(item) {
+    if (item.brief) return [];
+    if (item.kind === "story") return [item.image];
+    if (item.kind === "reel") return [item.video];
+    return item.images;
+  }
+
+  function takeHtml(item, label) {
+    const files = mediaOf(item);
+    if (!files.length && !item.caption) return "";
+    const i = TAKE.push({ files, caption: item.caption || "", label }) - 1;
+    const what = item.kind === "reel" ? "reel" : "image";
+    const save = files.length > 1 ? "Download " + files.length + " images" : "Download " + what;
+    return '<div class="take">' +
+      (files.length ? button("download", i, save, true) : "") +
+      (item.caption ? button("copy", i, "Copy caption", false) : "") +
+      "</div>";
+  }
+
+  function button(act, i, text, primary) {
+    return '<button class="take-btn' + (primary ? " primary" : "") + '" type="button" data-act="' + act + '" data-item="' + i + '" data-text="' + esc(text) + '">' +
+      '<span class="take-icon">' + ICON[act] + '</span><span class="take-text">' + esc(text) + "</span></button>";
+  }
+
+  /* A comment is anchored to the label, so its quote names the post ("Sun 15 Nov · Buyback"). */
+  function itemHtml(item, day, i, inner) {
+    const p = parts(day.date);
+    const label = p.dow + " " + p.day + " " + p.mon + " · " + item.label;
+    const width = item.kind === "story" ? 270 : item.kind === "reel" || item.tall ? 360 : 440;
+    return '<figure class="item" id="item-' + day.date + "-" + i + '" data-comment-target style="--w: ' + width + 'px">' +
+      '<figcaption class="item-label"><span class="label-text">' + esc(label) + "</span>" +
+      '<button class="comment-btn" type="button" hidden>' + ICON.commentSmall + "Comment</button></figcaption>" +
+      inner + takeHtml(item, label) + "</figure>";
+  }
+
+  /* Step-by-step posting instructions for a post that needs something added in the app. */
+  function howToHtml(day) {
+    if (!day.howTo) return "";
+    return '<section class="howto"><h3>' + esc(day.howTo.title) + "</h3><ol>" +
+      day.howTo.steps.map((step) => "<li>" + esc(step) + "</li>").join("") + "</ol></section>";
+  }
+
+  function statusPill(day) {
+    const made = day.items.every((item) => !item.brief);
+    if (day.template) return '<span class="pill template">' + (made ? "Template, needs the owner" : "Planned, needs the owner") + "</span>";
+    return made ? '<span class="pill ready">Ready</span>' : '<span class="pill todo">Planned</span>';
+  }
+
+  function render() {
+    let posts = 0;
+    let stories = 0;
+    let made = 0;
+    DAYS.forEach((day, d) => {
+      const p = parts(day.date);
+      const ready = day.items.every((item) => !item.brief) && !day.template;
+      const list = document.querySelector('.timeline[data-month="' + p.month + '"]');
+      const li = document.createElement("li");
+      li.className = "day" + (ready ? " ready" : "");
+      li.innerHTML =
+        '<div class="when"><span class="dow">' + p.dow + '</span><span class="dnum">' + p.day + '</span><span class="mon">' + p.mon + '</span><span class="time">' + timeOf(day) + "</span></div>" +
+        '<div class="stack">' +
+        '<div class="meta"><span class="pill">' + esc(day.format) + "</span>" + statusPill(day) + "</div>" +
+        '<p class="note">' + esc(day.note) + "</p>" +
+        howToHtml(day) +
+        '<div class="items">' +
+        day.items.map((item, i) => {
+          if (!item.brief) made++;
+          if (item.kind === "story") { stories++; return itemHtml(item, day, i, storyHtml(item)); }
+          posts++;
+          return itemHtml(item, day, i, postHtml(item, day, d + "-" + i));
+        }).join("") +
+        "</div></div>";
+      list.appendChild(li);
+    });
+    document.getElementById("summary").textContent =
+      "Instagram @" + HANDLE + " and Facebook, 1 to 30 Dec 2026: " + posts + " posts and " + stories + " Stories, " + made + " made. Planned, not posted yet.";
+  }
+
+  /*
+   * On iPhone and iPad a download lands in Files, where Instagram cannot pick it up, so Download opens the
+   * share sheet instead ("Save Image" puts it in Photos). Safari only allows the share sheet straight from
+   * the tap, so each post's files are fetched before it comes into view and handed over without waiting.
+   * Everywhere else Download saves the files with a link, one after the other.
+   */
+  const IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const SHARE = IOS && typeof navigator.canShare === "function" && (() => {
+    try { return navigator.canShare({ files: [new File([""], "test.jpg", { type: "image/jpeg" })] }); } catch (e) { return false; }
+  })();
+  const fileName = (src) => "dolium-" + src.split("/").pop();
+  const pending = new Map();
+  const loaded = new Map();
+
+  function fetchFiles(i) {
+    if (!pending.has(i)) {
+      const job = Promise.all(TAKE[i].files.map(async (src) => {
+        const res = await fetch(src);
+        if (!res.ok) throw new Error("HTTP " + res.status + " for " + src);
+        const blob = await res.blob();
+        return new File([blob], fileName(src), { type: blob.type || "image/jpeg" });
+      }));
+      job.then((files) => loaded.set(i, files), () => pending.delete(i));
+      pending.set(i, job);
+    }
+    return pending.get(i);
+  }
+
+  function saveByLink(files) {
+    const one = (src) => {
+      const a = document.createElement("a");
+      a.href = src;
+      a.download = fileName(src);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+    one(files[0]);
+    files.slice(1).forEach((src, k) => setTimeout(() => one(src), (k + 1) * 400));
+  }
+
+  const status = document.getElementById("status");
+  function announce(text) {
+    status.textContent = "";
+    setTimeout(() => { status.textContent = text; }, 50);
+  }
+
+  function setButton(button, text, done) {
+    button.querySelector(".take-text").textContent = text;
+    button.querySelector(".take-icon").innerHTML = done ? ICON.check : ICON[button.dataset.act];
+    button.classList.toggle("done", done);
+  }
+
+  function flash(button, text) {
+    clearTimeout(button.resetTimer);
+    setButton(button, text, true);
+    announce(text + ": " + TAKE[Number(button.dataset.item)].label);
+    button.resetTimer = setTimeout(() => setButton(button, button.dataset.text, false), 2500);
+  }
+
+  async function download(button) {
+    const i = Number(button.dataset.item);
+    const files = TAKE[i].files;
+    if (!SHARE) {
+      saveByLink(files);
+      flash(button, files.length > 1 ? "Downloaded " + files.length + " images" : "Downloaded");
+      return;
+    }
+    let ready = loaded.get(i);
+    if (!ready) {
+      button.setAttribute("aria-busy", "true");
+      try {
+        ready = await fetchFiles(i);
+      } catch (e) {
+        button.removeAttribute("aria-busy");
+        saveByLink(files);
+        return;
+      }
+      button.removeAttribute("aria-busy");
+    }
+    try {
+      await navigator.share({ files: ready });
+      flash(button, "Saved");
+    } catch (err) {
+      const name = err && err.name;
+      if (name === "AbortError") return;
+      if (name === "NotAllowedError") {
+        clearTimeout(button.resetTimer);
+        setButton(button, "Tap again to save", false);
+        return;
+      }
+      saveByLink(files);
+    }
+  }
+
+  async function copy(button) {
+    const text = TAKE[Number(button.dataset.item)].caption;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (e) {
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+      document.body.appendChild(area);
+      area.select();
+      area.setSelectionRange(0, text.length);
+      const ok = document.execCommand("copy");
+      area.remove();
+      if (!ok) {
+        const more = button.closest(".item").querySelector(".more");
+        if (more) setCaption(more, true);
+        flash(button, "Copy blocked, select the text");
+        return;
+      }
+    }
+    flash(button, "Copied");
+  }
+
+  function wireTake() {
+    document.addEventListener("click", (e) => {
+      const button = e.target.closest(".take-btn");
+      if (!button || button.getAttribute("aria-busy") === "true") return;
+      if (button.dataset.act === "download") download(button);
+      else copy(button);
+    });
+    if (!SHARE) return;
+    document.getElementById("take-hint").textContent = "Under each post: Download opens Save to Photos, Copy caption copies the text.";
+    const buttons = document.querySelectorAll('.take-btn[data-act="download"]');
+    buttons.forEach((b) => b.addEventListener("pointerdown", () => fetchFiles(Number(b.dataset.item)).catch(() => {})));
+    if (!("IntersectionObserver" in window)) return;
+    const seen = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const b = entry.target.querySelector('.take-btn[data-act="download"]');
+        if (b) fetchFiles(Number(b.dataset.item)).catch(() => {});
+        seen.unobserve(entry.target);
+      });
+    }, { rootMargin: "600px 0px" });
+    document.querySelectorAll(".item").forEach((item) => seen.observe(item));
+  }
+
+  /* ---------- Carousels, captions and comments ---------- */
+
+  function wireCarousels() {
+    document.querySelectorAll(".carousel").forEach((box) => {
+      const track = box.querySelector(".track");
+      const prev = box.querySelector(".prev");
+      const next = box.querySelector(".next");
+      const count = box.querySelector(".count");
+      const dots = document.querySelectorAll('.page-dots[data-for="' + box.dataset.key + '"] i');
+      const n = track.children.length;
+      const index = () => Math.round(track.scrollLeft / track.clientWidth);
+      const go = (i) => track.scrollTo({ left: Math.max(0, Math.min(n - 1, i)) * track.clientWidth });
+      const update = () => {
+        const i = index();
+        count.textContent = i + 1 + "/" + n;
+        prev.disabled = i === 0;
+        next.disabled = i === n - 1;
+        dots.forEach((dot, k) => dot.classList.toggle("on", k === i));
+      };
+      prev.addEventListener("click", () => go(index() - 1));
+      next.addEventListener("click", () => go(index() + 1));
+      track.addEventListener("scroll", update, { passive: true });
+      track.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); go(index() + 1); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); go(index() - 1); }
+      });
+    });
+  }
+
+  function setCaption(button, open) {
+    const rest = document.getElementById(button.getAttribute("aria-controls"));
+    rest.hidden = !open;
+    button.setAttribute("aria-expanded", String(open));
+    button.textContent = open ? "less" : "… more";
+  }
+
+  function wireCaptions() {
+    document.addEventListener("click", (e) => {
+      const button = e.target.closest(".more");
+      if (button) setCaption(button, button.getAttribute("aria-expanded") !== "true");
+    });
+    const all = document.getElementById("expand-all");
+    all.addEventListener("click", () => {
+      const open = all.getAttribute("aria-pressed") !== "true";
+      all.setAttribute("aria-pressed", String(open));
+      all.textContent = open ? "Hide full captions" : "Show full captions";
+      document.querySelectorAll(".more").forEach((b) => setCaption(b, open));
+    });
+  }
+
+  async function wireComments() {
+    const hint = document.getElementById("comment-hint");
+    const api = window.claude && window.claude.use
+      ? await window.claude.use("comments").catch(() => null)
+      : null;
+    if (!api) {
+      return;
+    }
+    const buttons = document.querySelectorAll(".comment-btn");
+    const off = (text) => { buttons.forEach((b) => { b.hidden = true; }); hint.textContent = text; };
+    buttons.forEach((b) => { b.hidden = false; });
+    hint.hidden = false;
+    hint.textContent = "Press Comment above a post to leave a note. Everyone the page is shared with sees it.";
+    document.addEventListener("click", async (e) => {
+      const button = e.target.closest(".comment-btn");
+      if (!button) return;
+      const range = document.createRange();
+      range.selectNodeContents(button.parentElement.querySelector(".label-text"));
+      try {
+        await api.openComposer({ range });
+      } catch (err) {
+        const code = err && err.code;
+        if (code === "rate_limited") return;
+        if (code === "invalid") {
+          api.openComposer({ element: button.closest(".item") }).catch(() => {});
+          return;
+        }
+        off("Commenting from the page is off in this view. Use the comment tool in claude.ai instead.");
+      }
+    });
+  }
+
+  render();
+  wireCarousels();
+  wireCaptions();
+  wireTake();
+  wireComments();
+</script>
+</body>
+</html>

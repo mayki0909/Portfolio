@@ -8,7 +8,7 @@ Each client has one shared file with its frame, type and facts. Use it, never re
 |---|---|---|
 | Kranfix | `posts/shared.tsx` (`PostFrame`, `Footer`, `Headline`, `Accent`, `Lead`, `Badge`, `Photo`, `PhotoCard`, `StateChip`, `TagBubble`, `ADDRESS`), `posts/giveaway.tsx` | White page, Manrope 800 headlines with the crimson (`#af1a44`) line in `<Accent>`, Geist body, logo and address footer on a hairline |
 | KFX | `kfx/posts/shared.tsx` (facts: `STREET`, `PHONE`, `DOMAIN`, `HOURS`, light/dark `palette`), `kfx/posts/slides.tsx` (`ScooterCover`, `TipSlide`, `BigFigure`, `IconVisual`, `BookCta`, `BookButton`), `kfx/posts/Photo.tsx` | Inter, crimson and black, light pages and the site's dark footer colour, the hero scooter as the recurring photo |
-| Savne Dolium | `dolium/brand.ts`, `dolium/film.tsx` (grain, mist, steam) | Reels only so far: DM Sans and DM Serif Display, warm photos, slow moves |
+| Savne Dolium | `dolium/posts/shared.tsx` (facts: `PHONE`, `DOMAIN`, `RENT`, `MODELS`; `PostFrame`, `Headline` with `Soft`, `Label`, `Button`, `Photo`, `DoliumLogo`), `dolium/posts/slides.tsx` (`PhotoCover`, `TipSlide`, `StepsSlide`, `ChecklistSlide`, `PriceSlide`, `CtaSlide`, `ProductSlide`, `GiftSlide`), `dolium/film.tsx` for reels | DM Serif Display headlines with an italic second line, DM Sans text, violet on `primaryLight` pages or `night` dark pages, warm photos, pill labels and buttons |
 
 ## Feed posts
 
@@ -47,7 +47,7 @@ A giveaway is one feed post plus four Stories: opens (same day as the post), rem
 |---|---|---|
 | Kranfix | `LaunchReel`, `LocationReel`, `RefurbishedReel`, `BuybackReel`, `RepairReel` | `LogoIntro` (3 s), three or four scenes of about 2.5 s with short overlaps, `LogoOutro` (3 s) |
 | KFX | `KfxServiceReel`, `KfxRenameReel`, `KfxWinterReel` | `KfxIntro`, scenes, `KfxOutro` or `KfxOutroCharge` |
-| Savne Dolium | `RitualReel` | `DoliumIntro`, footage clips slowed to fill each shot, `DoliumOutro` |
+| Savne Dolium | `RitualReel`, `DoliumDec21-RoundReel` | `DoliumIntro`, footage clips slowed to fill each shot, `DoliumOutro` |
 
 The README in `tools/reel` has every reel's scene table with frame ranges. A reel's cover for the timeline is a still of a frame that shows the subject and headline (`npx remotion still <Reel> <file>.jpg --frame=<n>`).
 

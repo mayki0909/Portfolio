@@ -1,52 +1,53 @@
 import { linearTiming, TransitionSeries } from "@remotion/transitions";
-import { fade } from "@remotion/transitions/fade";
+import { slide } from "@remotion/transitions/slide";
 import { Easing } from "remotion";
-import { DoliumIntro } from "../DoliumIntro";
-import { Mir, MIR_FRAMES, Ogenj, Para, Pocitek, SCENE_FRAMES } from "./scenes";
+import {
+  CLOSE_FRAMES,
+  Les,
+  Razgled,
+  Vecer,
+  VIEW_FRAMES,
+  Vrt,
+  VRT_FRAMES,
+  WOOD_FRAMES,
+} from "./scenes";
 
-const TRANSITION_FRAMES = 20;
-/** DoliumIntro finishes at about frame 78; the extra frames hold it before the first fade. */
-const INTRO_FRAMES = 105;
+const TRANSITION_FRAMES = 8;
 
-/** Returns the element itself: TransitionSeries only accepts its own Sequence and Transition children. */
-const dissolve = () => (
+const push = (direction: "from-right" | "from-left") => (
   <TransitionSeries.Transition
-    presentation={fade()}
+    presentation={slide({ direction })}
     timing={linearTiming({
       durationInFrames: TRANSITION_FRAMES,
-      easing: Easing.bezier(0.45, 0, 0.55, 1),
+      easing: Easing.bezier(0.7, 0, 0.3, 1),
     })}
   />
 );
 
 export const RITUAL_DURATION =
-  INTRO_FRAMES + SCENE_FRAMES * 3 + MIR_FRAMES - TRANSITION_FRAMES * 4;
+  VRT_FRAMES + VIEW_FRAMES + WOOD_FRAMES + CLOSE_FRAMES - TRANSITION_FRAMES * 3;
 
 /**
- * About 17 s Instagram reel for Savne Dolium, "Večerni ritual": an evening in your own sauna,
- * step by step, in a dark filmic look. Each step plays in a framed window with a numbered caption;
- * the last opens up to full bleed and runs straight into DoliumOutro.
+ * About 13 s. A daylight film of the sauna where it stands: the garden, the window,
+ * the wood, the evening by the lake. Full frame, one line at a time, sliding cuts.
+ * No steps, no framed window, no dimmed outro. No sound; add music in Instagram.
  */
 export const RitualReel = () => (
   <TransitionSeries>
-    <TransitionSeries.Sequence name="Intro" durationInFrames={INTRO_FRAMES}>
-      <DoliumIntro />
+    <TransitionSeries.Sequence name="Vrt" durationInFrames={VRT_FRAMES}>
+      <Vrt />
     </TransitionSeries.Sequence>
-    {dissolve()}
-    <TransitionSeries.Sequence name="01 Ogenj" durationInFrames={SCENE_FRAMES}>
-      <Ogenj />
+    {push("from-right")}
+    <TransitionSeries.Sequence name="Razgled" durationInFrames={VIEW_FRAMES}>
+      <Razgled />
     </TransitionSeries.Sequence>
-    {dissolve()}
-    <TransitionSeries.Sequence name="02 Para" durationInFrames={SCENE_FRAMES}>
-      <Para />
+    {push("from-left")}
+    <TransitionSeries.Sequence name="Les" durationInFrames={WOOD_FRAMES}>
+      <Les />
     </TransitionSeries.Sequence>
-    {dissolve()}
-    <TransitionSeries.Sequence name="03 Počitek" durationInFrames={SCENE_FRAMES}>
-      <Pocitek />
-    </TransitionSeries.Sequence>
-    {dissolve()}
-    <TransitionSeries.Sequence name="04 Mir + Outro" durationInFrames={MIR_FRAMES}>
-      <Mir />
+    {push("from-right")}
+    <TransitionSeries.Sequence name="Večer" durationInFrames={CLOSE_FRAMES}>
+      <Vecer />
     </TransitionSeries.Sequence>
   </TransitionSeries>
 );
