@@ -11,17 +11,17 @@ Updated 18 Nov 2026.
 
 ## Campaign November–December 2026
 
-16 posting days, 18 Nov to 30 Dec.
+15 posting days, 18 Nov to 30 Dec. On 23 Nov 2026 everything from 21 Nov moved 9 days later because the owner was on vacation (nothing posted 19–29 Nov); Christmas, buyback and New Year kept their dates.
 
 | Dates | Posts |
 |---|---|
-| 18–27 Nov | "Tag a friend" posts (broken screen, empty battery), charging port carousel |
-| 21 Nov – 3 Dec | **Giveaway 1, "Popravilo na naš račun"**: free labour, the winner pays for parts. Follow, like, comment; closes 2 Dec at 23.59, draw 3 Dec. Stories: 4 days left, last day, **winner (template: needs `winner`)** |
-| 30 Nov – 3 Dec | Screen replacement carousel, "how a repair works" carousel |
-| 9–15 Dec | Christmas gifts (accessories) carousel, battery carousel, camera glass carousel |
-| 18–30 Dec | Before the holidays, **holiday hours (template: 24 and 31 Dec unknown)**, Christmas, buyback ("Nov telefon pod jelko?"), happy 2027 |
+| 18 Nov | "Tag a friend": broken screen |
+| 30 Nov – 12 Dec | **Giveaway 1, "Popravilo na naš račun"**: free labour, the winner pays for parts. Follow, like, comment; opens Mon 30 Nov, closes Fri 11 Dec at 23.59, draw Sat 12 Dec, winner replies by Wed 16 Dec. Stories: 4 days left (7 Dec), last day (11 Dec), winner (12 Dec, name added in Instagram). No "Nagradna igra" pill on the images |
+| 3–12 Dec | Charging port carousel (3 Dec), "tag a friend": empty battery (6 Dec), screen replacement carousel (9 Dec), "how a repair works" carousel (12 Dec) |
+| 18–23 Dec | Christmas gifts carousel (18 Dec), battery carousel (22 Dec), before the holidays (23 Dec) |
+| 24–30 Dec | Christmas (24 Dec), buyback ("Nov telefon pod jelko?", 27 Dec), camera glass carousel (28 Dec), happy 2027 (30 Dec) |
 
-A second December giveaway was dropped.
+The holiday hours post was dropped on 18 Nov 2026 (`Dec21-HolidayHours` is kept for next year). A second December giveaway was dropped.
 
 ## Videos and posts (Remotion, `tools/reel/src`)
 

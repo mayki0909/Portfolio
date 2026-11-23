@@ -16,7 +16,7 @@ const NoWrap = ({ children }: { readonly children: ReactNode }) => (
   <span style={{ whiteSpace: "nowrap" }}>{children}</span>
 );
 
-/* ---------- Wed 9 Dec: Christmas gifts, 4 slides ---------- */
+/* ---------- Fri 18 Dec: Christmas gifts, 4 slides ---------- */
 
 const GIFTS = [
   {
@@ -154,7 +154,7 @@ export const GiftSlide = ({ gift }: GiftProps) => {
   );
 };
 
-/* ---------- Sat 12 Dec: battery, 2 slides ---------- */
+/* ---------- Tue 22 Dec: battery, 2 slides ---------- */
 
 /*
  * service-battery-fixed.png is a 1.34× closer crop of the same phone (body 944 px wide against 704)
@@ -206,7 +206,7 @@ export const BatteryAfter = () => (
   />
 );
 
-/* ---------- Tue 15 Dec: camera glass, 2 slides ---------- */
+/* ---------- Mon 28 Dec: camera glass, 2 slides ---------- */
 
 /** Where a shot sits inside CropSlide's 1080×640 window. */
 type Crop = {
@@ -302,7 +302,7 @@ export const CameraAfter = () => (
   />
 );
 
-/* ---------- Fri 18 Dec: before the holidays ---------- */
+/* ---------- Wed 23 Dec: before the holidays ---------- */
 
 /** What the website's trust section promises (components/home/trust-section.tsx, FAQ). */
 const HOLIDAY_POINTS = [

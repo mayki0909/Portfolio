@@ -61,7 +61,7 @@ export const BadgeRow = ({
   label,
   deadline,
 }: {
-  readonly label: string;
+  readonly label?: string;
   readonly deadline: string;
 }) => (
   <div
@@ -71,7 +71,7 @@ export const BadgeRow = ({
       justifyContent: "space-between",
     }}
   >
-    <Badge>{label}</Badge>
+    {label ? <Badge>{label}</Badge> : null}
     <Interactive.Div
       name="Deadline"
       style={{ fontSize: 36, fontWeight: 500, color: brand.body }}

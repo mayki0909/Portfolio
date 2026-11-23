@@ -13,7 +13,7 @@ import {
   StateChip,
 } from "../shared";
 
-/* ---------- Tue 24 Nov: charging port, 2 slides ---------- */
+/* ---------- Thu 3 Dec: charging port, 2 slides ---------- */
 
 /** The port shots crop the phone at both sides, so they run edge to edge. */
 const PortSlide = ({
@@ -78,7 +78,7 @@ export const PortAfter = () => (
   />
 );
 
-/* ---------- Mon 30 Nov: screen replacement, 2 slides ---------- */
+/* ---------- Wed 9 Dec: screen replacement, 2 slides ---------- */
 
 const ScreenSlide = PhoneSlide;
 
@@ -115,7 +115,7 @@ export const ScreenAfter = () => (
   />
 );
 
-/* ---------- Thu 3 Dec: how a repair works, 5 slides ---------- */
+/* ---------- Sat 12 Dec: how a repair works, 5 slides ---------- */
 
 /** Copied from apps/webshop/components/home/process-section.tsx. Update both if they change. */
 const STEPS = [
