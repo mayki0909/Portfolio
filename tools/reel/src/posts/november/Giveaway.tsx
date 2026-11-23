@@ -7,7 +7,6 @@ import {
 } from "../giveaway";
 import {
   Accent,
-  Badge,
   Headline,
   Lead,
   PAD,
@@ -15,14 +14,13 @@ import {
   PostFrame,
 } from "../shared";
 
-/** Giveaway 1 ("Popravilo na naš račun"), 21 Nov – 2 Dec 2026, draw on Thu 3 Dec. */
-const DEADLINE = "Do srede, 2. 12.";
+/** Giveaway 1 ("Popravilo na naš račun"), 30 Nov – 11 Dec 2026, draw on Sat 12 Dec
+ * (moved 9 days on 23 Nov 2026). No "Nagradna igra" pill on the images since then. */
+const DEADLINE = "Do petka, 11. 12.";
 
-const BadgeRow = () => (
-  <SharedBadgeRow label="Nagradna igra" deadline={DEADLINE} />
-);
+const BadgeRow = () => <SharedBadgeRow deadline={DEADLINE} />;
 
-/** Sat 21 Nov feed post. */
+/** Mon 30 Nov feed post. */
 export const GiveawayPost = () => (
   <PostFrame>
     <div
@@ -59,7 +57,7 @@ export const GiveawayPost = () => (
   </PostFrame>
 );
 
-/** Sat 21 Nov story: the giveaway opens. */
+/** Mon 30 Nov story: the giveaway opens. */
 export const GiveawayStory = () => (
   <StoryFrame>
     <BadgeRow />
@@ -86,16 +84,15 @@ export const GiveawayStory = () => (
   </StoryFrame>
 );
 
-/** Sat 28 Nov story: four days left. */
+/** Mon 7 Dec story: four days left. */
 export const GiveawayReminderStory = () => (
   <StoryFrame>
-    <Badge>Nagradna igra</Badge>
     <Headline size={240} style={{ marginTop: 48, lineHeight: 0.98 }}>
       <div>Še</div>
       <Accent>4 dni.</Accent>
     </Headline>
     <Lead style={{ marginTop: 40, fontSize: 46 }}>
-      Do srede, 2. 12., lahko še sodeluješ v nagradni igri za popravilo na
+      Do petka, 11. 12., lahko še sodeluješ v nagradni igri za popravilo na
       naš račun.
     </Lead>
     <div style={{ marginTop: 80 }}>
@@ -105,10 +102,9 @@ export const GiveawayReminderStory = () => (
   </StoryFrame>
 );
 
-/** Wed 2 Dec story: last day. */
+/** Fri 11 Dec story: last day. */
 export const GiveawayLastDayStory = () => (
   <StoryFrame>
-    <Badge>Nagradna igra</Badge>
     <Headline size={220} style={{ marginTop: 48, lineHeight: 0.98 }}>
       <div>Zadnji</div>
       <Accent>dan!</Accent>
@@ -129,16 +125,15 @@ export const GiveawayLastDayStory = () => (
  */
 const MENTION_SPACE = 260;
 
-/** Thu 3 Dec story: the draw result. Gender-neutral wording ("prejme"). */
+/** Sat 12 Dec story: the draw result. Gender-neutral wording ("prejme"). */
 export const GiveawayWinnerStory = () => (
   <StoryFrame>
-    <Badge>Nagradna igra</Badge>
     <Lead style={{ marginTop: 48, fontSize: 52, color: brand.ink }}>
       Žreb je opravljen. Popravilo na naš račun prejme:
     </Lead>
     <div style={{ height: MENTION_SPACE }} />
     <Lead style={{ marginTop: 0, fontSize: 46 }}>
-      Čestitamo! Javi se nam v sporočilu do ponedeljka, 7. 12.
+      Čestitamo! Javi se nam v sporočilu do srede, 16. 12.
     </Lead>
     <JoinLine>Hvala vsem, ki ste sodelovali.</JoinLine>
   </StoryFrame>

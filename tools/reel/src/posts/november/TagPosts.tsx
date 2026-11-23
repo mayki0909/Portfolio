@@ -35,7 +35,7 @@ export const TagScreen = () => (
 
 const BATTERY = { width: 700, height: 330, border: 18 } as const;
 
-/** Fri 27 Nov: "Označi prijatelja, ki ima vedno prazno baterijo." */
+/** Sun 6 Dec: "Označi prijatelja, ki ima vedno prazno baterijo." */
 export const TagBattery = () => (
   <PostFrame>
     <Headline size={88} style={{ position: "absolute", top: 96, left: PAD }}>
